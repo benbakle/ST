@@ -1,0 +1,24 @@
+﻿
+Partial Class Admin_AdminDefault
+    Inherits System.Web.UI.Page
+
+    Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+        
+    End Sub
+
+    Protected Sub Button1_Click(sender As Object, e As System.EventArgs) Handles Button1.Click
+        Dim QPfunction As New Quickprice
+        Dim partNumber As String
+        Dim cost As Double
+        TextBox1.Text = UCase(TextBox1.Text)
+        partNumber = TextBox1.Text
+        cost = QPfunction.GetListCost(partNumber)
+        If cost > -1 Then
+            Label1.Text = FormatCurrency(cost)
+        Else
+            Label1.Text = "Consult Factory"
+        End If
+
+    End Sub
+
+End Class

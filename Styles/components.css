@@ -1,0 +1,43 @@
+﻿.component .modalPanel {
+    width: 870px;
+    font-size: .8em;
+}
+
+.component .textbox, .component select, .component .watermark {
+    width: 90%;
+    padding:2px;
+}
+
+.component .textarea {
+    width: 90%;
+    height: 78px;
+    padding:5px;
+}
+
+.component .component-basic-entry .column {
+    width: 50%;
+}
+
+.component .component-basic-entry .column-container {
+    width: 100%;
+}
+
+.component .entry.column .column-container .column {
+    width: 62%;
+    padding: 5px;
+}
+
+    .component .entry.column .column-container .column:first-child {
+        width: 38%;
+    }
+
+.component-detailed-entry .column-container .entry.column, .component-pricing-entry .column-container .entry.column {
+    width: 33%;
+}
+
+.component-basic-entry, .component-detailed-entry, .component-pricing-entry {
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background:linear-gradient(#fff,#eee);
+}

@@ -1,0 +1,392 @@
+﻿<%@ Master Language="VB" CodeFile="QuickPrice.master.vb" Inherits="QuickPrice_QuickPrice" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <title>SensorTec, Inc | QuickPrice</title>
+
+    <link href="../Styles/st.css" rel="stylesheet" />
+    <link href="../Styles/master.css" rel="stylesheet" />
+    <link href="../Styles/admin-master.css" rel="stylesheet" />
+    <link href="../Styles/qp-printable.css" rel="stylesheet" media="print" />
+    <link href="../Styles/quickprice.css" rel="stylesheet" />
+    <link rel="SHORTCUT ICON" href="~/images/logos/favicon.ico" />
+
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+        </asp:ToolkitScriptManager>
+        <asp:UpdatePanel ID="Admin_UpdatePanel" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+                <div class="top-stripe">
+                </div>
+                <div class="header">
+                    <div class="header-container">
+                        <asp:Panel ID="LoginMenu_Panel" runat="server">
+                            <div class="login-menu">
+                                <ul>
+                                    <li><a href="#" id="Welcome">
+                                        <h3>Welcome,</h3>
+                                        <h5>
+                                            <asp:Label ID="LoginNameLabel" runat="server" Text="" /></h5>
+                                    </a>
+                                        <ul class="login-subitems">
+                                            <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/QuickPriceUser/QPConfigure.aspx">
+                                                        <li>QuickPrice&#8482;</li>
+                                            </asp:HyperLink>
+
+                                            <asp:HyperLink runat="server" NavigateUrl="~/Account/ChangePassword.aspx">
+                                                        <li>Change Password</li>
+                                            </asp:HyperLink>
+                                            <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/QuickPrice/Help.aspx">
+                                                        <li>Help</li>
+                                            </asp:HyperLink>
+
+                                            <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="<li>Log Out</li>"
+                                                LogoutPageUrl="~/Default.aspx" />
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </asp:Panel>
+
+                        <div class="logo">
+                            <img src="../images/icons/show-menu-icon-white.png" class="mobile-menu" alt="" />
+                            <asp:ImageButton ID="Logo_ImageButton" PostBackUrl="~/Default.aspx" ImageUrl="~/images/logos/header_logo.png" runat="server" />
+                        </div>
+                        <div class="navbar">
+                            <a href="../Default.aspx" class="home"></a>
+                            <a href="../PS.aspx?type=1" class="product"></a><a href="../PS.aspx?type=2" class="services"></a><a
+                                href="../Resource.aspx" class="resources"></a><a href="../Distributor.aspx" class="distributor"></a>
+                        </div>
+                    </div>
+                    <div class="admin-header-container">
+                        <asp:Panel runat="server" ID="AdminMenu_Panel">
+                            <div class="menu">
+                                <ul>
+                                    <li><a href="<%= Page.ResolveUrl("~/Admin/Default.aspx") %>">Home</a></li>
+                                    <li><a href="<%= Page.ResolveUrl("~/QuickPriceUser/QPConfigure.aspx")%>">QuickPrice</a></li>
+                                    <li><a href="#">Users</a>
+                                        <ul class="subitems">
+                                            <a href="<%= Page.ResolveUrl("~/Admin/EditUser.aspx") %>">
+                                                <li>Show all users</li>
+                                            </a>
+                                            <a href="<%= Page.ResolveUrl("~/Admin/CreateUser.aspx") %>">
+                                                <li>Add a new user</li>
+                                            </a>
+                                            <asp:LinkButton ID="EditCompany_LinkButton" runat="server"><li>Show company list</li></asp:LinkButton>
+                                            <asp:LinkButton ID="CreateCompany_LinkButton" runat="server"><li>Add a new company</li></asp:LinkButton>
+
+                                        </ul>
+                                    </li>
+                                    <li><a href="<%= Page.ResolveUrl("~/Admin/Pages.aspx") %>">Pages</a></li>
+                                    <li><a href="#">Distributors</a>
+                                        <ul class="subitems">
+                                            <asp:HyperLink ID="DistList_HyperLink" runat="server" NavigateUrl="~/Admin/DistList.aspx"><li>Show distributor list</li></asp:HyperLink>
+                                            <asp:HyperLink ID="DistState_HyperLink" runat="server" NavigateUrl="~/Admin/DistMapping.aspx"><li>Edit state's distributors</li></asp:HyperLink>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Pricing</a>
+                                        <ul class="subitems">
+                                            <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Admin/Pricing.aspx?ctype=1&stype=1"><li>Base Product</li></asp:HyperLink>
+                                            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Admin/Pricing.aspx?ctype=2&stype=1"><li>Sheath Termination</li></asp:HyperLink>
+                                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Admin/Pricing.aspx?ctype=3&stype=1"><li>Leadwire Termination</li></asp:HyperLink>
+                                            <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Admin/Pricing.aspx?ctype=4&stype=1"><li>Sanitary</li></asp:HyperLink>
+                                            <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Admin/Pricing.aspx?ctype=5&stype=1"><li>Insertion Probes</li></asp:HyperLink>
+                                            <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/Admin/Pricing.aspx?ctype=6&stype=1"><li>Thermowell Assemblies</li></asp:HyperLink>
+                                            <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/Admin/Pricing.aspx?ctype=7&stype=1"><li>Quick Connects</li></asp:HyperLink>
+                                            <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Admin/Components.aspx"><li>Components</li></asp:HyperLink>
+                                            <asp:LinkButton ID="ExtBaseCost_LinkButton" runat="server"><li>Extension Cost</li></asp:LinkButton>
+                                            <asp:LinkButton ID="SanitaryWellCost_LinkButton" runat="server"><li>Sanitary Well Cost</li></asp:LinkButton>
+                                            <asp:LinkButton ID="LaborCost_LinkButton" runat="server"><li>Labor Cost</li></asp:LinkButton>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="header-tab">
+                                ________<br />
+                                ________<br />
+                                ________
+                            </div>
+                        </asp:Panel>
+
+                        <asp:ModalPopupExtender ID="CreateCompany_ModalPopup" runat="server" BackgroundCssClass="modalBackground"
+                            DropShadow="false" CancelControlID="" PopupControlID="CreateCompany_Panel" TargetControlID="CreateCompany_HiddenField">
+                        </asp:ModalPopupExtender>
+                        <asp:HiddenField ID="CreateCompany_HiddenField" runat="server" />
+                        <asp:Panel ID="CreateCompany_Panel" runat="server" Visible="true" CssClass="modalPanel" Style="display: none;">
+                            <div class="close">
+                                <asp:ImageButton ID="CloseCreateCompany_ImageButton" runat="server" ImageUrl="~/images/close2.gif"
+                                    CausesValidation="false" />
+                            </div>
+                            <div class="company-edit-container">
+                                <h1>
+                                    <asp:Label ID="CompanyAction_Label" runat="server" /></h1>
+                                <br />
+                                <br />
+                                <hr />
+                                <br />
+                                <div id="deleteCompany" class="message-box" style="display: none; width: 345px;">
+                                    Are you sure you want to delete company "<h5>
+                                        <asp:Label ID="Company_Label" runat="server" /></h5>
+                                    " from the database?
+                                <br />
+                                    <br />
+                                    <div class="inline-list align-right">
+                                        <ul>
+                                            <li>
+                                                <asp:LinkButton ID="ConfirmDeleteCompany_LinkButton" runat="server" CssClass="button">Yes</asp:LinkButton></li>
+                                            <li>
+                                                <asp:HyperLink ID="CancelDeleteCompany_LinkButton" runat="server" CssClass="button">Cancel</asp:HyperLink></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="companyExistsError" class="error-box error-message" style="display: none;"
+                                    runat="server">
+                                    Customer already exists. Please type another name or close window to exit.
+                                </div>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <h4>Company Name:</h4>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="CompanyName_TextBox" runat="server" CssClass="textbox" Width="230px"></asp:TextBox>
+                                            <asp:DropDownList ID="CompanyName_DropDownList" runat="server" DataSourceID="CompanyName_SqlDataSource"
+                                                DataTextField="CompanyName" DataValueField="CompanyID" Width="234px" AutoPostBack="true">
+                                            </asp:DropDownList>
+                                            <asp:SqlDataSource ID="CompanyName_SqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:QPdatabaseConnectionString %>"
+                                                SelectCommand="SELECT * FROM [Company] ORDER BY [CompanyName]"></asp:SqlDataSource>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h4>Schedule Discount:</h4>
+                                        </td>
+                                        <td>
+                                            <asp:DropDownList ID="Discount_DropDownList" runat="server" DataSourceID="Discount_SqlDataSource"
+                                                DataTextField="DiscountDesc" DataValueField="DiscountID" Width="234px">
+                                            </asp:DropDownList>
+                                            <asp:SqlDataSource ID="Discount_SqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:QPdatabaseConnectionString %>"
+                                                SelectCommand="SELECT * FROM [Discount]"></asp:SqlDataSource>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br />
+                                <hr />
+                                <br />
+                                <div class="inline-list align-right">
+                                    <ul>
+                                        <li>
+                                            <asp:HyperLink ID="DeleteCompany_LinkButton" runat="server" Text="Delete Company"
+                                                CssClass="button" />
+                                        </li>
+                                        <li>
+                                            <asp:LinkButton ID="UpdateCompany_LinkButton" runat="server" Text="Update" CssClass="button" />
+                                        </li>
+                                        <li>
+                                            <asp:LinkButton ID="AddCompany_LinkButton" runat="server" Text="Create" CssClass="button" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </asp:Panel>
+                        <asp:ModalPopupExtender ID="ExtBaseCost_ModalPopup" runat="server" BackgroundCssClass="modalBackground"
+                            DropShadow="false" CancelControlID="" PopupControlID="ExtBaseCost_Panel" TargetControlID="ExtBaseCost_HiddenField">
+                        </asp:ModalPopupExtender>
+                        <asp:HiddenField ID="ExtBaseCost_HiddenField" runat="server" />
+                        <asp:Panel ID="ExtBaseCost_Panel" runat="server" Visible="true" CssClass="modalPanel"
+                            DefaultButton="EditExtBaseCost_LinkButton" Style="display: none;">
+                            <div class="close">
+                                <asp:ImageButton ID="CloseExtBaseCost_ImageButton" runat="server" ImageUrl="~/images/close2.gif"
+                                    CausesValidation="false" />
+                            </div>
+                            <div class="company-edit-container">
+                                <h1>
+                                    <asp:Label ID="ExtBaseCost_Label" runat="server" Text="Extension Base Cost" /></h1>
+                                <br />
+                                <br />
+                                <hr />
+                                <br />
+                                <div class="column-container entry">
+                                    <div class="column">
+                                        <h4>Extension Base Cost:</h4>
+                                    </div>
+                                    <div class="column">
+                                        <asp:TextBox ID="ExtBaseCost_TextBox" runat="server"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <br />
+                                <hr />
+                                <br />
+                                <div class="inline-list align-right">
+                                    <ul>
+                                        <li>
+                                            <asp:LinkButton ID="EditExtBaseCost_LinkButton" runat="server" Text="Update" CssClass="button" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </asp:Panel>
+
+
+                        <asp:ModalPopupExtender ID="SanitaryWellCost_ModalPopup" runat="server" BackgroundCssClass="modalBackground"
+                            DropShadow="false" CancelControlID="" PopupControlID="SanitaryWellCost_Panel" TargetControlID="SanitaryWellCost_HiddenField">
+                        </asp:ModalPopupExtender>
+                        <asp:HiddenField ID="SanitaryWellCost_HiddenField" runat="server" />
+                        <asp:Panel ID="SanitaryWellCost_Panel" runat="server" Visible="true" CssClass="modalPanel"
+                            DefaultButton="SanitaryWellCost_LinkButton" Style="display: none;">
+                            <div class="close">
+                                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/close2.gif"
+                                    CausesValidation="false" />
+                            </div>
+                            <div class="company-edit-container">
+                                <h1>
+                                    <asp:Label ID="SanitaryWellCost_Label" runat="server" Text="Sanitary Well Cost" /></h1>
+                                <br />
+                                <br />
+                                <hr />
+                                <br />
+                                <div class="column-container entry">
+                                    <div class="column">
+                                        <h4>Sanitary Well Cost:</h4>
+                                    </div>
+                                    <div class="column">
+                                        <asp:TextBox ID="SanitaryWellCost_TextBox" runat="server"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <br />
+                                <hr />
+                                <br />
+                                <div class="inline-list align-right">
+                                    <ul>
+                                        <li>
+                                            <asp:LinkButton ID="EditSanitaryWellCost_LinkButton" runat="server" Text="Update" CssClass="button" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </asp:Panel>
+
+
+
+                        <asp:ModalPopupExtender ID="LaborCost_ModalPopup" runat="server" BackgroundCssClass="modalBackground"
+                            DropShadow="false" CancelControlID="" PopupControlID="LaborCost_Panel" TargetControlID="LaborCost_HiddenField">
+                        </asp:ModalPopupExtender>
+                        <asp:HiddenField ID="LaborCost_HiddenField" runat="server" />
+                        <asp:Panel ID="LaborCost_Panel" runat="server" Visible="true" CssClass="modalPanel"
+                            DefaultButton="EditLaborCost_LinkButton" Style="display: none;">
+                            <div class="close">
+                                <asp:ImageButton ID="LaborCost_ImageButton" runat="server" ImageUrl="~/images/close2.gif"
+                                    CausesValidation="false" />
+                            </div>
+                            <div class="company-edit-container">
+                                <h1>
+                                    <asp:Label ID="LaborCost_Label" runat="server" Text="Labor Cost" /></h1>
+                                <br />
+                                <br />
+                                <hr />
+                                <br />
+                                <div class="column-container entry">
+                                    <div class="column">
+                                        <h4>Department:</h4>
+                                    </div>
+                                    <div class="column">
+                                        <asp:DropDownList ID="LaborCost_DropDownList" runat="server" DataSourceID="SensorType_SqlDataSource"
+                                            DataTextField="TypeDesc" DataValueField="TypeID" AutoPostBack="true">
+                                        </asp:DropDownList>
+                                        <asp:SqlDataSource ID="SensorType_SqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:QPdatabaseConnectionString %>"
+                                            SelectCommand="SELECT * FROM [SensorType]"></asp:SqlDataSource>
+                                    </div>
+                                </div>
+                                <div class="column-container entry">
+                                    <div class="column">
+                                        <h4>Labor Cost:</h4>
+                                    </div>
+                                    <div class="column">
+                                        <asp:TextBox ID="LaborCost_TextBox" runat="server"></asp:TextBox>
+                                    </div>
+
+                                </div>
+                                <br />
+                                <hr />
+                                <br />
+                                <div class="inline-list align-right">
+                                    <ul>
+                                        <li>
+                                            <asp:LinkButton ID="EditLaborCost_LinkButton" runat="server" Text="Update" CssClass="button" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </asp:Panel>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="paper">
+                        <div class="paper-container">
+                            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </div>
+                    </div>
+                    <div class="paper-shadow">
+                    </div>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </form>
+
+    <script src="../Scripts/jquery-1.7.2.js" type="text/javascript" language="javascript"></script>
+    <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js" type="text/javascript" language="javascript"></script>
+    <script type="text/javascript" src="../scripts/jquery.ninja.js"></script>
+    <script type="text/javascript" src="../scripts/sensortec.quickprice.functions.js"></script>
+    <script type="text/javascript" src="../scripts/sensortec.quickprice.setup.js"></script>
+    <script type="text/javascript" src="../scripts/sensortec.JSON.js"></script>
+
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function () {
+            $("a[rel]").modalPopup();
+
+            $(".header-tab").click(function () {
+                var header = $(".admin-header-container");
+                var hPosition = header.position();
+
+                if (hPosition.top == 105) {
+                    header.animate({ top: 143 }, 'slow', function () {
+                        $(".menu").css({ "z-index": 20 });
+                    });
+                }
+                else {
+                    header.animate({ top: 105 });
+                    $(".menu").css({ "z-index": -10 });
+                }
+            });
+
+
+            $(".mobile-menu").click(function () {
+                var isVisible = $('.navbar').is(':visible');
+                var navHeight = $('.navbar').height() * -1;
+
+                if (isVisible) {
+                    $(".navbar").animate({ bottom: navHeight }, function () {
+                        $(this).hide()
+                    });
+                    $("body").css({ 'overflow': 'auto' });
+                }
+                else {
+                    $(".navbar").css({ 'bottom': navHeight }).show().animate({ bottom: "0px" });
+                    $("body").css({ 'overflow': 'hidden' });
+                };
+            });
+
+
+
+        });
+    </script>
+</body>
+</html>

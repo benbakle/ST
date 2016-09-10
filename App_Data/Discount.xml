@@ -1,0 +1,517 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Discounts>
+  <Manufactured>
+    <A>
+      <Discount>
+        <Quantity>1-4 pieces</Quantity>
+        <Percent>0</Percent>
+      </Discount>
+      <Discount>
+        <Quantity>5-24 pieces</Quantity>
+        <Percent>.1</Percent>
+      </Discount>
+      <Discount>
+        <Quantity>25-49 pieces</Quantity>
+        <Percent>.15</Percent>
+      </Discount>
+      <Discount>
+        <Quantity>50-99 pieces</Quantity>
+        <Percent>.2</Percent>
+      </Discount>
+      <Discount>
+        <Quantity>100 + pieces</Quantity>
+        <Percent>Consult</Percent>
+      </Discount>
+    </A>
+
+    <B>
+      <Discount>
+        <Quantity>1-4 pieces</Quantity>
+        <Percent>.15</Percent>
+      </Discount>
+      <Discount>
+        <Quantity>5-24 pieces</Quantity>
+        <Percent>.2</Percent>
+      </Discount>
+      <Discount>
+        <Quantity>25-49 pieces</Quantity>
+        <Percent>.25</Percent>
+      </Discount>
+      <Discount>
+        <Quantity>50-99 pieces</Quantity>
+        <Percent>.3</Percent>
+      </Discount>
+      <Discount>
+        <Quantity>100 + pieces</Quantity>
+        <Percent>Consult</Percent>
+      </Discount>
+    </B>
+    <MB>
+      <Discount>
+        <Quantity>1+ pieces</Quantity>
+        <Percent>.3</Percent>
+      </Discount>
+    </MB>
+    <C>
+      <Discount>
+        <Quantity>1-4 pieces</Quantity>
+        <Percent>.3</Percent>
+      </Discount>
+      <Discount>
+        <Quantity>5-99 pieces</Quantity>
+        <Percent>.4</Percent>
+      </Discount>
+      <Discount>
+        <Quantity>100 + pieces</Quantity>
+        <Percent>Consult</Percent>
+      </Discount>
+    </C>
+    <MC>
+      <Discount>
+        <Quantity>1+ pieces</Quantity>
+        <Percent>.4</Percent>
+      </Discount>
+    </MC>
+    <D>
+      <Discount>
+        <Quantity>1-9 pieces</Quantity>
+        <Percent>.2</Percent>
+      </Discount>
+      <Discount>
+        <Quantity>10-49 pieces</Quantity>
+        <Percent>.25</Percent>
+      </Discount>
+      <Discount>
+        <Quantity>50-99 pieces</Quantity>
+        <Percent>.3</Percent>
+      </Discount>
+      <Discount>
+        <Quantity>100 + pieces</Quantity>
+        <Percent>Consult</Percent>
+      </Discount>
+    </D>
+    <E>
+      <Discount>
+        <Quantity>1-9 pieces</Quantity>
+        <Percent>.25</Percent>
+      </Discount>
+      <Discount>
+        <Quantity>10-49 pieces</Quantity>
+        <Percent>.30</Percent>
+      </Discount>
+      <Discount>
+        <Quantity>50-99 pieces</Quantity>
+        <Percent>.35</Percent>
+      </Discount>
+      <Discount>
+        <Quantity>100 + pieces</Quantity>
+        <Percent>Consult</Percent>
+      </Discount>
+    </E>
+    <ME>
+      <Discount>
+        <Quantity>1+ pieces</Quantity>
+        <Percent>.35</Percent>
+      </Discount>
+    </ME>
+  </Manufactured>
+  <Accessory>
+    <A>
+      <Discount>
+        <Value>discount1</Value>
+        <Quantity>1-9 pieces</Quantity>
+        <Percent>0</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount2</Value>
+        <Quantity>10-24 pieces</Quantity>
+        <Percent>.05</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount3</Value>
+        <Quantity>25-49 pieces</Quantity>
+        <Percent>.1</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount4</Value>
+        <Quantity>50-99 pieces</Quantity>
+        <Percent>.15</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount5</Value>
+        <Quantity>100-249 pieces</Quantity>
+        <Percent>.2</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount6</Value>
+        <Quantity>250 + pieces</Quantity>
+        <Percent>Consult</Percent>
+      </Discount> 
+    </A>
+    <B>
+      <Discount>
+        <Value>discount1</Value>
+        <Quantity>1-9 pieces</Quantity>
+        <Percent>.1</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount2</Value>
+        <Quantity>10-24 pieces</Quantity>
+        <Percent>.15</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount3</Value>
+        <Quantity>25-49 pieces</Quantity>
+        <Percent>.2</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount4</Value>
+        <Quantity>50-99 pieces</Quantity>
+        <Percent>.25</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount5</Value>
+        <Quantity>100-249 pieces</Quantity>
+        <Percent>.3</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount6</Value>
+        <Quantity>250 + pieces</Quantity>
+        <Percent>Consult</Percent>
+      </Discount>
+    </B>
+    <MB>
+      <Discount>
+        <Value>discount1</Value>
+        <Quantity>1-9</Quantity>
+        <Percent>.3</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount2</Value>
+        <Quantity>10-24</Quantity>
+        <Percent>.3</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount3</Value>
+        <Quantity>25-49</Quantity>
+        <Percent>.3</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount4</Value>
+        <Quantity>50-99</Quantity>
+        <Percent>.3</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount5</Value>
+        <Quantity>100-249</Quantity>
+        <Percent>.3</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount6</Value>
+        <Quantity>250+</Quantity>
+        <Percent>Consult</Percent>
+      </Discount>
+    </MB>
+    <C>
+      <Discount>
+        <Value>discount1</Value>
+        <Quantity>1-9 pieces</Quantity>
+        <Percent>.2</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount2</Value>
+        <Quantity>10-24 pieces</Quantity>
+        <Percent>.25</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount3</Value>
+        <Quantity>25-49 pieces</Quantity>
+        <Percent>.3</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount4</Value>
+        <Quantity>50-99 pieces</Quantity>
+        <Percent>.35</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount5</Value>
+        <Quantity>100-249 pieces</Quantity>
+        <Percent>.35</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount6</Value>
+        <Quantity>250 + pieces</Quantity>
+        <Percent>Consult</Percent>
+      </Discount>
+    </C>
+    <MC>
+      <Discount>
+        <Value>discount1</Value>
+        <Quantity>1-9</Quantity>
+        <Percent>.35</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount2</Value>
+        <Quantity>10-24</Quantity>
+        <Percent>.35</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount3</Value>
+        <Quantity>25-49</Quantity>
+        <Percent>.35</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount4</Value>
+        <Quantity>50-99</Quantity>
+        <Percent>.35</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount5</Value>
+        <Quantity>100-249</Quantity>
+        <Percent>.35</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount6</Value>
+        <Quantity>250+</Quantity>
+        <Percent>Consult</Percent>
+      </Discount>
+    </MC>
+    <D>
+      <Discount>
+        <Value>discount1</Value>
+        <Quantity>1-9 pieces</Quantity>
+        <Percent>.2</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount2</Value>
+        <Quantity>10-24 pieces</Quantity>
+        <Percent>.25</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount3</Value>
+        <Quantity>25-49 pieces</Quantity>
+        <Percent>.25</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount4</Value>
+        <Quantity>50-99 pieces</Quantity>
+        <Percent>.30</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount5</Value>
+        <Quantity>100-249 pieces</Quantity>
+        <Percent>Consult</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount6</Value>
+        <Quantity>250 + pieces</Quantity>
+        <Percent>Consult</Percent>
+      </Discount>
+    </D>
+    <E>
+      <Discount>
+        <Value>discount1</Value>
+        <Quantity>1-9 pieces</Quantity>
+        <Percent>.2</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount2</Value>
+        <Quantity>10-24 pieces</Quantity>
+        <Percent>.25</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount3</Value>
+        <Quantity>25-49 pieces</Quantity>
+        <Percent>.25</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount4</Value>
+        <Quantity>50-99 pieces</Quantity>
+        <Percent>.30</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount5</Value>
+        <Quantity>100-249 pieces</Quantity>
+        <Percent>Consult</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount6</Value>
+        <Quantity>250 + pieces</Quantity>
+        <Percent>Consult</Percent>
+      </Discount>
+    </E>
+    <ME>
+      <Discount>
+        <Value>discount1</Value>
+        <Quantity>1-9</Quantity>
+        <Percent>.3</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount2</Value>
+        <Quantity>10-24</Quantity>
+        <Percent>.3</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount3</Value>
+        <Quantity>25-49</Quantity>
+        <Percent>.3</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount4</Value>
+        <Quantity>50-99</Quantity>
+        <Percent>.3</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount5</Value>
+        <Quantity>100-249</Quantity>
+        <Percent>.3</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount6</Value>
+        <Quantity>250+</Quantity>
+        <Percent>Consult</Percent>
+      </Discount>
+    </ME>
+  </Accessory>
+  <Wire>
+    <A>
+    <Discount>
+      <Value>discount1</Value>
+      <Quantity>25-999 feet</Quantity>
+      <Percent>0</Percent>
+    </Discount>
+    <Discount>
+      <Value>discount2</Value>
+      <Quantity>1000-4999 feet</Quantity>
+      <Percent>.05</Percent>
+    </Discount>
+    <Discount>
+      <Value>discount3</Value>
+      <Quantity>5000 + feet</Quantity>
+      <Percent>Consult</Percent>
+    </Discount>
+    </A>
+    <B>
+      <Discount>
+        <Value>discount1</Value>
+        <Quantity>25-999 feet</Quantity>
+        <Percent>.15</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount2</Value>
+        <Quantity>1000-4999 feet</Quantity>
+        <Percent>.2</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount3</Value>
+        <Quantity>5000 + feet</Quantity>
+        <Percent>Consult</Percent>
+      </Discount>
+    </B>
+    <MB>
+      <Discount>
+        <Value>discount1</Value>
+        <Quantity>25-999 feet</Quantity>
+        <Percent>.2</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount2</Value>
+        <Quantity>1000-4999 feet</Quantity>
+        <Percent>.2</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount3</Value>
+        <Quantity>5000 + feet</Quantity>
+        <Percent>Consult</Percent>
+      </Discount>
+    </MB>
+    <C>
+      <Discount>
+        <Value>discount1</Value>
+        <Quantity>25-999 feet</Quantity>
+        <Percent>.2</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount2</Value>
+        <Quantity>1000-4999 feet</Quantity>
+        <Percent>.3</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount3</Value>
+        <Quantity>5000 + feet</Quantity>
+        <Percent>Consult</Percent>
+      </Discount>
+    </C>
+    <MC>
+      <Discount>
+        <Value>discount1</Value>
+        <Quantity>25-999 feet</Quantity>
+        <Percent>.3</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount2</Value>
+        <Quantity>1000-4999 feet</Quantity>
+        <Percent>.3</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount3</Value>
+        <Quantity>5000 + feet</Quantity>
+        <Percent>Consult</Percent>
+      </Discount>
+    </MC>
+    <D>
+      <Discount>
+        <Value>discount1</Value>
+        <Quantity>25-999 feet</Quantity>
+        <Percent>.15</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount2</Value>
+        <Quantity>1000-4999 feet</Quantity>
+        <Percent>.2</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount3</Value>
+        <Quantity>5000 + feet</Quantity>
+        <Percent>Consult</Percent>
+      </Discount>
+    </D>
+    <E>
+      <Discount>
+        <Value>discount1</Value>
+        <Quantity>25-999 feet</Quantity>
+        <Percent>.15</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount2</Value>
+        <Quantity>1000-4999 feet</Quantity>
+        <Percent>.2</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount3</Value>
+        <Quantity>5000 + feet</Quantity>
+        <Percent>Consult</Percent>
+      </Discount>
+    </E>
+    <ME>
+      <Discount>
+        <Value>discount1</Value>
+        <Quantity>25-999 feet</Quantity>
+        <Percent>.2</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount2</Value>
+        <Quantity>1000-4999 feet</Quantity>
+        <Percent>.2</Percent>
+      </Discount>
+      <Discount>
+        <Value>discount3</Value>
+        <Quantity>5000 + feet</Quantity>
+        <Percent>Consult</Percent>
+      </Discount>
+    </ME>
+  </Wire>
+</Discounts>
+
+
+

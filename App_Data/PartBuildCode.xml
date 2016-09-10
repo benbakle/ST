@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PartBuildCodes>
+  <SIPS>
+    <SIPStyles Description="(RIP) RTD Insertion Probe" Value="RIP"/>
+    <SIPStyles Description="(TIP) Thermocouple Insertion Probe" Value="TIP"/>
+    <SIPStyles Description="(MIP) Miniature Insertion Probe" Value="MIP"/>
+  </SIPS>
+  
+  <SheathTerminations>
+    <LeadwireStyles Description="(A) Bulk Materail, Stripped Lead" Value="A"/>
+    <LeadwireStyles Description="(B) No Transition Style" Value="B"/>
+    <LeadwireStyles Description="(C) Self-Gripping Spring w/6&quot; Leads" Value="C"/>
+    <LeadwireStyles Description="(D) Transition Fitting (200°C)" Value="D"/>
+    <LeadwireStyles Description="(E) Hi-Temp Transition Fitting (450°C)" Value="E"/>
+    <LeadwireStyles Description="(F) Transition w/Relief Spring (200°C)" Value="F"/>
+    <LeadwireStyles Description="(G) Hi-Temp Transition w/Relief Spring (450°C)" Value="G"/>
+
+    <PlugStyles Description="(K) Standard Male Plug (200°C)" Value="K"/>
+    <PlugStyles Description="(L) Standard Plug w/ Mating Jack" Value="L"/>
+    <PlugStyles Description="(M) Standard Female Jack" Value="M"/>
+    <PlugStyles Description="(N) High-Temp Standard Male Plug" Value="N"/>
+    <PlugStyles Description="(O) High-Temp Standard Plug w/ Mating Jack" Value="O"/>
+    <PlugStyles Description="(P) High-Temp Standard Female Jack" Value="P"/>
+    <PlugStyles Description="(Q) Miniature Male Plug (200°C)" Value="Q"/>
+    <PlugStyles Description="(R) Miniature Plug w/ Mating Jack" Value="R"/>
+    <PlugStyles Description="(S) Miniature Female Jack" Value="S"/>
+
+    <HeadStyles Description="(T) Flip-Top Cast Aluminum Head (200°C)" Value="T"/>
+    <HeadStyles Description="(W) Explosion Proof Head (200°C)" Value="W"/>
+    <HeadStyles Description="(X) Miniature Plastic Head (177°C)" Value="X"/>
+    <HeadStyles Description="(Y) Miniature Aluminum Head (200°C)" Value="Y"/>
+    <HeadStyles Description="(Z) Plastic Open Disk Head (200°C)" Value="Z"/>
+    <HeadStyles Description="(1) Screw-Cover Cast Aluminum Head (200°C)" Value="1"/>
+    <HeadStyles Description="(2) Screw-Cover Cast Iron Head (200°C)" Value="2"/>
+    <HeadStyles Description="(4) Flip-Top Din Size &quot;B&quot; Aluminum WP Head (200°C)" Value="4"/>
+    <HeadStyles Description="(5) Screw-Cover White Polypropylene Head(90°C)" Value="5"/>
+    <HeadStyles Description="(6) Canister Head 1/8&quot;NPT or 1/4&quot;NPT Only" Value="6"/>
+    <HeadStyles Description="(7) Screw-Cover Din Size &quot;B&quot; Aluminum WP Head (200°C)" Value="7"/>
+    <HeadStyles Description="(8) Stainless Steel Weatherproof Head T-304 (200°C)" Value="8"/>
+  </SheathTerminations>
+  
+  <Plastics>
+    <Termination Description="(A) 8&quot; Spring Adjustable" Value="A" />
+    <Termination Description="(B) 12&quot; Spring Adjustable" Value="B" />
+    <Termination Description="(C) Flex Armor Adjustable" Value="C" />
+    <Termination Description="(D) Straight Fixed Bayonet" Value="D" />
+    <Termination Description="(E) 45° Bent Fixed Bayonet" Value="E" />
+    <Termination Description="(F) 90° Bent Fixed Tube" Value="F" />
+    <Termination Description="(G) Straight Rigid Tube" Value="G" />
+    <Termination Description="(H) 45° Bent Rigid Tube" Value="H" />
+    <Termination Description="(I) 90° Bent Rigid Tube" Value="I" />
+    <Termination Description="(J) Spade Style (T/C Only)" Value="J" />
+    <Termination Description="(K) Washer / Lug" Value="K" />
+    <Termination Description="(L) Sparkplug Gasket (T/C Only)" Value="L" />
+    <Termination Description="(M) 3&quot; Melt Bolt" Value="M" />
+    <Termination Description="(N) 4&quot; Melt Bolt" Value="N" />
+    <Termination Description="(O) 6&quot; Melt Bolt" Value="O" />
+    <Termination Description="(R) Threaded Nozzle Bolt" Value="R" />
+    <Termination Description="(U) Pipe Clamp Style" Value="U" />
+
+    <SpadeMaterial Description="(B) Brass Spade Material" Value="B" />
+    <SpadeMaterial Description="(S) Stainless Steel Spade Material" Value="S" />
+
+    <RingType Description="(D) Double Cupped Washer" Value="D" />
+    <RingType Description="(L) Electrical Lug" Value="L" />
+
+    <StudSize Description="(1) #6 Stud Size" Value="1" />
+    <StudSize Description="(2) #8 Stud Size" Value="2" />
+    <StudSize Description="(3) #10 Stud Size" Value="3" />
+    <StudSize Description="(4) 1/4&quot; Stud Size" Value="4" />
+    <StudSize Description="(5) 5/16&quot; Stud Size" Value="5" />
+    <StudSize Description="(6) 3/8&quot; Stud Size" Value="6" />
+
+    <SparkPlugGasketSize Description="(J) 10mm (.39&quot; ID)" Value="J" />
+    <SparkPlugGasketSize Description="(L) 12mm (.47&quot; ID)" Value="L" />
+    <SparkPlugGasketSize Description="(M) 14mm (.55&quot; ID)" Value="M" />
+
+    <SparkPlugGasketForkStyle Description="(S) Straight" Value="S" />
+    <SparkPlugGasketForkStyle Description="(B) Bent 70°" Value="B" />
+
+    <NozzleBoltSize Description="(1) 1/4&quot;-20 x 3/8&quot; Long Nozzle Bolt" Value="1" />
+    <NozzleBoltSize Description="(2) 1/4&quot;-28 x 3/8&quot; Long Nozzle Bolt" Value="2" />
+    <NozzleBoltSize Description="(3) M6 x 1.00 x 12mm Long Nozzle Bolt" Value="3" />
+    <NozzleBoltSize Description="(4) M8 x 1.25 x 12mm Long Nozzle Bolt" Value="4" />
+    
+  </Plastics>
+  
+  <ElementData>
+    <Configuration Description="2 Wire Element" Value="2"/>
+    <Configuration Description="3 Wire Element" Value="3"/>
+    <Configuration Description="4 Wire Element" Value="4"/>
+
+    <SingleDual Description="Single RTD Element" Value="Single"/>
+    <SingleDual Description="Dual RTD Element" Value ="Dual" />
+
+    <BaseResistance Description="Platinum 100 Ohm" Value ="100_Ohm" />
+    <BaseResistance Description="Platinum 500 Ohm" Value ="500_Ohm" />
+    <BaseResistance Description="Platinum 1000 Ohm" Value ="1000_Ohm" />
+    <BaseResistance Description="Copper 10 Ohm" Value ="Copper_10" />
+    <BaseResistance Description="Nickel 120 Ohm" Value ="Nickel_120" />
+    <BaseResistance Description="Nickel-Iron 604" Value ="Nickel_604" />
+
+    <Curve Description="DIN .00385 Curve" Value ="385" />
+    <Curve Description="JIS/US .00392 Curve" Value ="392" />
+    <Curve Description="Appliance .00375 Curve" Value ="375" />
+
+    <Accuracy Description="Class 1.1 ±0.5% at 0°C" Value="1.1"/>
+    <Accuracy Description="Class 0.8 ±0.25% at 0°C" Value="0.8"  />
+    <Accuracy Description="Class B ±0.12% at 0°C" Value="B"  />
+    <Accuracy Description="Class A ±0.06% at 0°C" Value="A"  />
+    <Accuracy Description="1/3 Class ±0.04% at 0°C" Value="1/3"  />
+    <Accuracy Description="1/5 Class ±0.03% at 0°C" Value="1/5"  />
+  </ElementData>
+  
+  <TemperatureRanges>
+    <TemperatureRange Description="(L) Low Temperature [-50°C to 200°C (-58°F to 392°F)]" Value="L" />
+    <TemperatureRange Description="(M) Medium Temperature [-50°C to 450°C (-58°F to 842°F)]" Value="M" />
+    <TemperatureRange Description="(H) High Temperature [-200°C to 650°C (-328°F to 1202°F)]" Value="H" />
+  </TemperatureRanges>
+  
+  <Calibrations>
+    <Calibration Description="(J) Type &quot;J&quot; [0°C to 900°C (32°F to 1652°F)]" Value="J"/>
+    <Calibration Description="(K) Type &quot;K&quot; [0°C to 1250°C (32°F to 2282°F)]" Value="K"/>
+    <Calibration Description="(E) Type &quot;E&quot; [0°C to 900°C (32°F to 1652°F)]" Value="E"/>
+    <Calibration Description="(T) Type &quot;T&quot; [0°C to 350°C (32°F to 662°F)]" Value="T"/>
+  </Calibrations>
+  
+  <ThermocoupleTypes>
+    <ThermocoupleType Description="(0) Standard Limits of Error, Single (2-Wire)" Value="0" />
+    <ThermocoupleType Description="(1) Special Limits of Error, Single (2-Wire)" Value="1" />
+    <ThermocoupleType Description="(2) High Purity (99.4%) Insulation, Single (2-Wire)" Value="2" />
+    <ThermocoupleType Description="(3) Special Limits &amp; High Purity, Single (2-Wire)" Value="3" />
+    <ThermocoupleType Description="(4) Standard Limits of Error, Duplex (4-Wire)" Value="4" />
+    <ThermocoupleType Description="(5) Special Limits of Error, Duplex (4-Wire)" Value="5" />
+    <ThermocoupleType Description="(6) High Purity (99.4%) Insulation, Duplex (4-Wire)" Value="6" />
+    <ThermocoupleType Description="(7) Special Limits &amp; High Purity, Duplex (4-Wire)" Value="7" />
+  </ThermocoupleTypes>
+
+  <Extensions>
+    <RTDExtensionType Description="(R) RTD Extension" Value="R" />
+    <RTDExtensionType Description="(Q) Quick Connect Extension" Value="Q" />
+    
+    <RTDExtensionConfiguration Description="(2) 2 Wire" Value="2" />
+    <RTDExtensionConfiguration Description="(3) 3 Wire" Value="3" />
+    <RTDExtensionConfiguration Description="(4) 4 Wire" Value="4" />
+    <RTDExtensionConfiguration Description="(6) 6 Wire" Value="6" />
+
+    <TCExtensionConfiguration Description="(0) Single (2 wire)" Value="0" />
+    <TCExtensionConfiguration Description="(4) Duplex (4 wire)" Value="4" />
+  </Extensions>
+  
+  <Junctions>
+    <Junction Description="(G) Grounded Junction" Value="G" />
+    <Junction Description="(U) Ungrounded Junction" Value="U" />
+    <Junction Description="(E) Exposed Junction" Value="E" />
+    <Junction Description="(D) Drill Point - Grounded" Value="D" />
+  </Junctions>
+
+  <PipeClamps>
+    <PipeClamp Description="(12) 11/16&quot; to 1-1/4&quot;" Value="12" />
+    <PipeClamp Description="(24) 1-1/16&quot; to 2&quot;" Value="24" />
+    <PipeClamp Description="(44) 2&quot; to 3-1/4&quot;" Value="44" />
+    <PipeClamp Description="(60) 3&quot; to 4-1/4&quot;" Value="60" />
+    <PipeClamp Description="(88) 4-3/4&quot; to 6&quot;" Value="88" />
+    <PipeClamp Description="(96) 5-1/4&quot; to 6-1/2&quot;" Value="96" />
+    <PipeClamp Description="(98) 5-3/4&quot; to 7&quot;" Value="96" />
+  </PipeClamps>
+
+  <SheathDiameters>
+    <SheathDiameter Description="(D) 0.040&quot; OD Sheath (call for quote)" Value="D" />
+    <SheathDiameter Description="(E)  1/16&quot; OD Sheath" Value="E" />
+    <SheathDiameter Description="(G)  1/8&quot; OD Sheath" Value="G" />
+    <SheathDiameter Description="(I)  3/16&quot; OD Sheath" Value="I" />
+    <SheathDiameter Description="(K)  1/4&quot; OD Sheath" Value="K" />
+    <SheathDiameter Description="(N)  3/8&quot; OD Sheath" Value="N" />
+    <SheathDiameter Description="(O)  1/2&quot; OD Sheath" Value="O" />
+  </SheathDiameters>
+  
+  <SIPProbeStyles>
+    <SIPProbeStyle Description="(1)  Standard Transition Fitting - Stainless Steel" Value ="1" />
+    <SIPProbeStyle Description="(2)  Straight Handle - Stainless Steel" Value ="2" />
+    <SIPProbeStyle Description="(3)  Saber Handle - Stainless Steel" Value ="3" />
+    <SIPProbeStyle Description="(4)  Flanged Handle - Stainless Steel" Value ="4" />
+    <SIPProbeStyle Description="(5)  Euro Style - White Teflon" Value ="5" />
+    <SIPProbeStyle Description="(6)  Euro Style - Stainless Steel" Value ="6" />
+  </SIPProbeStyles>
+
+  <SIPSheathDiameters>
+    <SIPSheathDiameter Description="(B)  .134&quot; OD Hypodermic Sheath" Value="B" />
+    <SIPSheathDiameter Description="(C)  .180&quot; OD Hypodermic Sheath" Value="C" />
+  </SIPSheathDiameters>
+
+  <ReducedTipSheathDiameters>
+    <ReducedTipSheathDiameter Description="None" Value="" />
+    <ReducedTipSheathDiameter Description="(I)  3/16&quot; OD Sheath" Value="I" />
+    <ReducedTipSheathDiameter Description="(K)  1/4&quot; OD Sheath" Value="K" />
+    <ReducedTipSheathDiameter Description="(N)  3/8&quot; OD Sheath" Value="N" />
+  </ReducedTipSheathDiameters>
+  
+  <ThermowellAssemblyTypes>
+    <AssemblyType Description="Thermowell Replacement Element" Value="Replacement" />
+    <AssemblyType Description="Assembly with Thermowell" Value="Assembly" />
+
+    <ConfigurationType Description="(1) Head w/Hex Nipple" Value="1" />
+    <ConfigurationType Description="(2) Head w/Pipe Nipple Only" Value="2" />
+    <ConfigurationType Description="(3) Head w/Hex Nipple &amp; Union" Value="3" />
+    <ConfigurationType Description="(4) Head w/Hex Nipple/Union/Pipe Nipple" Value="4" />
+
+    <ConfigurationLength Description="(01) 1 Inch Nominal Extension" Value="01" />
+    <ConfigurationLength Description="(02) 2 Inch Nominal Extension" Value="02" />
+    <ConfigurationLength Description="(03) 3 Inch Nominal Extension" Value="03" />
+    <ConfigurationLength Description="(04) 4 Inch Nominal Extension" Value="04" />
+    <ConfigurationLength Description="(05) 5 Inch Nominal Extension" Value="05" />
+    <ConfigurationLength Description="(06) 6 Inch Nominal Extension" Value="06" />   
+  </ThermowellAssemblyTypes>
+  
+  <ThermowellMaterials>
+    <ThermowellMaterial Description="(W) 316 SST" Value="W" />
+    <ThermowellMaterial Description="(T) 304 SST" Value="T" />
+    <ThermowellMaterial Description="(D) Steel/Iron" Value="D" />
+  </ThermowellMaterials>
+  
+  <SheathMaterials>
+    <SheathMaterial Description="(W) 316 SST" Value="W" />
+    <SheathMaterial Description="(T) 304 SST" Value="T" />
+    <SheathMaterial Description="(J) Inconel 600" Value="J" />
+    <SheathMaterial Description="(S) 446 SST" Value="S" />
+    <SheathMaterial Description="(H) Hastelloy C" Value="H" />
+    <SheathMaterial Description="(D) Steel/Iron" Value="D" />
+    <SheathMaterial Description="(V) 310 SST" Value="V" />
+  </SheathMaterials>
+  
+  <Thermowells>
+    <ThermowellType Description="(R)  Reduced Stem Thermowell" Value="R" />
+    <ThermowellType Description="(S)  Straight Stem Thermowell" Value="S" />
+    <ThermowellType Description="(H)  Heavy Duty Thermowell" Value="H" />
+    <ThermowellType Description="(FS)  Flanged Thermowell" Value="FS" />
+    <ThermowellType Description="(FH)  Heavy Duty Flanged Thermowell" Value="FH" />
+
+    <ThermowellLag Description="(0) Non-Lagging" Value="0" />
+    <ThermowellLag Description="(L) Lagging" Value="L" />
+
+    <ThermowellBore Description="(2) .260&quot; Bore for 1/4&quot; OD Elements" Value="2" />
+    <ThermowellBore Description="(3) .390&quot; Bore for 3/8&quot; OD Elements" Value="3" />
+
+    <ThermowellProcessThread Description="(5) 1/2&quot;NPT Process Connection" Value="5" />
+    <ThermowellProcessThread Description="(7) 3/4&quot;NPT Process Connection" Value="7" />
+    <ThermowellProcessThread Description="(1) 1&quot;NPT Process Connection" Value="1" />
+
+    <StandardInsertionLength Description="(016)  1-5/8&quot; Insertion Length" Value="016" />
+    <StandardInsertionLength Description="(025)  2-1/2&quot; Insertion Length" Value="025" />
+    <StandardInsertionLength Description="(035)  3-1/2&quot; Insertion Length" Value="035" />
+    <StandardInsertionLength Description="(045)  4-1/2&quot; Insertion Length" Value="045" />
+    <StandardInsertionLength Description="(055)  5-1/2&quot; Insertion Length" Value="055" />
+    <StandardInsertionLength Description="(065)  6-1/2&quot; Insertion Length" Value="065" />
+    <StandardInsertionLength Description="(075)  7-1/2&quot; Insertion Length" Value="075" />
+    <StandardInsertionLength Description="(085)  8-1/2&quot; Insertion Length" Value="085" />   
+
+    <FlangedInsertionLength Description="(020)  2&quot; Insertion Length" Value="020" />
+    <FlangedInsertionLength Description="(030)  3&quot; Insertion Length" Value="030" />
+    <FlangedInsertionLength Description="(040)  4&quot; Insertion Length" Value="040" />
+    <FlangedInsertionLength Description="(050)  5&quot; Insertion Length" Value="050" />
+    <FlangedInsertionLength Description="(060)  6&quot; Insertion Length" Value="060" />
+    <FlangedInsertionLength Description="(070)  7&quot; Insertion Length" Value="070" />
+    <FlangedInsertionLength Description="(080)  8&quot; Insertion Length" Value="080" />
+    <FlangedInsertionLength Description="(090)  9&quot; Insertion Length" Value="090" />
+    <FlangedInsertionLength Description="(100)  10&quot; Insertion Length" Value="100" />
+    <FlangedInsertionLength Description="(120)  12&quot; Insertion Length" Value="120" />
+
+    <FlangeSize Description="(A) 3/4&quot; Flange Size" Value="A" />
+    <FlangeSize Description="(B) 1&quot; Flange Size" Value="B" />
+    <FlangeSize Description="(C) 1-1/2&quot; Flange Size" Value="C" />
+    <FlangeSize Description="(D) 2&quot; Flange Size" Value="D" />
+    <FlangeSize Description="(E) 3&quot; Flange Size" Value="E" />
+
+    <Rating Description="(1) 150 lbs" Value="1" />
+    <Rating Description="(2) 300 lbs" Value="2" />
+    <Rating Description="(3) 600 lbs" Value="3" />
+    <Rating Description="(4) 900 lbs" Value="4" />
+    <Rating Description="(5) 1500 lbs" Value="5" />
+    <Rating Description="(6) 2500 lbs" Value="6" />
+
+    <FlangeType Description="(R) Raised Face" Value="R" />
+    <FlangeType Description="(F) Flate Face" Value="F" />
+    <FlangeType Description="(J) Ring Joint" Value="J" />
+
+    <Material Description="(A) Brass" Value="A" />
+    <Material Description="(D) C-1018 Carbon Steel" Value="D" />
+    <Material Description="(T) 304 SST" Value="T" />
+    <Material Description="(W) 316 SST" Value="W" />  
+  </Thermowells>
+
+  <SheathLengths>
+    <Fractional Description="(A) None" Value="A" />
+    <Fractional Description="(B) 1/16 Inch" Value="B" />
+    <Fractional Description="(C) 1/8 Inch" Value="C" />
+    <Fractional Description="(E) 3/16 Inch" Value="E" />
+    <Fractional Description="(G) 1/4 Inch" Value="G" />
+    <Fractional Description="(J) 3/8 Inch" Value="J" />
+    <Fractional Description="(L) 1/2 Inch" Value="L" />
+    <Fractional Description="(N) 5/8 Inch" Value="N" />
+    <Fractional Description="(Q) 3/4 Inch" Value="Q" />
+    <Fractional Description="(S) 7/8 Inch" Value="S" />
+  </SheathLengths>
+
+  <SheathFittings>
+    <HexNipple Description="(45) Steel Hex Nipple, 1/2&quot;NPT" Value="45" />
+    <HexNipple Description="(46) 316 SST Hex Nipple, 1/8&quot;NPT" Value="46" />
+    <HexNipple Description="(47) 316 SST Hex Nipple, 1/4&quot;NPT" Value="47" />
+    <HexNipple Description="(48) 316 SST Hex Nipple, 1/2&quot;NPT" Value="48" />
+    <HexNipple Description="(60) 316 SST Hex Nipple, 3/4&quot;NPT" Value="60" />
+    <HexNipple Description="(61) 316 SST Hex Nipple, 1&quot;NPT" Value="61" />
+    <HexNipple Description="(63) 316 SST Hex Nipple, 3/4&quot;NPT Process x 1/2&quot;NPT" Value="63" />
+
+    <SLHexNipple Description="(55) Steel Spring Loaded Hex Nipple, 1/2&quot;NPT" Value="55" />
+    <SLHexNipple Description="(56) 316 SST Spring Loaded Hex Nipple, 1/2&quot;NPT" Value="56" />
+    <SLHexNipple Description="(57) 316 SST Self Contained Spring Loaded Hex Nipple, 1/2&quot;NPT" Value="57" />
+
+    <HexBushing304 Description="(5A) 304 SST Hex Bushing, 1/8&quot;NPT" Value="5A" />
+    <HexBushing304 Description="(5B) 304 SST Hex Bushing, 1/4&quot;NPT" Value="5B" />
+    <HexBushing304 Description="(5D) 304 SST Hex Bushing, 1/2&quot;NPT" Value="5D" />
+
+    <HexBushing316 Description="(6A) 316 SST Hex Bushing, 1/8&quot;NPT" Value="6A" />
+    <HexBushing316 Description="(6B) 316 SST Hex Bushing, 1/4&quot;NPT" Value="6B" />
+    <HexBushing316 Description="(6D) 316 SST Hex Bushing, 1/2&quot;NPT" Value="6D" />
+    <HexBushing316 Description="(6E) 316 SST Hex Bushing, 3/4&quot;NPT" Value="6E" />
+
+    <AdjCompressionFitting Description="(1A) SST Compression Fitting, 1/8&quot;NPT" Value="1A" />
+    <AdjCompressionFitting Description="(1B) SST Compression Fitting, 1/4&quot;NPT" Value="1B" />
+    <AdjCompressionFitting Description="(1D) SST Compression Fitting, 1/2&quot;NPT" Value="1D" />
+    <AdjCompressionFitting Description="(2A) Brass Compression Fitting, 1/8&quot;NPT" Value="2A" />
+    <AdjCompressionFitting Description="(2B) Brass Compression Fitting, 1/4&quot;NPT" Value="2B" />
+    <AdjCompressionFitting Description="(2D) Brass Compression Fitting, 1/2&quot;NPT" Value="2D" />
+
+    <ReAdjCompressionFitting Description="(3A) SST Re-Adj Compression Fitting, 1/8&quot;NPT" Value="3A" />
+    <ReAdjCompressionFitting Description="(3B) SST Re-Adj Compression Fitting, 1/4&quot;NPT" Value="3B" />
+    <ReAdjCompressionFitting Description="(3D) SST Re-Adj Compression Fitting, 1/2&quot;NPT" Value="3D" />
+
+    <FlangeAndBayonetFitting Description="(25) Flange w/Brass Compression Fitting" Value="25" />
+    <FlangeAndBayonetFitting Description="(26) Flange w/SST Compression Fitting" Value="26" />
+    <FlangeAndBayonetFitting Description="(27) Adjustable Bayonet Fitting, 1/8&quot;OD Sheath Only" Value="27" />
+    <FlangeAndBayonetFitting Description="(28) Re-Adjustable Bayonet Fitting, 1/8&quot;OD Sheath Only" Value="28" />
+    <FlangeAndBayonetFitting Description="(29) Fixed Bayonet Fitting,1/8&quot;, 3/16&quot;, 1/4&quot; OD Sheath" Value="29" />
+
+    <Bend Description="(A) 90° Bend" Value="A" />
+    <Bend Description="(B) 45° Bend" Value="B" />
+
+    <FlatWeldPad Description="(35) Perpendicular Weld Pad, 316 SST, 1&quot; x 1&quot;" Value="35" />
+    <FlatWeldPad Description="(36) Horizontal Weld Pad, 316 SST, 1&quot; x 1&quot;" Value="36" />
+
+    <RadiusWeldPad Description="(37) Perpendicular Radius Weld Pad, 316 SST, 1&quot; x 1&quot;" Value="37" />
+    <RadiusWeldPad Description="(38) Horizontal Radius Weld Pad, 316 SST, 1&quot; x 1&quot;" Value="38" />
+  </SheathFittings>
+  <MIStripLens>
+    <MIStripLen Description="(A) 1/4&quot; Strip" value="A" />
+    <MIStripLen Description="(B) 1/2&quot; Strip" value="B" />
+    <MIStripLen Description="(C) 3/4&quot; Strip" value="C" />
+    <MIStripLen Description="(D) 1&quot; Strip" value="D" />
+    <MIStripLen Description="(E) 2&quot; Strip" value="E" />
+    <MIStripLen Description="(F) 2-1/2&quot; Strip" value="F" />
+    <MIStripLen Description="(G) 3&quot; Strip" value="G" />
+    <MIStripLen Description="(H) 3-1/2&quot; Strip" value="H" />
+    <MIStripLen Description="(I) 4&quot; Strip" value="I" />
+    <MIStripLen Description="(J) 4-1/2&quot; Strip" value="J" />
+    <MIStripLen Description="(K) 5&quot; Strip" value="K" />
+  </MIStripLens>
+  <CIPCaps>
+    <CIPCap Description="(A1) 3/4&quot; 16 AMP Clamp Cap" Value="A1" />
+    <CIPCap Description="(A2) 1-1/2&quot; 16 AMP Clamp Cap" Value="A2" />
+    <CIPCap Description="(A3) 2&quot; 16 AMP Clamp Cap" Value="A3" />
+    <CIPCap Description="(A4) 2-1/2&quot; 16 AMP Clamp Cap" Value="A4" />
+    <CIPCap Description="(A5) 3&quot; 16 AMP Clamp Cap" Value="A5" />
+    <CIPCap Description="(A6) 4&quot; 16 AMP Clamp Cap" Value="A6" />
+    <CIPCap Description="(TR) Thermometer Replacement" Value="TR" />
+  </CIPCaps>
+
+  <Leadwires>
+    <Teflon Description="(1) Stranded Teflon Singles" Value="1" />
+    <Teflon Description="(2) Bullet Proof Teflon" Value="2" />
+    <Teflon Description="(M) Stranded Teflon Cable" Value="M" />
+    <Teflon Description="(N) Stranded Teflon Cable w/SST Flex Armor" Value="N" />
+    <Teflon Description="(O) Stranded Teflon Cable w/SST Over Braid" Value="O" />
+    <Teflon Description="(P) Stranded Shielded Teflon Cable" Value="P" />
+    <Teflon Description="(J) Solid FEP Teflon Cable" Value="J" />
+    <Teflon Description="(K) Solid FEP Teflon Cable w/SST Flex Armor" Value="K" />
+    <Teflon Description="(L) Solid FEP Teflon Cable w/SST Over Braid" Value="L" />
+    <Teflon Description="(5) Solid TFE Teflon Cable w/SST Flex Armor" Value="5" />
+    <Teflon Description="(6) Solid TFE Teflon Cable w/SST Over Braid" Value="6" />
+    <Teflon Description="(7) Stranded TFE Teflon Cable" Value="7" />
+
+    <Fiberglass Description="(D) Stranded Fiberglass Cable" Value="D" />
+    <Fiberglass Description="(E) Stranded Fiberglass Cable w/SST Flex Armor" Value="E" />
+    <Fiberglass Description="(F) Stranded Fiberglass Cable w/SST Over Braid" Value="F" />
+    <Fiberglass Description="(8) Stranded Fiberglass Cable w/SST Over Braid &amp; Flex Armor" Value="8" />
+    <Fiberglass Description="(9) Stranded Fiberglass Singles" Value="9" />
+    <Fiberglass Description="(A) Solid Fiberglass Cable" Value="A" />
+    <Fiberglass Description="(B) Solid Fiberglass Cable w/SST Flex Armor" Value="B" />
+    <Fiberglass Description="(C) Solid Fiberglass Cable w/SST Over Braid" Value="C" />
+    <Fiberglass Description="(G) Solid High-Temperature Fiberglass" Value="G" />
+    <Fiberglass Description="(H) Solid High-Temp Fiberglass w/SST Flex Armor" Value="H" />
+    <Fiberglass Description="(I) Solid High-Temp Fiberglass w/SST Over Braid" Value="I" />
+
+    <PVC Description="(3) Stranded PVC Singles" Value="3" />
+    <PVC Description="(S) Stranded PVC Cable" Value="S" />
+    <PVC Description="(T) Stranded PVC Cable w/SST Flex Armor" Value="T" />
+    <PVC Description="(Q) Solid PVC Cable" Value="Q" />
+    <PVC Description="(R) Solid PVC Cable w/SST Flex Armor" Value="R" />
+
+    <CoilCord Description="(CC10) Coil Cord 10&quot; Long" Value="CC10" />
+    <CoilCord Description="(CC24) Coil Cord 24&quot; Long" Value="CC24" />
+    <CoilCord Description="(CC32) Coil Cord 32&quot; Long" Value="CC32" />
+    <CoilCord Description="(CC60) Coil Cord 60&quot; Long" Value="CC60" />
+
+    <CoilCordLength Description="(10) 10&quot; Long" Value="10" />
+    <CoilCordLength Description="(24) 24&quot; Long" Value="24" />
+    <CoilCordLength Description="(32) 32&quot; Long" Value="32" />
+    <CoilCordLength Description="(60) 60&quot; Long" Value="60" />
+    
+  </Leadwires>
+
+  <LeadwireTerminations>
+    <Standard Description="(A) No Termination" Value="A" />
+    <Standard Description="(B) 2-1/2&quot; Split Leads" Value="B" />
+    <Standard Description="(C) 2-1/2&quot; Split Leads w/#8 Spade Lugs" Value="C" />
+    <Standard Description="(D) 2-1/2&quot; Split Leads w/#8 Spade Lugs &amp; BX Connector" Value="D" />
+    <Standard Description="(E) 2-1/2&quot; Split Leads with 1/4 Push-On Connectors" Value="E" />
+    <Standard Description="(J) 2-1/2&quot; Split Leads w/Insulated Crimp Pins" Value="J" />
+    <Standard Description="(K) Standard Male Plug (200°C)" Value="K" />
+    <Standard Description="(L) Standard Male Plug w/Mating Jack (200°C)" Value="L" />
+    <Standard Description="(M) Standard Female Jack (200°C)" Value="M" />
+    <Standard Description="(N) High Temp Male Plug (425°C)" Value="N" />
+    <Standard Description="(O) High Temp Male Plug w/Mating Jack (425°C)" Value="O" />
+    <Standard Description="(P) High Temp Female Jack (425°C)" Value="P" />
+    <Standard Description="(Q) Miniature Male Plug (200°C)" Value="Q" />
+    <Standard Description="(R) Miniature Male Plug w/Mating Jack (200°C)" Value="R" />
+    <Standard Description="(S) Miniature Female Jack (200°C)" Value="S" />
+
+    <QuickConnect Description="(T) Straight Mating Adapter - Molded" Value="T" />
+    <QuickConnect Description="(U) 90° Mating Adapter - Molded" Value="U" />
+    <QuickConnect Description="(V) Straight Mating Adapter - Field Installable" Value="V" />
+    <QuickConnect Description="(W) 90° Mating Adapter - Field Installable" Value="W" />
+    
+  </LeadwireTerminations>
+
+  <QuickConnectOptions>
+    <QuickConnectOption Description="(A) No Mating Adapter" Value="A" />
+    <QuickConnectOption Description="(B) Straight Mating Adapter" Value="B" />
+    <QuickConnectOption Description="(C) 90° Mating Adapter" Value="C" />
+  </QuickConnectOptions>
+
+  <SpecialOptions>
+    <Transmitter Description="(Q2) Intelligent Isolated Transmitter - RTD/TC" Value="Q2" />
+    <Transmitter Description="(Q4) Universal Hart Compatible Transmitter" Value="Q4" />
+    <Transmitter Description="(Q7) RTD Transmitter" Value="Q7" />
+    <Transmitter Description="(Q7X) RTD Transmitter - Intrinsically safe" Value="Q7X" />
+    <Transmitter Description="(Q9) Intelligent Non-Isolated Transmitter" Value="Q9" />
+    <Transmitter Description="(Q10) RTD Transmitter" Value="Q10" />
+
+    <HeadOption Description="(E) Epoxy Coated Head" Value="E" />
+    <HeadOption Description="(G) Ground Screw" Value="G" />
+    <HeadOption Description="(R) Conduit Reducer, 1/2&quot;NPT" Value="R" />
+    <HeadOption Description="(SR) Stainless Steel Reducer" Value="SR" />
+    <HeadOption Description="(I) Stainless Steel Tag" Value="I" />
+
+    <SheathOption Description="(H) Flat Ended Sheath" Value="H" />
+    <SheathOption Description="(O) Cuttable RTD 3&quot;" Value="O" />
+    <SheathOption Description="(T) Teflon Coated Sheath" Value="T" />
+    <SheathOption Description="(X) Electro Etching on Sheath" Value="X" />
+
+    <PlugOption Description="(C) Tube Adapter / Cable Clamp" Value="C" />
+    <PlugOption Description="(P) Epoxy Fill Connector" Value="P" />
+    <PlugOption Description="(S) Solid Pin Plug" Value="S" />
+
+    <SheathFittingOption Description="(L) Lava Ferrule in Compression Fitting" Value="L" />
+    <SheathFittingOption Description="(N) Neoprene Ferrule in Compression Fitting" Value="N" />
+    <SheathFittingOption Description="(D) Braze Crimp Adapter on Sheath" Value="D" />
+
+    <LeadwireOption Description="(F) BX Connector" Value="F" />
+    <LeadwireOption Description="(J) PVC Coated Flex" Value="J" />
+    <LeadwireOption Description="(K) FEP Coated Flex" Value="K" />  
+  </SpecialOptions>
+
+  <SpecialCodes>
+    <Code Description="(009) High temperature Epoxy" Value="009" />
+    <Code Description="(010) Rubber boot on connector" Value="010" />
+    <Code Description="(013) Apply fitting with threads towards cold end" Value="013" />
+    <Code Description="(014) Less connection head &amp; block" Value="014" />
+    <Code Description="(019) Thermal media around element" Value="019" />
+    <Code Description="(022) Lanyard &amp; clip for flip cover head" Value="022" />
+    <Code Description="(028) Substitute black poly head" Value="028" />
+    <Code Description="(033) Substitute white poly head" Value="033" />
+    <Code Description="(043) Pointed sensor tip" Value="043" />
+    <Code Description="(053) High temperature cement" Value="053" />
+    <Code Description="(054) Install green ground wire between ground screw and brass terminal" Value="054" />
+    <Code Description="(056) Back fill &amp; seal plastic (Up to 3&quot;)" Value="056" />
+    <Code Description="(064) 4mm OD transition w/high temperature epoxy" Value="064" />
+    <Code Description="(066) Cuttable probe" Value="066" />
+    <Code Description="(087) Use 1/4&quot; OD transition fitting" Value="087" />
+  </SpecialCodes>
+  
+</PartBuildCodes>

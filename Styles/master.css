@@ -1,0 +1,677 @@
+﻿/*********************
+****** HEADERS *******
+*********************/
+.top-stripe {
+    position: absolute;
+    margin:0;
+    padding:0;
+    float: left;
+    width: 100%;
+    height: 142px;
+    background-color: #0e4141;
+    /*z-index:30;*/
+}
+
+.header {
+    position: relative;
+    width:100%;
+    box-sizing:border-box;
+    text-align: center;
+    color: #ccc;
+    z-index: 40;
+    margin-bottom:25px;
+
+}
+
+.header-container {
+    position: relative;
+    margin: 0px auto;
+    background: url('../images/headers/header.png') no-repeat;
+    width: 970px;
+    height:175px;
+    bottom:0px;
+    text-align: center;
+}
+
+
+    .header-container .logo {
+        position: relative;
+        text-align: center;
+        height:98px;
+    }
+
+    .header-container .mobile-menu {
+        display: none;
+    }
+/*********************
+*** NAVIGATION BAR ***
+*********************/
+.navbar {
+    position: relative;
+    box-sizing:border-box;
+    margin: 0 auto;
+    height: 44px;
+    width: 610px;
+    z-index:45;
+}
+
+.home {
+    position: relative;
+    display: none;
+    float: left;
+}
+
+.product {
+    position: relative;
+    float: left;
+    width: 107px;
+    height: 43px;
+    cursor: pointer;
+}
+
+    .product:hover {
+        background: url('../images/headers/product_active.png') no-repeat;
+        z-index: 1;
+    }
+
+.services {
+    float: left;
+    width: 95px;
+    height: 43px;
+    cursor: pointer;
+}
+
+    .services:hover {
+        background: url('../images/headers/services_active.png') no-repeat;
+        z-index: 1;
+    }
+
+.resources {
+    float: left;
+    width: 210px;
+    height: 43px;
+    cursor: pointer;
+}
+
+    .resources:hover {
+        background: url('../images/headers/resources_active.png') no-repeat;
+        z-index: 1;
+    }
+
+.distributor {
+    float: left;
+    width: 195px;
+    height: 43px;
+    cursor: pointer;
+}
+
+    .distributor:hover {
+        background: url('../images/headers/distributor_active.png') no-repeat;
+        z-index: 1;
+    }
+
+
+.container {
+    position: relative;
+    margin: 0px auto;
+    text-align: center;
+    width: 970px;
+    box-sizing: border-box;
+}
+
+/*********************
+****** PAPER  ********
+*********************/
+
+.paper {
+    background: url('../images/body/paper.png') repeat;
+    box-sizing:border-box;
+    width: 970px;
+    min-height: 430px;
+}
+
+.paper-container {
+    position: relative;
+    text-align: left;
+    padding: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.paper-shadow {
+    background: url('../images/body/paper_shadow.png') no-repeat;
+    width: 970px;
+    height: 60px;
+    clear: both;
+}
+/*********************
+****** FOOTERS *******
+*********************/
+
+.footer {
+    position: relative;
+    margin: 0 auto;
+    border-top: 3px solid #0E4141;
+    border-bottom: 3px solid #0E4141;
+    background-color: #222;
+    text-align: left;
+    width: 100%;
+    color: #888;
+    height: 300px;
+    box-sizing: border-box;
+}
+
+.footer-container {
+    position: relative;
+    margin: 0 auto;
+    width: 970px;
+    overflow: auto;
+}
+
+.footer-container h4, h3{
+    font-size:1em;
+}
+
+.contacts, .info {
+    position: relative;
+    text-align: left;
+    float: left;
+    width: 257px;
+    padding: 10px 0px;
+    line-height:16px;
+}
+
+    .contacts a, .info h5 {
+        display: block;
+    }
+
+.copyright {
+    position: absolute;
+    clear: both;
+    font-size: 1em;
+    font-style: italic;
+    width: 514px;
+    text-align: center;
+    height: auto;
+    bottom: 15px;
+}
+
+.vDivider-dark {
+    background: url('../images/footers/vDivider.png') no-repeat;
+    position: relative;
+    float: left;
+    width: 20px;
+    height: 247px;
+    top: 10px;
+}
+
+.vDivider-light {
+    float: left;
+    margin: 10px 0px;
+    width: 1px;
+    border-left: 1px solid #efefef;
+}
+
+
+
+/*********************
+** LOGIN/QUICKPRICE **
+*********************/
+
+.login-container {
+    border: 1px solid #0E4141;
+    position: relative;
+    float: right;
+    text-align: left;
+    width: 414px;
+    height: 285px;
+    background-color: #333;
+    margin: 5px 0px;
+    box-sizing: border-box;
+}
+
+.login-header {
+    vertical-align: middle;
+    float: left;
+    height: 67px;
+    width: 100%;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+.login-input {
+    position: relative;
+    box-sizing:border-box;
+    text-align: left;
+    width: 50%;
+    float: left;
+    height: auto;
+}
+
+    .login-input h3 {
+        display: block;
+    }
+
+    .login-input .textbox{
+        box-sizing:border-box;
+        width:100%;
+    }
+.login-submit {
+    width: 100%;
+    overflow: auto;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+    .login-submit input {
+        width: unset;
+    }
+
+    .login-submit label {
+        position: relative;
+        bottom: 2px;
+    }
+
+    .login-submit a.button {
+        position: relative;
+        float: right;
+        bottom: 5px;
+    }
+
+.login-help {
+    position: relative;
+    float: right;
+    margin-right:10px;
+}
+
+    .login-help a {
+        padding: 2px;
+        color: #ddd;
+    }
+
+    .login-help .login-help-item {
+        padding: 5px 0;
+    }
+
+.login-welcome {
+    position: relative;
+    width: 60%;
+    margin: 20px 5px;
+    float: right;
+    text-align: right;
+}
+
+.login-qp-container {
+    position: relative;
+    clear: both;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+    .login-qp-container input.textbox, .login-qp-container input.watermark {
+        width: 70%;
+        box-sizing: border-box;
+        padding: 0 5px;
+    }
+
+    .login-qp-container .button {
+        font-size: 1.4em;
+    }
+
+    .login-qp-container h2 {
+        color: #aaa;
+        font-size: 1.2em;
+    }
+
+    .login-qp-container .quote-panel{
+        position:relative;
+
+        padding:10px;
+    }
+
+    .login-qp-container .list-cost-display {
+        position: relative;
+    }
+
+        .login-qp-container .list-cost-display h1 {
+            color: #ccc;
+            font-size: 1.5em;
+        }
+
+    .login-qp-container .help-option-message {
+        position: relative;
+        bottom: 0px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+
+.qp-label {
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+@media only screen and (max-device-width: 600px) {
+    .top-stripe {
+        height: 200px;
+    }
+
+    .header {
+        position: relative;
+        text-align: center;
+        color: #ccc;
+        margin:0;
+        z-index: 10;
+    }
+
+    .header-container {
+        position: relative;
+        margin: 0px auto;
+        background-image: none;
+        width: 100%;
+        height: 200px;
+        text-align: center;
+        padding: 0;
+    }
+
+        .header-container .logo {
+            position: relative;
+            text-align: center;
+        }
+
+            .header-container .logo input {
+                width: 70%;
+            }
+
+        .header-container .mobile-menu {
+            position: absolute;
+            display: block;
+            width: 75px;
+            margin: 100px 20px;
+        }
+
+    .navbar {
+        position: fixed;
+        display: none;
+        width: 100%;
+        height: auto;
+        top: unset;
+        margin: 0;
+        left: 0px;
+        background-color: #111;
+        border-top: 10px solid #0e4141;
+        color: #ccc;
+    }
+
+        .navbar a {
+            border-bottom: 1px solid #ccc;
+            position: relative;
+            display: block;
+            margin: 0 auto;
+            width: 90%;
+            padding: 40px 0px;
+            cursor: pointer;
+            height: auto;
+            text-decoration: none;
+            font: normal 3em Verdana;
+            left: 5%;
+        }
+
+            .navbar a:hover {
+                background-image: none;
+            }
+
+            .navbar a.home:after {
+                content: "HOME";
+            }
+
+            .navbar a.product:after {
+                content: "PRODUCT";
+            }
+
+            .navbar a.services:after {
+                content: "SERVICES";
+            }
+
+            .navbar a.resources:after {
+                content: "RESOURCES";
+            }
+
+            .navbar a.distributor:after {
+                content: "DISTRIBUTORS";
+            }
+
+
+
+
+    .navi {
+        display: none;
+    }
+
+
+    .container {
+        width: 100%;
+    }
+
+
+    /*********************
+    ****** PAPER  ********
+    *********************/
+
+    .paper {
+        margin: 0;
+        background: url('../images/body/paper.png') repeat;
+        width: 100%;
+        height: auto;
+    }
+
+    .paper-container {
+        position: relative;
+        margin: 0;
+        text-align: left;
+        width: 100%;
+        box-sizing: border-box;
+        overflow: auto;
+    }
+
+    .paper-shadow {
+        display: none;
+    }
+
+    /*********************
+** LOGIN/QUICKPRICE **
+*********************/
+
+    .login-container {
+        position: absolute;
+        width: 100%;
+        height: 750px;
+        border: 5px solid #0E4141;
+        float: left;
+        text-align: left;
+        background-color: #333;
+        margin: 0;
+        font-size: 2em;
+        overflow: auto;
+        padding: 20px;
+    }
+
+        .login-container .textbox, .login-container .watermark {
+            font: normal 1.8em "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+            width: 95%;
+            padding:10px;
+        }
+
+        .login-container h3 {
+            font-size: 1.5em;
+        }
+
+
+    .login-header {
+        vertical-align: unset;
+        float: left;
+        height: auto;
+        width: 100%;
+        margin: 2px;
+    }
+
+        .login-header input {
+            width: 30%;
+        }
+
+    .login-input {
+        position: relative;
+        text-align: left;
+        float: left;
+        width: 100%;
+        height: auto;
+    }
+
+        .login-input h3 {
+            padding-top: 25px;
+        }
+
+
+    .login-submit {
+        width: 65%;
+        padding: 20px 5px;
+        overflow:auto;
+    }
+
+
+        .login-submit input {
+            height: 40px;
+            width: 40px;
+        }
+
+        .login-submit a.button {
+            position: relative;
+            font-size: 1.5em;
+            padding: 10px 30px;
+            background-size: 100%;
+            bottom: 25px;
+        }
+
+    .login-help {
+        display:none;
+    }
+    
+
+    .login-welcome {
+        position: relative;
+        width: 100%;
+        text-align: left;
+        float:left;
+        font-size:1.4em;
+    }
+
+        .login-welcome h3{
+            font-size: 1em;
+        }
+
+
+    .login-qp-container {
+        position: relative;
+        float: left;
+        margin: 0px 0px;
+        width: 100%;
+        height:auto;
+    }
+    .login-qp-container input.textbox, .login-qp-container input.watermark{
+        width:95%;
+        padding:10px;
+    }
+
+        .login-qp-container .button {
+            margin-top: 40px;
+            width: 182px;
+            text-align: center;
+            height: auto;
+            display: block;
+            font-size: 1.2em;
+            padding: 10px 30px;
+            background-size: 100%;
+        }
+
+       .login-qp-container #QPLoginView_QPHelp, .login-qp-container #QPLoginView_HelpOptionMessage, .login-qp-container #QPLoginView_PriceBreakDownMessage {
+            display: none;
+        }
+
+        .login-qp-container .quote-panel {
+            position: relative;
+            width:95%;
+            height: auto;
+        }
+        .login-qp-container .quote-panel .list-cost-display{
+            top:50px;
+        }
+
+
+
+    .footer {
+        height: auto;
+        font-size: 100%;
+    }
+
+    .footer-container .vDivider-dark {
+        display: none;
+    }
+
+    .footer-container {
+        margin: 0 auto;
+        width: 100%;
+    }
+
+        .footer-container .contacts, .footer-container .info, .footer-container .copyright {
+            position: relative;
+            padding-top: 90px;
+            width: 100%;
+            box-sizing: border-box;
+            float: right;
+            height: auto;
+            text-align: center;
+            line-height:unset;
+        }
+
+        .footer-container .contacts {
+            margin-top: 725px;
+        }
+
+        .footer-container .info {
+            border-top: 1px solid #ccc;
+        }
+
+            .footer-container .info table {
+                margin: 0 auto;
+                text-align: center;
+            }
+
+                .footer-container .info table tr td {
+                    padding: 0 20px;
+                }
+
+                    .footer-container .info table tr td h4 {
+                        font-size: 2em;
+                    }
+
+                    .footer-container .info table tr td a img {
+                        width: 75px;
+                    }
+
+        .footer-container .copyright {
+            position: relative;
+            margin-top: 20px;
+            width: 100%;
+            float: right;
+            height: auto;
+            font-size: .7em;
+        }
+}

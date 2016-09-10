@@ -1,0 +1,876 @@
+﻿
+Partial Class Admin_Pricing
+    Inherits System.Web.UI.Page
+    '---------------------------------------------------------------------------------------------------'
+    '--------------------------------------- PAGE LOAD EVENTS ------------------------------------------'
+    '---------------------------------------------------------------------------------------------------'
+    Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+        If Request.QueryString("CostType") = "" Then
+            Response.Redirect("~/Admin/Pricing.aspx?CostType=1")
+        End If
+    End Sub
+
+    Protected Sub Page_PreRenderComplete(sender As Object, e As System.EventArgs) Handles Me.PreRenderComplete
+        Dim dc As New QPriceDataClassesDataContext
+        Dim sensorTypeID As String = SensorTypeDropDown.SelectedValue.ToString
+        Dim costTypeID As String = Request.QueryString("CostType")
+
+        MainSensorTypeLabel.Text = (From s In dc.SensorTypes
+                                Where s.TypeID = sensorTypeID
+                                Select s.TypeDesc).Single
+
+        MainCostTypeLabel.Text = (From c In dc.CostTypes
+                              Where c.CostTypeID = costTypeID
+                              Select c.CostTypeDesc).Single
+
+        Dim rowCount As Integer = CostUpGridView.Rows.Count
+
+        If (rowCount < 1) Then
+            NullLabel.Text = "No Items Exist For Sensor Type '" & SensorTypeDropDown.SelectedItem.ToString & "'"
+            NullLabel.Visible = True
+            DeleteCostUpLinkButton.Visible = False
+        Else
+            NullLabel.Visible = False
+            DeleteCostUpLinkButton.Visible = True
+        End If
+        If Not IsPostBack Then
+            Call SelectCostUpGridViewRow()
+        End If
+    End Sub
+
+
+    '---------------------------------------------------------------------------------------------------'
+    '--------------------------------------- ROW DATA BOUND HANDLING -----------------------------------'
+    '---------------------------------------------------------------------------------------------------'
+    Protected Sub ComponentGridView_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles ComponentGridView.RowDataBound
+        If (e.Row.RowType = DataControlRowType.DataRow) Then
+            e.Row.Attributes.Add("onclick", ClientScript.GetPostBackClientHyperlink(Me.ComponentGridView, "Select$" + e.Row.RowIndex.ToString()))
+        End If
+    End Sub
+    Protected Sub CostUpGridView_RowDataBound(sender As Object, e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles CostUpGridView.RowDataBound
+        If (e.Row.RowType = DataControlRowType.DataRow) Then
+            Dim qp As New Quickprice
+            Dim primaryKey As Long = CostUpGridView.DataKeys(e.Row.RowIndex).Value
+            Dim totalCost = qp.GetBaseCost(primaryKey)
+            e.Row.Attributes.Add("ondblclick", ClientScript.GetPostBackClientHyperlink(Me.CostUpGridView, "Select$" + e.Row.RowIndex.ToString()))
+            DirectCast(e.Row.FindControl("CostLabel"), Label).Text = FormatCurrency(totalCost)
+        End If
+    End Sub
+
+    Protected Sub SelectCostUpGridViewRow()
+        Try
+            CostUpGridView.SelectedIndex = CostUpGridView.DataKeys(CInt(PrimaryKeyHiddenField.Value)).Value
+        Catch ex As Exception
+            CostUpGridView.SelectedIndex = -1
+        End Try
+    End Sub
+
+    '---------------------------------------------------------------------------------------------------'
+    '------------------------------------SELECTED INDEX CHANGED HANDLING -------------------------------'
+    '---------------------------------------------------------------------------------------------------'
+
+    Protected Sub CostUpGridView_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles CostUpGridView.SelectedIndexChanged
+        Call RendorManagePanel(CostUpGridView.SelectedDataKey.Value)
+        ManageModalPopup.Show()
+    End Sub
+
+    Protected Sub CostUpGridView_PageIndexChanged(sender As Object, e As System.EventArgs) Handles CostUpGridView.PageIndexChanged
+        Call SelectCostUpGridViewRow()
+    End Sub
+    Protected Sub ComponentGridView_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles ComponentGridView.SelectedIndexChanged
+        If (ComponentGridView.EditIndex > -1) Then
+            ComponentGridView.UpdateRow(ComponentGridView.EditIndex, False)
+        End If
+        ComponentGridView.EditIndex = ComponentGridView.SelectedIndex
+        'Call RendorManagePanel(CostUpGridView.SelectedDataKey.Value)
+        ManageModalPopup.Show()
+    End Sub
+
+    Protected Sub CatagoryDropDownList_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles CatagoryDropDownList.SelectedIndexChanged
+        ManageModalPopup.Show()
+    End Sub
+
+    Protected Sub ComponentDropDownList_DataBound(sender As Object, e As System.EventArgs) Handles ComponentDropDownList.DataBound
+        Dim dc As New QPriceDataClassesDataContext
+        UMLabel.Text = (From u In dc.Components
+                        Where u.CompID = ComponentDropDownList.SelectedValue
+                        Select u.UM.UMDesc).Single
+        ManageModalPopup.Show()
+    End Sub
+    Protected Sub ComponentDropDownList_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles ComponentDropDownList.SelectedIndexChanged
+        Dim dc As New QPriceDataClassesDataContext
+        UMLabel.Text = (From u In dc.Components
+        Where (u.CompID = ComponentDropDownList.SelectedValue)
+                        Select u.UM.UMDesc).Single
+        ManageModalPopup.Show()
+    End Sub
+    Protected Sub TypeDropDown_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles TypeDropDown.SelectedIndexChanged
+        SensorTypeDropDown.SelectedValue = TypeDropDown.SelectedValue
+        Call ShowAddModal()
+    End Sub
+
+    Protected Sub TempDropDown_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles TempDropDown.SelectedIndexChanged
+        Call ShowAddModal()
+    End Sub
+
+    Protected Sub EditTempDropDown_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles EditTempDropDown.SelectedIndexChanged
+        If (EditTempDropDown.SelectedItem.ToString = "High" Or SensorTypeDropDown.SelectedItem.ToString = "Plastic RTD") Then
+            EditODPanel.Visible = True
+        Else
+            EditODPanel.Visible = False
+        End If
+        ManageModalPopup.Show()
+    End Sub
+    
+    '---------------------------------------------------------------------------------------------------'
+    '--------------------------------------- RENDOR PANELS ---------------------------------------------'
+    '---------------------------------------------------------------------------------------------------'
+    Protected Sub RendorAddPanel()
+        Dim costTypeValue As Integer = Request.QueryString("CostType")
+        Dim sensorTypeValue As Integer = SensorTypeDropDown.SelectedValue
+        Dim sensorType As String = SensorTypeDropDown.SelectedItem.ToString
+
+        TypeDropDown.SelectedValue = sensorTypeValue
+        CostTypeLabel.Text = sensorType
+
+        SheathTermPanel.Visible = True
+        LeadwireTermPanel.Visible = False
+        ElementPanel.Visible = False
+        WireCountPanel.Visible = True
+        CalibrationPanel.Visible = True
+        TempPanel.Visible = False
+        SheathODPanel.Visible = True
+
+        Select Case costTypeValue
+            Case 1 'Base Product Pricing
+                Select Case sensorType
+                    Case "RTD", "Plastic RTD"
+                        ElementPanel.Visible = True
+                        CalibrationPanel.Visible = False
+                        WireCountPanel.Visible = False
+                        TempPanel.Visible = True
+                        If sensorType = "RTD" And TempDropDown.SelectedItem.ToString <> "High" Then
+                            SheathODPanel.Visible = False
+                        End If
+                End Select
+            Case 2 'Sheath Termination Pricing
+                SheathODPanel.Visible = False
+            Case 3 'Leadwire Termination Pricing
+                SheathTermPanel.Visible = False
+                LeadwireTermPanel.Visible = True
+                SheathODPanel.Visible = False
+        End Select
+
+        Select Case sensorType
+            Case "RTD", "Plastic RTD"
+                CalibrationDropDown.SelectedValue = 1
+            Case "MgO", "Plastic"
+                CalibrationDropDown.SelectedValue = 2
+        End Select
+    End Sub
+
+    Protected Sub RendorManagePanel(ByVal primaryKey As Long)
+        Dim dc As New QPriceDataClassesDataContext
+        Dim myCostUp = GetCostUp(primaryKey)
+
+        Dim typeCode = myCostUp.SensorType.TypeCode
+        Dim costType = myCostUp.CostType_ID
+
+        PrimaryKeyHiddenField.Value = primaryKey
+
+        EditSensorTypePanel.Visible = False
+        EditCodePanel.Visible = False
+        EditSheathTermPanel.Visible = True
+        EditLWTermPanel.Visible = False
+        EditTempPanel.Visible = False
+        EditODPanel.Visible = False
+        EditWireCountPanel.Visible = True
+        EditCalPanel.Visible = True
+        EditElementPanel.Visible = False
+
+        Select Case typeCode
+            Case "R", "F"
+                Select Case costType
+                    Case 1
+                        EditTempDropDown.SelectedValue = myCostUp.Temp_ID
+                        EditTempPanel.Visible = True
+                        EditWireCountPanel.Visible = False
+                        EditCalPanel.Visible = False
+                        EditElementPanel.Visible = True
+                        If typeCode = "F" Or myCostUp.Temperature.TempCode = "H" Then
+                            EditODPanel.Visible = True
+                        End If
+                    Case 3
+                        EditSheathTermPanel.Visible = False
+                        EditLWTermPanel.Visible = True
+                End Select
+
+            Case "M", "P"
+                Select Case costType
+                    Case 1
+                        EditODPanel.Visible = True
+                    Case 3
+                        EditSheathTermPanel.Visible = False
+                        EditODPanel.Visible = False
+                        EditLWTermPanel.Visible = True
+
+                End Select
+        End Select
+        Call PopulateEditManager(myCostUp)
+        Call PopulateMarkupManager(myCostUp)
+        dc.Dispose()
+    End Sub
+    Protected Sub PopulateEditManager(ByVal myCostUp As CostUp)
+        Dim dc As New QPriceDataClassesDataContext
+        UMLabel.Text = (From u In dc.Components
+                 Where u.CompID = ComponentDropDownList.SelectedValue
+                 Select u.UM.UMDesc).Single
+
+        CodeLabel.Text = myCostUp.CostUpCode
+        EditCodeTextBox.Text = myCostUp.CostUpCode
+        DescLabel.Text = myCostUp.CostUpDesc
+        EditDescTextBox.Text = myCostUp.CostUpDesc
+        EditSheathTermTextBox.Text = myCostUp.SheathTermCode
+        EditLWTermTextBox.Text = myCostUp.LeadwireTermCode
+        EditSensorTypeDropDown.SelectedValue = myCostUp.SensorType_ID
+        EditElementTextBox.Text = myCostUp.ElementCode
+        If Not IsNothing(myCostUp.WireCount_ID) Then
+            EditWireCountDropDown.SelectedValue = myCostUp.WireCount_ID
+        End If
+        EditCalDropDown.SelectedValue = myCostUp.Cal_ID
+        If Not IsNothing(myCostUp.OD_ID) Then
+            EditODDropDown.SelectedValue = myCostUp.OD_ID
+        End If
+
+    End Sub
+
+    Protected Sub PopulateMarkupManager(ByVal myCostUp As CostUp)
+        Dim myQuickPrice As New Quickprice
+        Dim materialCost As Decimal, overhead As Decimal, pph As Decimal, _
+            markup As Decimal, laborRate As Decimal, baseCost As Decimal 
+
+        Dim primaryKey As Long = myCostUp.CostUpID
+
+        Try
+            materialCost = myQuickPrice.GetMaterialCost(primaryKey)
+            pph = myQuickPrice.GetPPH(primaryKey)
+            markup = myQuickPrice.GetMarkup(primaryKey)
+            laborRate = myQuickPrice.GetLaborRate(primaryKey)
+            baseCost = myQuickPrice.GetBaseCost(primaryKey)
+        Catch ex As Exception
+            pph = 1 'set to "1" so not dividing by "0" on PPHLabel.Text. Would error.
+        End Try
+
+
+        overhead = myQuickPrice.GetOverhead(primaryKey)
+
+        CostLabel.Text = FormatCurrency(materialCost)
+        OverHeadLabel.Text = "Overhead + "
+        OverheadLinkButton.Text = FormatPercent(overhead, 0)
+        OverheadTextBox.Text = overhead
+        OverHeadCostLabel.Text = FormatCurrency(materialCost * overhead)
+        PPHLabel.Text = FormatCurrency(laborRate / pph)
+        MarkUpLabel.Text = FormatCurrency((materialCost * (1 + overhead)) + (laborRate / pph)) & " x "
+        MarkUpLinkButton.Text = markup
+        MarkUpTextBox.Text = markup
+        LaborLinkButton.Text = pph
+        LaborTextBox.Text = pph
+        LaborLabel.Text = "parts per hour:"
+        LaborCostLabel.Text = "(" & FormatCurrency(laborRate) & "/hr)"
+        TotalCostLabel.Text = FormatCurrency(baseCost)
+    End Sub
+
+    Protected Sub ShowAddModal()
+        Call RendorAddPanel()
+        AddModalPopup.Show()
+    End Sub
+
+    '---------------------------------------------------------------------------------------------------'
+    '--------------------------------------------CODE GENERATORS ---------------------------------------'
+    '---------------------------------------------------------------------------------------------------'
+
+    Private Function GenerateBaseCode(ByVal myCostup As CostUp) As String
+        Dim dc As New QPriceDataClassesDataContext
+        Dim sheathODCode As String, sheathTermCode As String, calibrationCode As String, _
+            elementCode As String, temperatureCode As String, sdCode As String
+
+        Dim sensorTypeCode = (From s In dc.SensorTypes
+                              Where s.TypeID = myCostup.SensorType_ID
+                              Select s.TypeCode).Single
+
+        calibrationCode = (From c In dc.Calibrations
+                          Where c.CalID = myCostup.Cal_ID
+                          Select c.CalCode).Single
+        Try
+            temperatureCode = (From t In dc.Temperatures
+                                                Where t.TempID = myCostup.Temp_ID
+                                                Select t.TempCode).Single
+        Catch ex As Exception
+            temperatureCode = ""
+        End Try
+        
+
+        If (sensorTypeCode <> "R" Or temperatureCode = "H") Then
+            sheathODCode = (From o In dc.ODs
+                            Where o.ODID = myCostup.OD_ID
+                            Select o.ODCode).Single
+        Else
+            sheathODCode = ""
+        End If
+
+        sheathTermCode = myCostup.SheathTermCode
+
+        Dim baseCode As String = ""
+
+        Select Case sensorTypeCode
+            Case "R", "F" 'RTD or Plastic RTD
+                elementCode = myCostup.ElementCode
+                baseCode = sensorTypeCode & sheathTermCode & elementCode & temperatureCode
+                If temperatureCode = "H" Or sensorTypeCode = "F" Then
+                    baseCode = baseCode & "-" & sheathODCode
+                End If
+            Case "M", "P" 'Mgo or Plastics
+                sdCode = (From s In dc.WireCounts
+                          Where s.WireCountID = myCostup.WireCount_ID
+                          Select s.WireCount).Single
+                If CInt(sdCode) < 4 Then
+                    sdCode = "0"
+                End If
+                baseCode = sensorTypeCode & sheathTermCode & calibrationCode & sdCode & "G-" & sheathODCode
+        End Select
+        GenerateBaseCode = UCase(baseCode)
+
+    End Function
+    Private Function GenerateTermCode(ByVal myCostup As CostUp) As String
+        Dim dc As New QPriceDataClassesDataContext
+
+        Dim sensorTypeCode = (From s In dc.SensorTypes
+                              Where s.TypeID = myCostup.SensorType_ID
+                              Select s.TypeCode).Single
+
+        Dim termCode As String
+        If IsNothing(myCostup.SheathTermCode) Then
+            termCode = myCostup.LeadwireTermCode
+        Else
+            termCode = myCostup.SheathTermCode
+        End If
+
+        Dim wireCode = (From w In dc.WireCounts
+                        Where w.WireCountID = myCostup.WireCount_ID
+                        Select w.WireCount).Single
+
+        Dim calibrationCode = (From c In dc.Calibrations
+                                Where c.CalID = myCostup.Cal_ID
+                                Select c.CalCode).Single
+
+        termCode = sensorTypeCode & termCode & "-" & wireCode
+        If sensorTypeCode = "M" Or sensorTypeCode = "P" Then
+            termCode = termCode & calibrationCode
+        End If
+
+        If termCode = "H" Then
+            Dim sheathODCode = (From o In dc.ODs
+                        Where o.ODID = ODDropDown.SelectedValue
+                        Select o.ODCode).Single
+            termCode = termCode & "-" & sheathODCode
+        End If
+        GenerateTermCode = UCase(termCode)
+
+    End Function
+    '---------------------------------------------------------------------------------------------------'
+    '--------------------------------------------- MESSAGES --------------------------------------------'
+    '---------------------------------------------------------------------------------------------------'
+    Protected Sub CostUpExistsMessage(ByVal code As String)
+        CodeHiddenField.value = code
+        MessageLabel.Text = "Cost Up """ & code & """ already exists. Would you like to manage it's components?"
+        MessageOKButton.Visible = False
+        CompExistYesButton.Visible = True
+        CompExistNoButton.Visible = True
+        DeleteCompYesButton.Visible = False
+        DeleteCompNoButton.Visible = False
+        DeleteBaseYesButton.Visible = False
+        DeleteBaseNoButton.Visible = False
+        MessageImage.ImageUrl = "~/images/messages/wrong.png"
+        MessageModalPopupExtender.Show()
+    End Sub
+
+    Protected Sub DeleteCompLinkButton_Click(sender As Object, e As System.EventArgs) Handles DeleteCompLinkButton.Click
+        If ComponentGridView.EditIndex = -1 Then
+            MessageLabel.Text = "No item was selected. Please select item from list and try again."
+            MessageOKButton.Visible = False
+            CompExistYesButton.Visible = False
+            CompExistNoButton.Visible = False
+            DeleteCompYesButton.Visible = False
+            DeleteCompNoButton.Visible = True
+            DeleteCompNoButton.Text = "OK"
+            DeleteBaseYesButton.Visible = False
+            DeleteBaseNoButton.Visible = False
+            MessageImage.ImageUrl = "~/images/messages/wrong.png"
+
+        Else
+            Dim dc As New QPriceDataClassesDataContext
+            Dim primaryKey As Long = ComponentGridView.SelectedDataKey.Value
+            Dim componentDesc = (From c In dc.CostComponentKeys
+                                 Where c.CCID = primaryKey
+                                 Select c.Component.CompDesc).Single
+
+            MessageLabel.Text = "Are you sure you want to delete """ & componentDesc & """ from cost up '" & CodeLabel.Text & "'?"
+            MessageOKButton.Visible = False
+            CompExistYesButton.Visible = False
+            CompExistNoButton.Visible = False
+            DeleteCompYesButton.Visible = True
+            DeleteCompNoButton.Visible = True
+            DeleteCompNoButton.Text = "No"
+            DeleteBaseYesButton.Visible = False
+            DeleteBaseNoButton.Visible = False
+            MessageImage.ImageUrl = "~/images/messages/question.png"
+        End If
+        MessageModalPopupExtender.Show()
+
+    End Sub
+
+    Protected Sub DeleteCostUpLinkButton_Click(sender As Object, e As System.EventArgs) Handles DeleteCostUpLinkButton.Click
+        Dim code As String = CodeLabel.Text
+        MessageLabel.Text = "Are you sure you want to delete""" & code & """ and all related components?"
+        MessageOKButton.Visible = False
+        CompExistYesButton.Visible = False
+        CompExistNoButton.Visible = False
+        DeleteCompYesButton.Visible = False
+        DeleteCompNoButton.Visible = False
+        DeleteBaseYesButton.Visible = True
+        DeleteBaseNoButton.Visible = True
+        MessageImage.ImageUrl = "~/images/messages/question.png"
+        MessageModalPopupExtender.Show()
+    End Sub
+
+    '---------------------------------------------------------------------------------------------------'
+    '--------------------------------------------- VALIDATION ------------------------------------------'
+    '---------------------------------------------------------------------------------------------------'
+
+    Protected Sub SheathCustomValidator_ServerValidate(source As Object, args As System.Web.UI.WebControls.ServerValidateEventArgs) Handles SheathCustomValidator.ServerValidate
+        If args.Value.Length > 1 Then
+            args.IsValid = False
+            SheathCustomValidator.ToolTip = "Termination code must be only one character long."
+        Else
+            args.IsValid = True
+
+        End If
+    End Sub
+    Protected Sub LeadwireTermCustomValidator_ServerValidate(source As Object, args As System.Web.UI.WebControls.ServerValidateEventArgs) Handles LeadwireTermCustomValidator.ServerValidate
+        If args.Value.Length > 1 Then
+            args.IsValid = False
+            LeadwireTermCustomValidator.ToolTip = "Termination code must be only one character long."
+        Else
+            args.IsValid = True
+
+        End If
+    End Sub
+
+    Protected Sub ElementCustomValidator_ServerValidate(source As Object, args As System.Web.UI.WebControls.ServerValidateEventArgs) Handles ElementCustomValidator.ServerValidate
+        If args.Value.Length > 2 Or args.Value.Length < 2 Then
+            args.IsValid = False
+            ElementCustomValidator.ToolTip = "Element code should be two characters long."
+        Else
+            args.IsValid = True
+        End If
+    End Sub
+    '-- Checks that the new base product to be added does not already exist.  If it doesn't exist, TRUE is returned and PrimaryKeyHiddenField is set to existing CostUpID --'
+    Function CostUpExists(ByVal myCostUp As CostUp) As Boolean
+        Dim dc As New QPriceDataClassesDataContext
+        Dim costID As Long
+        CostUpExists = True
+        Try
+            costID = (From c In dc.CostUps
+                              Where c.CostUpCode = myCostUp.CostUpCode _
+                              And c.CostType_ID = myCostUp.CostType_ID _
+                              And c.SensorType_ID = myCostUp.SensorType_ID _
+                              And c.CostUpID <> myCostUp.CostUpID
+                              Select c.CostUpID).Single
+            PrimaryKeyHiddenField.Value = costID
+        Catch ex As Exception
+            CostUpExists = False
+        End Try
+    End Function
+
+    '------------------------------------------------------------------------------------------------------'
+    '----------------------------------------------- BUTTONS ----------------------------------------------'
+    '------------------------------------------------------------------------------------------------------'
+    Protected Sub AddProductButton_Click(sender As Object, e As System.EventArgs) Handles AddProductButton.Click
+        If Page.IsValid Then
+            Dim dc As New QPriceDataClassesDataContext
+            Dim myCostUp As New CostUp
+            Dim costTypeValue As Long = Request.QueryString("CostType")
+            Dim sensorTypeValue As Long = TypeDropDown.SelectedValue
+            Dim code As String = ""
+
+            With myCostUp
+                .SensorType_ID = sensorTypeValue
+                .CostType_ID = costTypeValue
+                .WireCount_ID = WireCountDropDown.SelectedValue
+                .Cal_ID = CalibrationDropDown.SelectedValue
+                .CostUpCode = code
+                .CostUpDesc = DescTextBox.Text
+                .PPH = 1
+                .Markup = 3
+                .Overhead = 0.12
+
+                If ElementPanel.Visible = True Then
+                    .ElementCode = UCase(ElementTextBox.Text)
+                End If
+                If SheathTermPanel.Visible = True Then
+                    .SheathTermCode = UCase(SheathTermTextBox.Text)
+                End If
+                If LeadwireTermPanel.Visible = True Then
+                    .LeadwireTermCode = UCase(LeadwireTermTextBox.Text)
+                End If
+                If SheathODPanel.Visible = True Then
+                    .OD_ID = ODDropDown.SelectedValue
+                End If
+                If TempPanel.Visible = True Then
+                    .Temp_ID = TempDropDown.SelectedValue
+                End If
+                
+
+            End With
+
+            Select Case costTypeValue
+                Case 1 'Base Product Price
+                    myCostUp.CostUpCode = GenerateBaseCode(myCostUp)
+
+                Case 2, 3 'Sheath & Leadwire Termination Price
+                    myCostUp.CostUpCode = GenerateTermCode(myCostUp)
+            End Select
+
+            If Not CostUpExists(myCostUp) Then
+                dc.CostUps.InsertOnSubmit(myCostUp)
+                dc.SubmitChanges()
+                dc.Dispose()
+                CostUpGridView.DataBind()
+                Call ClearAddModal()
+                RendorManagePanel(myCostUp.CostUpID)
+                ManageModalPopup.Show()
+            Else
+                Call ClearAddModal()
+                Call CostUpExistsMessage(myCostUp.CostUpCode)
+            End If
+        Else
+            Call ShowAddModal()
+        End If
+    End Sub
+
+    Protected Sub AddOK_Click(sender As Object, e As System.EventArgs) Handles AddOK.Click
+        Dim dc As New QPriceDataClassesDataContext
+        Dim num As New Numbers
+        Dim myCostComponentKey As New CostComponentKey
+        Dim primaryKey As Long = PrimaryKeyHiddenField.Value
+        Dim compID As Long = ComponentDropDownList.SelectedValue
+        Dim qty As Decimal = num.StringToNumeric(QtyTextBox.Text, 1)
+
+        Dim myCostUp = GetCostUp(primaryKey)
+
+        myCostComponentKey.CostUp_ID = primaryKey
+        myCostComponentKey.Comp_ID = compID
+        myCostComponentKey.Quantity = qty
+
+        dc.CostComponentKeys.InsertOnSubmit(myCostComponentKey)
+        dc.SubmitChanges()
+        dc.Dispose()
+        ComponentGridView.DataBind()
+        QtyTextBox.Text = ""
+        Call PopulateMarkupManager(myCostUp)
+        ManageModalPopup.Show()
+    End Sub
+
+    Protected Sub CloseAddImageButton_Click(sender As Object, e As System.Web.UI.ImageClickEventArgs) Handles CloseAddImageButton.Click
+        Call ClearAddModal()
+        AddModalPopup.Hide()
+    End Sub
+
+    Protected Sub CompDoneButton_Click(sender As Object, e As System.EventArgs) Handles CompDoneButton.Click
+        If Page.IsValid Then
+            Call SaveCostUp()
+        Else
+            ManageModalPopup.Show()
+        End If
+
+    End Sub
+    Protected Sub SaveCostUp()
+
+        Dim dc As New QPriceDataClassesDataContext
+        Dim primaryKey As String = PrimaryKeyHiddenField.Value
+        Dim myCostUp = (From c In dc.CostUps
+                        Where (c.CostUpID = primaryKey)
+                        Select c).Single
+
+        Dim tempCostUp As New CostUp
+
+        Dim cLabel As String = CodeLabel.Text
+        tempCostUp.CostUpID = primaryKey
+        tempCostUp.CostType_ID = Request.QueryString("CostType")
+        tempCostUp.SensorType_ID = SensorTypeDropDown.SelectedValue
+        tempCostUp.Cal_ID = EditCalDropDown.SelectedValue
+        tempCostUp.CostUpDesc = EditDescTextBox.Text
+
+        If (EditSheathTermPanel.Visible = True) Then
+            tempCostUp.SheathTermCode = UCase(EditSheathTermTextBox.Text)
+            End If
+        If (EditLWTermPanel.Visible = True) Then
+            tempCostUp.LeadwireTermCode = UCase(EditLWTermTextBox.Text)
+            End If
+        If (EditElementPanel.Visible = True) Then
+            tempCostUp.ElementCode = UCase(EditElementTextBox.Text)
+            End If
+        If (EditWireCountPanel.Visible = True) Then
+            tempCostUp.WireCount_ID = EditWireCountDropDown.SelectedValue
+        End If
+
+        If (EditTempPanel.Visible = True) Then
+            tempCostUp.Temp_ID = EditTempDropDown.SelectedValue
+            End If
+        If (EditODPanel.Visible = True) Then
+            tempCostUp.OD_ID = EditODDropDown.SelectedValue
+            End If
+
+        If myCostUp.CostType_ID = 1 Then
+            tempCostUp.CostUpCode = GenerateBaseCode(tempCostUp)
+        Else
+            tempCostUp.CostUpCode = GenerateTermCode(tempCostUp)
+            End If
+
+        If CostUpExists(tempCostUp) Then
+            If (myCostUp.CostUpCode = "") Then
+                dc.CostUps.DeleteOnSubmit(myCostUp)
+                dc.SubmitChanges()
+                End If
+            RendorManagePanel(PrimaryKeyHiddenField.Value)
+            Call CostUpExistsMessage(tempCostUp.CostUpCode)
+        Else
+            With myCostUp
+                .CostUpCode = tempCostUp.CostUpCode
+                .CostUpDesc = tempCostUp.CostUpDesc
+                .CostType_ID = tempCostUp.CostType_ID
+                .SensorType_ID = tempCostUp.SensorType_ID
+                .SheathTermCode = tempCostUp.SheathTermCode
+                .LeadwireTermCode = tempCostUp.LeadwireTermCode
+                .ElementCode = tempCostUp.ElementCode
+                .WireCount_ID = tempCostUp.WireCount_ID
+                .Cal_ID = tempCostUp.Cal_ID
+                .Temp_ID = tempCostUp.Temp_ID
+                .OD_ID = tempCostUp.OD_ID
+                End With
+
+            dc.SubmitChanges()
+            End If
+
+        dc.Dispose()
+        CostUpGridView.DataBind()
+        ManageModalPopup.Hide()
+        Call ClearManageModal()
+
+    End Sub
+
+    Protected Sub CompExistYesButton_Click(sender As Object, e As System.EventArgs) Handles CompExistYesButton.Click
+        Dim dc As New QPriceDataClassesDataContext
+        Dim primaryKey = (From c In dc.CostUps
+                    Where c.CostUpCode = CodeHiddenField.Value And c.CostType_ID = Request.QueryString("CostType")
+                    Select c.CostUpID).Single
+        Call RendorManagePanel(primaryKey)
+        ManageModalPopup.Show()
+        EditCodeTextBox.Focus()
+    End Sub
+    Protected Sub DeleteBaseYesButton_Click(sender As Object, e As System.EventArgs) Handles DeleteBaseYesButton.Click
+        Dim dc As New QPriceDataClassesDataContext
+        Dim primaryKey As Integer = PrimaryKeyHiddenField.Value
+        Dim selectedIndex As Integer = CostUpGridView.SelectedIndex
+        Dim rowCount As Integer = CostUpGridView.Rows.Count
+
+        Dim linkedComponents = From c In dc.CostComponentKeys
+                               Where c.CostUp_ID = primaryKey
+                               Select c
+
+        For Each c In linkedComponents
+            dc.CostComponentKeys.DeleteOnSubmit(c)
+        Next
+        Try
+            dc.SubmitChanges()
+        Catch ex As Exception
+        End Try
+
+        CostUpGridView.DeleteRow(CostUpGridView.SelectedIndex)
+        Call SelectCostUpGridViewRow()
+    End Sub
+
+    Protected Sub DuplicateLinkButton_Click(sender As Object, e As System.EventArgs) Handles DuplicateLinkButton.Click
+        Dim dc As New QPriceDataClassesDataContext
+        Dim myNewCostUp As New CostUp
+        Dim primaryKey As Long = PrimaryKeyHiddenField.Value
+
+        Dim myCostUp = (From c In dc.CostUps
+                        Where c.CostUpID = primaryKey
+                        Select c).Single
+
+        With myNewCostUp
+            .CostUpDesc = myCostUp.CostUpDesc
+            .SensorType_ID = myCostUp.SensorType_ID
+            .CostType_ID = myCostUp.CostType_ID
+            .WireCount_ID = myCostUp.WireCount_ID
+            .ElementCode = myCostUp.ElementCode
+            .SheathTermCode = myCostUp.SheathTermCode
+            .LeadwireTermCode = myCostUp.LeadwireTermCode
+            .Cal_ID = myCostUp.Cal_ID
+            .OD_ID = myCostUp.OD_ID
+            .Temp_ID = myCostUp.Temp_ID
+            .PPH = myCostUp.PPH
+            .Markup = myCostUp.Markup
+            .Overhead = myCostUp.Overhead
+        End With
+        dc.CostUps.InsertOnSubmit(myNewCostUp)
+        dc.SubmitChanges()
+
+        Dim myLinkedComponents = From c In dc.CostComponentKeys
+                        Where c.CostUp_ID = primaryKey
+                        Select c.Quantity, c.Comp_ID
+
+        For Each c In myLinkedComponents
+            Dim myNewCostComponentKey As New CostComponentKey
+            myNewCostComponentKey.CostUp_ID = myNewCostUp.CostUpID
+            myNewCostComponentKey.Quantity = c.Quantity
+            myNewCostComponentKey.Comp_ID = c.Comp_ID
+            dc.CostComponentKeys.InsertOnSubmit(myNewCostComponentKey)
+            dc.SubmitChanges()
+        Next
+        CostUpGridView.DataBind()
+        Call RendorManagePanel(myNewCostUp.CostUpID)
+
+        If EditSheathTermPanel.Visible = True Then
+            EditSheathTermTextBox.Focus()
+        Else
+            EditLWTermTextBox.Focus()
+        End If
+        ManageModalPopup.Show()
+        dc.Dispose()
+
+    End Sub
+
+    Protected Sub DeleteCompYesButton_Click(sender As Object, e As System.EventArgs) Handles DeleteCompYesButton.Click
+        Dim primaryKey As Long = PrimaryKeyHiddenField.Value
+        Dim myCostUp = GetCostUp(primaryKey)
+        ComponentGridView.DeleteRow(ComponentGridView.EditIndex)
+        ComponentGridView.EditIndex = -1
+        ComponentGridView.SelectedIndex = -1
+        ComponentGridView.DataBind()
+        Call PopulateMarkupManager(myCostUp)
+        ManageModalPopup.Show()
+    End Sub
+
+    Protected Sub DeleteCompNoButton_Click(sender As Object, e As System.EventArgs) Handles DeleteCompNoButton.Click
+        ManageModalPopup.Show()
+    End Sub
+    Protected Sub OverheadLinkButton_Click(sender As Object, e As System.EventArgs) Handles OverheadLinkButton.Click
+        OverheadLinkButton.Visible = False
+        OverheadTextBox.Visible = True
+        ManageModalPopup.Show()
+    End Sub
+
+    Protected Sub LaborLinkButton_Click(sender As Object, e As System.EventArgs) Handles LaborLinkButton.Click
+        LaborLinkButton.Visible = False
+        LaborTextBox.Visible = True
+        ManageModalPopup.Show()
+    End Sub
+
+    Protected Sub MarkUpLinkButton_Click(sender As Object, e As System.EventArgs) Handles MarkUpLinkButton.Click
+        MarkUpLinkButton.Visible = False
+        MarkUpTextBox.Visible = True
+        ManageModalPopup.Show()
+    End Sub
+
+    Protected Sub MessageOKButton_Click(sender As Object, e As System.EventArgs) Handles MessageOKButton.Click
+        Call RendorAddPanel()
+        AddModalPopup.Show()
+    End Sub
+
+    Protected Sub UpdateCompButton_Click(sender As Object, e As System.EventArgs) Handles UpdateCompButton.Click
+        Dim dc As New QPriceDataClassesDataContext
+        Dim primaryKey As Integer = PrimaryKeyHiddenField.Value
+
+        Dim myCostUp = (From c In dc.CostUps
+                        Where c.CostUpID = primaryKey
+                        Select c).Single
+
+        Try
+            ComponentGridView.UpdateRow(ComponentGridView.EditIndex, False)
+            ComponentGridView.EditIndex = -1
+            ComponentGridView.SelectedIndex = -1
+        Catch ex As Exception
+
+        End Try
+
+        Try
+            myCostUp.Overhead = CDec(OverheadTextBox.Text)
+        Catch ex As Exception
+            myCostUp.Overhead = 0.12
+        End Try
+
+        Try
+            myCostUp.Markup = CDec(MarkUpTextBox.Text)
+        Catch ex As Exception
+            myCostUp.Markup = 3
+        End Try
+
+        Try
+            myCostUp.PPH = CDec(LaborTextBox.Text)
+        Catch ex As Exception
+            myCostUp.PPH = 1
+        End Try
+
+        Try
+            myCostUp.Markup = CDec(MarkUpTextBox.Text)
+        Catch ex As Exception
+            myCostUp.Markup = 3
+        End Try
+        OverheadLinkButton.Text = FormatPercent(myCostUp.Overhead)
+        OverheadTextBox.Text = myCostUp.Overhead
+        LaborLinkButton.Text = CDec(myCostUp.PPH).ToString
+        LaborTextBox.Text = CDec(myCostUp.PPH).ToString
+        MarkUpLinkButton.Text = CDec(myCostUp.Markup).ToString
+        MarkUpTextBox.Text = CDec(myCostUp.Markup).ToString
+        dc.SubmitChanges()
+        dc.Dispose()
+
+        OverheadTextBox.Visible = False
+        OverheadLinkButton.Visible = True
+        LaborTextBox.Visible = False
+        LaborLinkButton.Visible = True
+        MarkUpTextBox.Visible = False
+        MarkUpLinkButton.Visible = True
+        Call PopulateMarkupManager(myCostUp)
+        ManageModalPopup.Show()
+    End Sub
+
+
+    '---------------------------------------------------------------------------------------------------'
+    '--------------------------------------------- CLEAR DATA ------------------------------------------'
+    '---------------------------------------------------------------------------------------------------'
+
+    Protected Sub ClearAddModal()
+        DescTextBox.Text = ""
+        SheathTermTextBox.Text = ""
+        LeadwireTermTextBox.Text = ""
+        ElementTextBox.Text = ""
+        WireCountDropDown.SelectedValue = 1
+    End Sub
+    Protected Sub ClearManageModal()
+        EditDescTextBox.Text = ""
+        EditSheathTermTextBox.Text = ""
+        EditLWTermTextBox.Text = ""
+        EditElementTextBox.Text = ""
+        EditWireCountDropDown.SelectedValue = 1
+    End Sub
+
+    Protected Function GetCostUp(ByVal primaryKey As Long) As CostUp
+        Dim dc As New QPriceDataClassesDataContext
+        GetCostUp = (From c In dc.CostUps
+                   Where c.CostUpID = primaryKey
+                   Select c).Single
+    End Function
+End Class

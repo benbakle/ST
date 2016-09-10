@@ -1,0 +1,613 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.step_1 {
+    width: 882px;
+    margin: 0 auto 20px auto;
+}
+
+.step_2, .step_3 {
+    display: none;
+    padding: 20px 10px;
+    margin: 0 auto;
+    position: relative;
+    width: 828px;
+    overflow: visible;
+    border: 1px solid #dedede;
+    top: -1px;
+}
+
+/*********************
+****** STEP 1 ********
+*********************/
+
+/*STEP TABS*/
+
+.tabs h1, .tabs h5 {
+    display: inline;
+}
+
+ul.tabs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    ul.tabs li {
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        float: left;
+    }
+
+        ul.tabs li a, ul.tabs li div.inactive {
+            position: relative;
+            display: block;
+            text-decoration: none;
+            padding: 28px 25px;
+            width: 231px;
+        }
+
+    ul.tabs a:hover {
+        background-color: #efefef;
+    }
+
+.qp-step-map-container {
+    position: relative;
+    overflow: hidden;
+    width: 848px;
+    background-color: #fff;
+    border: 1px solid #dedede;
+    border-radius: 5px 5px 0px 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    .qp-step-map-container .vDivider-light {
+        height: 55px;
+        width: 1px;
+        float: left;
+        margin: 10px 0;
+        border-left: 1px solid #ddd;
+    }
+
+
+.qp_button {
+    position: relative;
+    display: block;
+    float: left;
+    width: 191px;
+    height: 123px;
+    margin: 15px;
+    cursor: pointer;
+}
+
+.qp-button-container {
+    position: relative;
+    width: 890px;
+    height: auto;
+}
+
+/*********************
+**** QP BUTTONS ******
+*********************/
+
+/*Preload buttons before use (avoids pause while pressing) */
+.load-active-button {
+    position: fixed;
+    top: -999px;
+    left: -999px;
+}
+
+.rtd_button {
+    background: url('../images/buttons/rtd_button.png') no-repeat;
+}
+
+    .rtd_button:active {
+        background: url('../images/buttons/rtd_button_active.png') no-repeat;
+    }
+
+.rtd_well_button {
+    background: url('../images/buttons/rtd_well_button.png') no-repeat;
+}
+
+    .rtd_well_button:active {
+        background: url('../images/buttons/rtd_well_button_active.png') no-repeat;
+    }
+
+.mgo_button {
+    background: url('../images/buttons/mgo_button.png') no-repeat;
+}
+
+    .mgo_button:active {
+        background: url('../images/buttons/mgo_button_active.png') no-repeat;
+    }
+
+.mgo_well_button {
+    background: url('../images/buttons/mgo_well_button.png') no-repeat;
+}
+
+    .mgo_well_button:active {
+        background: url('../images/buttons/mgo_well_button_active.png') no-repeat;
+    }
+
+.plastics_button {
+    background: url('../images/buttons/plastics_button.png') no-repeat;
+}
+
+    .plastics_button:active {
+        background: url('../images/buttons/plastics_button_active.png') no-repeat;
+    }
+
+.plastics_rtd_button {
+    background: url('../images/buttons/plastics_rtd_button.png') no-repeat;
+}
+
+    .plastics_rtd_button:active {
+        background: url('../images/buttons/plastics_rtd_button_active.png') no-repeat;
+    }
+
+.cip_button {
+    background: url('../images/buttons/cip_button.png') no-repeat;
+}
+
+    .cip_button:active {
+        background: url('../images/buttons/cip_button_active.png') no-repeat;
+    }
+
+.sip_button {
+    background: url('../images/buttons/sip_button.png') no-repeat;
+}
+
+    .sip_button:active {
+        background: url('../images/buttons/sip_button_active.png') no-repeat;
+    }
+
+.qc_button {
+    background: url('../images/buttons/qc_button.png') no-repeat;
+}
+
+    .qc_button:active {
+        background: url('../images/buttons/qc_button_active.png') no-repeat;
+    }
+
+.extension_button {
+    background: url('../images/buttons/extension_button.png') no-repeat;
+}
+
+    .extension_button:active {
+        background: url('../images/buttons/extension_button_active.png') no-repeat;
+    }
+
+.wire_button {
+    background: url('../images/buttons/wire_button.png') no-repeat;
+}
+
+    .wire_button:active {
+        background: url('../images/buttons/wire_button_active.png') no-repeat;
+    }
+
+.accessories_button {
+    background: url('../images/buttons/accessories_button.png') no-repeat;
+}
+
+    .accessories_button:active {
+        background: url('../images/buttons/accessories_button_active.png') no-repeat;
+    }
+
+/*********************
+*** MODAL POP-UP *****
+*********************/
+
+.modal-popup {
+    display: none;
+}
+
+    .modal-popup img {
+        max-width: 800px;
+        max-height: 500px;
+        border: 10px solid #fff;
+        box-shadow: 0 0 90px 5px #888;
+    }
+
+.modal-container {
+    position: relative;
+    width: 400px;
+    padding: 25px;
+    background-color: #fff;
+    font-size: 18px;
+    border: 1px solid #888;
+    border-radius: 4px;
+    box-shadow: 0 0 90px 5px #000;
+}
+
+    .modal-container h5 {
+        display: inline;
+        font-size: 12px;
+        color: #555;
+    }
+
+    .modal-container a {
+        font-size: 14px;
+    }
+
+    .modal-container li {
+        position: relative;
+        margin-left: 4px;
+        overflow: auto;
+    }
+
+/* close button positioned on upper right corner */
+.modal-popup .close {
+    background-image: url("../images/close.png");
+    position: absolute;
+    right: -12px;
+    top: -12px;
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+}
+
+.modal-background {
+    background-color: #333;
+    opacity: .4;
+}
+
+/*********************
+****** STEP 2 ********
+*********************/
+.code {
+    position: relative;
+    margin: 5px 0 0 20px;
+    float: left;
+    width: 800px;
+    display: none;
+}
+
+.code_name {
+    display: inline-block;
+    padding: 10px;
+    width: 290px;
+    background-color: #f1f8f8;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+    .code_name h5 {
+        display: inline;
+        font-size: 10px;
+        color: #008080;
+    }
+
+.desc_label {
+    display: inline-block;
+    font-size: 12px;
+    margin-left: 25px;
+}
+
+.textbox_clear {
+    margin-right: 25px;
+}
+
+.radio_group {
+    display: none;
+    font-size: 12px;
+}
+
+.radio_list {
+    position: absolute;
+    background-color: #333;
+    left: 400px;
+    line-height: 20px;
+    width: 300px;
+    color: #efefef;
+    padding: 22px;
+    border-radius: 5px;
+    display: none;
+    z-index: 1000;
+    opacity: .95;
+}
+
+    .radio_list:before {
+        position: absolute;
+        content: "";
+        border-style: solid;
+        border-width: 10px;
+        left: -20px;
+        border-color: transparent #333 transparent transparent;
+    }
+
+    .radio_list .arrow {
+        position: relative;
+        display: inline-block;
+        font-size: 8px;
+        top: -2px;
+    }
+
+    .radio_list .desc {
+        position: relative;
+        display: inline-block;
+        width: 260px;
+        margin-left: 5px;
+    }
+
+    .radio_list h4 {
+        color: #4DCDCD;
+        font-weight: normal;
+    }
+
+    .radio_list input {
+        vertical-align: top;
+    }
+
+        .radio_list input:disabled + .desc {
+            color: #666;
+        }
+
+    .single_select .radio_list h4, .radio_list input {
+        cursor: pointer;
+    }
+
+    .radio_list h1, .radio_list h2, .radio_list h3, .radio_list h4, .radio_list h5, .radio_list h6 {
+        display: block;
+    }
+
+
+.down {
+    top: -12px;
+}
+
+.up {
+    bottom: -12px;
+}
+
+    .up:before {
+        bottom: 20px;
+    }
+
+.show_default {
+    display: block;
+}
+
+.spacer .code_name, .placeholder .code_name {
+    background-color: #fff;
+}
+
+.note {
+    position: relative;
+    font: 10px normal "Arial";
+    color: #CDAB2D;
+    padding: 10px 0;
+}
+
+.optional_textbox {
+    border: 2px dotted #ccc;
+}
+
+.value_textbox {
+    position: relative;
+    text-align: center;
+    font-size: 13px;
+    width: 40px;
+    height: 35px;
+    font-weight: bold;
+    color: #008080;
+    margin-left: 25px;
+}
+
+
+/*********************
+****** STEP 3 ********
+*********************/
+
+.qp-quote-header {
+    width: 100%;
+    height: 75px;
+}
+
+.qp-quote-logo {
+    position: relative;
+    width: 150px;
+    float: left;
+}
+
+.qp-quote-print {
+    position: relative;
+    width: 150px;
+    padding: 20px;
+    text-align: right;
+    float: right;
+    font: normal .8em Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    color: Red;
+}
+
+    .qp-quote-print img {
+        width: 20px;
+        padding: 0px 5px;
+    }
+
+.qp-quote-conditions-container {
+    position: relative;
+    border-top: 1px solid #EFEFEF;
+    border-bottom: 1px solid #EFEFEF;
+    margin: 20px 0px;
+    padding: 20px 0px;
+}
+
+    .qp-quote-conditions-container table tr td {
+        vertical-align: top;
+        font-size: .9em;
+        color: #333;
+        padding: 2px 5px;
+    }
+
+        .qp-quote-conditions-container table tr td:first-child {
+            text-align: right;
+            width: 93px;
+            font: bold .8em "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+            color: #555;
+        }
+
+.qp-quote-contact {
+    position: relative;
+    width: 400px;
+    float: left;
+}
+
+.qp-quote-terms {
+    position: relative;
+    width: 350px;
+    float: right;
+}
+
+.qp-quote-container {
+    position: relative;
+    width: 678px;
+    margin: 0 50px 50px 50px;
+}
+
+.qp-quot-container h1 {
+    font-weight: normal;
+}
+
+.qp-line-item {
+    position: relative;
+    width: 670px;
+    margin: 7px;
+    padding: 3px;
+}
+
+.qp-line-item-desc {
+    position: relative;
+    float: left;
+    width: 250px;
+    font: normal .9em "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    color: #555;
+}
+
+.qp-line-item-cost {
+    float: left;
+    font: bold .9em "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    width: 200px;
+    color: #0E4141;
+}
+
+.list-price {
+    position: relative;
+    margin: 7px;
+    padding: 3px;
+    height: 20px;
+    font: normal 25px Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    color: #8B3F00;
+}
+
+.qp-discount-tab-container {
+    position: relative;
+    width: 678px;
+    height: 35px;
+    margin: 7px;
+    border: 1px solid #dedede;
+    border-radius: 10px 10px 0px 0px;
+    background-color: #fff;
+    font-weight: bold;
+}
+
+.price-breakdown-container {
+    position: relative;
+    background-color: #fff;
+    width: 678px;
+    height: 35px;
+    margin: 7px;
+    border: 1px solid #dedede;
+}
+
+ul.qp-discount-tabs, .breakdown-line-item {
+    list-style: none;
+    padding: 0;
+}
+
+    ul.qp-discount-tabs li, .breakdown-line-item li {
+        position: relative;
+        text-align: center;
+        float: left;
+        display: block;
+        padding: 9px;
+        font-size: 12px;
+    }
+
+    .qp-discount-tabs .vDivider-light, .breakdown-line-item .vDivider-light {
+        height: 22px;
+        border-left: 1px solid #ddd;
+    }
+
+
+#your-price-tab, li.quantity-discount-desc {
+    width: 177px;
+}
+
+#standard-delivery-tab, li.two-weeks-discount {
+    width: 100px;
+    font: normal 14px Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+
+#expedite-delivery-tab {
+    width: 344px;
+    height: 17px;
+    background-color: #f3d9d7;
+    border-left: 1px solid #ddd;
+    color: #660000;
+    font-weight: bold;
+    border-radius: 0px 10px 0px 0px;
+}
+
+li.exp-discount {
+    width: 99px;
+    height: 17px;
+    background-color: #f3d9d7;
+    color: #660000;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    margin: 0 1px 0 1px;
+    font-weight: bold;
+    font-size: 10px;
+    font-style: italic;
+}
+
+.qp-discount-container-footer {
+    position: relative;
+    width: 678px;
+    height: 50px;
+    margin: 7px;
+    border: 1px solid #dedede;
+    border-radius: 0px 0px 10px 10px;
+    background-color: #fff;
+    font: normal 11px Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    text-align: center;
+    padding: 3px 0px;
+}
+
+.qp-thankyou {
+    text-align: center;
+    font: italic 1em Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    color: #D50000;
+    border-top: 1px solid #DDD;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.qp-ship-message {
+    text-align: center;
+    font: italic 1em Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    border-bottom: 1px solid #EFEFEF;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.qp-confidential {
+    text-align: center;
+    font: italic .9em Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    color: #555;
+}
+

@@ -1,0 +1,291 @@
+﻿<%@ Master Language="VB" CodeFile="Admin.master.vb" Inherits="AdminMasterPage" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>SenorTec, Inc | Admin</title>
+    <link href="../Styles/st.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/admin.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/quickprice.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/qp-printable.css" rel="Stylesheet" media="print" type="text/css" />
+    <script src="../Scripts/jquery-1.6.4.js" type="text/javascript" language="javascript"></script>
+    <script src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js" type="text/javascript"
+        language="javascript"></script>
+    
+      <%--  <script type="text/javascript">
+            $(function () {
+                $("#DeleteCompany_LinkButton").click(function () {
+                    $("#deleteCompany").slideDown("slow");
+                });
+                $("#CancelDeleteCompany_LinkButton").click(function () {
+                    $("#deleteCompany").slideUp("slow");
+                });
+            });
+
+        </script>--%>
+        <%--<script type="text/javascript">
+
+            function pageLoad(sender, args) {
+
+                $("#DeleteCompany_LinkButton").click(function () {
+                    $("#deleteCompany").slideDown("slow");
+                });
+                $("#CancelDeleteCompany_LinkButton").click(function () {
+                    $("#deleteCompany").slideUp("slow");
+                });
+
+                $(".slidder-hidden").css("display", "none");
+
+                $(".note").css("display", "none");
+
+                $(".qp-button").mouseover(function () {
+                    $(this).stop().fadeTo("slow", .7);
+                });
+                $(".qp-button").mouseleave(function () {
+                    $(this).stop().fadeTo("slow", 1);
+                });
+
+                $(".qp-button").click(function () {
+                    localStorage.setItem("currentFocus", "");
+                });
+
+                //Handles help containers
+                var myfocusID;
+                var currentFocusID;
+
+                $(".multi-selector").css("display", "none");
+                $(localStorage.getItem("currentFocus")).siblings(".multi-selector").css("display", "block");
+                if (!($(".multi-selector").is(":visible"))) {
+                    findNextEmptyTextBox();
+                }
+
+                $(".slidder").prev("a").click(function () {
+                    $(this).nextUntil(".clear").stop(true, true).slideToggle("slow");
+                });
+
+                $(".textbox").click(function () {
+                    myfocusID = "#" + $(this).attr("id");
+                    currentFocusID = localStorage.getItem("currentFocus");
+                    $(currentFocusID).siblings(".qp-help-container").stop(false, true).fadeOut("fast");
+                    $(currentFocusID).siblings(".qp-help-container-up").stop(false, true).fadeOut("fast");
+                    localStorage.setItem("currentFocus", myfocusID);
+                    $(this).siblings(".qp-help-container").stop(false, true).fadeIn("slow");
+                    $(this).siblings(".qp-help-container-up").stop(false, true).fadeIn("slow")
+                    $(this).focus();
+                });
+
+
+                $(".slidder input").click(function () {
+                    myfocusID = '#' + ($(this).parents(".multi-selector").siblings(".textbox").attr("id"));
+                    localStorage.setItem("currentFocus", myfocusID);
+                });
+
+                $(".button").click(function () {
+                    $(this).parents(".multi-selector").fadeOut("fast");
+                    localStorage.setItem("currentFocus", "");
+                });
+
+                $(".textbox").keyup(function () {
+                    $(".qp-help-container").each(function () {
+                        $(this).css("display", "none");
+                        localStorage.setItem("currentFocus", "");
+                    });
+
+                    $(".qp-help-container-up").each(function () {
+                        $(this).css("display", "none");
+                        localStorage.setItem("currentFocus", "");
+                    });
+                });
+                $("body").mouseup(function () {
+                    $(".qp-help-container").stop(false, true).fadeOut("fast");
+                    $(".qp-help-container-up").stop(false, true).fadeOut("fast");
+                });
+
+                $(".qp-help-container").mouseup(function (event) {
+                    event.stopPropagation();
+                });
+                $(".qp-help-container-up").mouseup(function (event) {
+                    event.stopPropagation();
+                });
+
+                function findNextEmptyTextBox() {
+                    currentFocusID = localStorage.getItem("currentFocus");
+                    $(".qp-code-container .textbox").each(function () {
+                        myfocusID = '#' + $(this).attr("id");
+                        if ($(this).val() == '' && (!(myfocusID == "#MainContent_SpecialCodes_TextBox" ||
+                                                  myfocusID == "#MainContent_LeadwireBeyondFlex_TextBox" ||
+                                                  myfocusID == "#Main_Content_SpecialCodes_TextBox"))) {
+                            localStorage.setItem("currentFocus", myfocusID);
+                            $(this).siblings(".qp-help-container").stop(false, true).fadeIn("slow");
+                            $(this).siblings(".qp-help-container-up").stop(false, true).fadeIn("slow");
+                            $(this).focus();
+                            return false;
+                        };
+                    });
+                }
+
+
+
+            };
+
+
+        </script>--%>
+        <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+    <asp:ToolkitScriptManager ID="Admin_ScriptManager" runat="server">
+    </asp:ToolkitScriptManager>
+    <%--<asp:UpdatePanel ID="Admin_UpdatePanel" runat="server">
+        <ContentTemplate>
+            <div class="top-stripe">
+            </div>--%>
+            <%--<div class="header">
+                <div class="admin-header-container">
+                    <a href="../Default.aspx">
+                        <img src="../images/logos/header_logo.png" />
+                    </a>
+                    <div class="login-welcome">
+                        <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                            <AnonymousTemplate>
+                                [ <a href="~/Default.aspx" id="HeadLoginStatus" runat="server">Log In</a> ]
+                            </AnonymousTemplate>
+                            <LoggedInTemplate>
+                                <h3>
+                                    Welcome,</h3>
+                                <h5>
+                                    <asp:Label ID="LoginNameLabel" runat="server" Text="" /></h5>
+                                [
+                                <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out"
+                                    LogoutPageUrl="~/Default.aspx" />
+                                ]
+                            </LoggedInTemplate>
+                        </asp:LoginView>
+                    </div>
+                    <div class="menu">
+                        <ul>
+                            <li><a href="<%= Page.ResolveUrl("~/Admin/Default.aspx") %>">Home</a></li>
+                            <li><a href="<%= Page.ResolveUrl("~/Quickprice/QPDefault.aspx") %>">QuickPrice</a></li>
+                            <li><a href="#">Manage Users</a>
+                                <ul class="subitems">
+                                    <a href="<%= Page.ResolveUrl("~/Admin/CreateUser.aspx") %>">
+                                        <li>Create User</li></a> <a href="<%= Page.ResolveUrl("~/Admin/EditUser.aspx") %>">
+                                            <li>Edit User</li></a>
+                                    <asp:LinkButton ID="CreateCompany_LinkButton" runat="server"><li>Create Company</li></asp:LinkButton>
+                                    <asp:LinkButton ID="EditCompany_LinkButton" runat="server"><li>Edit Company</li></asp:LinkButton>
+                                </ul>
+                            </li>
+                            <li><a href="#">Manage Pricing</a>
+                                <ul class="subitems">
+                                    <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Admin/Pricing.aspx?ctype=1&stype=1"><li>Base Product</li></asp:HyperLink>
+                                    <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Admin/Pricing.aspx?ctype=2&stype=1"><li>Sheath Termination</li></asp:HyperLink>
+                                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Admin/Pricing.aspx?ctype=3&stype=1"><li>Leadwire Termination</li></asp:HyperLink>
+                                    <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Admin/Pricing.aspx?ctype=4&stype=1"><li>Sanitary</li></asp:HyperLink>
+                                    <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Admin/Pricing.aspx?ctype=5&stype=1"><li>Insertion Probes</li></asp:HyperLink>
+                                    <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/Admin/Pricing.aspx?ctype=6&stype=1"><li>Thermowell Assemblies</li></asp:HyperLink>
+                                    <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Admin/Components.aspx"><li>Components</li></asp:HyperLink>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <asp:ModalPopupExtender ID="CreateCompany_ModalPopup" runat="server" BackgroundCssClass="modalBackground"
+                        DropShadow="true" CancelControlID="" PopupControlID="CreateCompany_Panel" TargetControlID="CreateCompany_HiddenField">
+                    </asp:ModalPopupExtender>
+                    <asp:HiddenField ID="CreateCompany_HiddenField" runat="server" />
+                    <asp:Panel ID="CreateCompany_Panel" runat="server" Visible="true" CssClass="modalPanel"
+                        Style="display: none;">
+                        <div class="close">
+                            <asp:ImageButton ID="CloseCreateCompany_ImageButton" runat="server" ImageUrl="~/images/close2.gif"
+                                CausesValidation="false" /></div>
+                        <div class="company-edit-container">
+                            <h1>
+                                <asp:Label ID="CompanyAction_Label" runat="server" /></h1>
+                            <br />
+                            <br />
+                            <hr />
+                            <br />
+                            <div id="deleteCompany" class="error-box error-message" style="display: none;">
+                                Are you sure you want to delete company "<asp:Label ID="Company_Label" runat="server" />"
+                                from the database?
+                                <br />
+                                <br />
+                                <div class="inline-list align-right">
+                                    <ul>
+                                        <li>
+                                            <asp:LinkButton ID="ConfirmDeleteCompany_LinkButton" runat="server" CssClass="confirm-button">Yes</asp:LinkButton></li>
+                                        <li>
+                                            <asp:HyperLink ID="CancelDeleteCompany_LinkButton" runat="server" CssClass="confirm-button">Cancel</asp:HyperLink></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="companyExistsError" class="error-box error-message" style="display: none;"
+                                runat="server">
+                                Customer already exists. Please type another name or close window to exit.
+                            </div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <h4>
+                                            Company Name:</h4>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="CompanyName_TextBox" runat="server" CssClass="textbox" Width="151px"></asp:TextBox>
+                                        <asp:DropDownList ID="CompanyName_DropDownList" runat="server" DataSourceID="CompanyName_SqlDataSource"
+                                            DataTextField="CompanyName" DataValueField="CompanyID" Width="156px" AutoPostBack="true">
+                                        </asp:DropDownList>
+                                        <asp:SqlDataSource ID="CompanyName_SqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:QPdatabaseConnectionString %>"
+                                            SelectCommand="SELECT * FROM [Company]"></asp:SqlDataSource>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h4>
+                                            Schedule Discount:</h4>
+                                    </td>
+                                    <td>
+                                        <asp:DropDownList ID="Discount_DropDownList" runat="server" DataSourceID="Discount_SqlDataSource"
+                                            DataTextField="DiscountDesc" DataValueField="DiscountID" Width="156px">
+                                        </asp:DropDownList>
+                                        <asp:SqlDataSource ID="Discount_SqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:QPdatabaseConnectionString %>"
+                                            SelectCommand="SELECT * FROM [Discount]"></asp:SqlDataSource>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br />
+                            <hr />
+                            <br />
+                            <div class="inline-list align-right">
+                                <ul>
+                                    <li>
+                                        <asp:HyperLink ID="DeleteCompany_LinkButton" runat="server" Text="Delete Company"
+                                            CssClass="button" />
+                                    </li>
+                                    <li>
+                                        <asp:LinkButton ID="UpdateCompany_LinkButton" runat="server" Text="Update" CssClass="button" />
+                                    </li>
+                                    <li>
+                                        <asp:LinkButton ID="AddCompany_LinkButton" runat="server" Text="Create" CssClass="button" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </asp:Panel>
+                </div>
+            </div>--%>
+            <div class="container">
+                <div class="paper">
+                    <div class="paper-container">
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+                <div class="paper-shadow">
+                </div>
+            </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+    </form>
+</body>
+</html>

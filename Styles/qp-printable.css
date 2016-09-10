@@ -1,0 +1,24 @@
+﻿body
+{
+    background-color:#fff;
+}
+.top-stripe {
+    display: none;
+}
+.header
+{
+    display: none;
+}
+.qp-quote-conditions-container {
+    page-break-after: avoid;
+}
+.qp-step-map-container
+{
+    display: none;
+}
+.paper {
+    background: none;
+}
+.paper-shadow {
+    display: none;
+}

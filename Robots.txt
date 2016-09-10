@@ -1,0 +1,5 @@
+﻿User-agent: Googlebot
+Disallow: /cgi-bin/
+Disallow: /Admin/
+Disallow: /Account/
+Sitemap: http://www.sensortecinc.com/sitemap.xml

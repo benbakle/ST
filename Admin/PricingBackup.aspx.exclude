@@ -1,0 +1,841 @@
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Admin/Admin.master" AutoEventWireup="false"
+    CodeFile="Pricing.aspx.vb" Inherits="Admin_Pricing" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+    </asp:ToolkitScriptManager>
+    <asp:UpdatePanel ID="AddUpdatePanel" runat="server" UpdateMode="Conditional">
+        <ContentTemplate>
+            <div class="inline">
+                <h1>
+                    <asp:Label ID="MainSensorTypeLabel" runat="server" Text="" />
+                    <asp:Label ID="MainCostTypeLabel" runat="server" Text="" />
+                </h1>
+            </div>
+            <br />
+            <hr />
+            <br />
+            <h5>
+                Select Sensor Type:
+            </h5>
+            <asp:DropDownList ID="SensorTypeDropDown" runat="server" AutoPostBack="True" DataSourceID="SensorTypeDataSource"
+                DataTextField="TypeDesc" DataValueField="TypeID" Width="150px">
+            </asp:DropDownList>
+            <asp:LinqDataSource ID="SensorTypeDataSource" runat="server" ContextTypeName="QPriceDataClassesDataContext"
+                EntityTypeName="" OrderBy="TypeID" TableName="SensorTypes">
+            </asp:LinqDataSource>
+            <br />
+            <br />
+            <!------------------------------------------------------------------------------------------------------------->
+            <!------------------------------------------- COSTUP GRIDVIEW ------------------------------------------------->
+            <!------------------------------------------------------------------------------------------------------------->
+            <asp:Panel ID="CostUpPanel" runat="server">
+                <center>
+                    <asp:Label ID="NullLabel" runat="server" Text="" CssClass="error-message"></asp:Label></center>
+                <asp:GridView ID="CostUpGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="CostUpID"
+                    DataSourceID="CostUpDataSource" AllowPaging="True" CssClass="mGrid" PagerStyle-CssClass="pgr"
+                    RowStyle-CssClass="noSelect" GridLines="None" OnRowDataBound="CostUpGridView_RowDataBound"
+                    OnSelectedIndexChanged="CostUpGridView_SelectedIndexChanged" PageSize="10">
+                    <Columns>
+                        <asp:TemplateField HeaderText="Code" SortExpression="CostUpCode">
+                            <ItemTemplate>
+                                <asp:Label ID="CodeLabel" runat="server" Text='<%# Bind("CostUpCode") %>'></asp:Label>
+                            </ItemTemplate>
+                            <HeaderStyle Width="75px" />
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Description" SortExpression="CostUpDesc">
+                            <ItemTemplate>
+                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("CostUpDesc") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Cost">
+                            <ItemTemplate>
+                                <asp:Label ID="CostLabel" runat="server" Text="" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:CommandField ShowSelectButton="True" ItemStyle-CssClass="hidden" HeaderStyle-CssClass="hidden">
+                            <HeaderStyle CssClass="hidden" />
+                            <ItemStyle CssClass="hidden" />
+                        </asp:CommandField>
+                    </Columns>
+                    <PagerStyle CssClass="pgr" />
+                    <RowStyle CssClass="noSelect" />
+                    <SelectedRowStyle CssClass="selected" />
+                </asp:GridView>
+                <asp:LinqDataSource ID="CostUpDataSource" runat="server" ContextTypeName="QPriceDataClassesDataContext"
+                    EntityTypeName="" TableName="CostUps" EnableDelete="True" EnableInsert="True"
+                    EnableUpdate="True" OrderBy="Temp_ID, ElementCode" Where="CostType_ID == @CostType_ID &amp;&amp; SensorType_ID == @SensorType_ID">
+                    <WhereParameters>
+                        <asp:QueryStringParameter DefaultValue="1" Name="CostType_ID" QueryStringField="CostType"
+                            Type="Int64" />
+                        <asp:ControlParameter ControlID="SensorTypeDropDown" DefaultValue="1" Name="SensorType_ID"
+                            PropertyName="SelectedValue" Type="Int64" />
+                    </WhereParameters>
+                </asp:LinqDataSource>
+                <div class=" inlineList alignRight">
+                    <ul>
+                        <li>
+                            <asp:Button ID="AddCostUpButton" runat="server" Text="Add Cost Up" CssClass="button"
+                                OnClick="ShowAddModal" CausesValidation="false" Width="150px" />
+                        </li>
+                    </ul>
+                </div>
+            </asp:Panel>
+            <!------------------------------------------------------------------------------------------------------------->
+            <!--------------------------------- MANAGE COMPONENTS PANEL---------------------------------------------------->
+            <!------------------------------------------------------------------------------------------------------------->
+            <asp:ModalPopupExtender ID="ManageModalPopup" runat="server" BackgroundCssClass="modalBackground" CancelControlID="CloseEditImageButton" PopupControlID="EditPanel"
+                TargetControlID="EditHiddenField">
+            </asp:ModalPopupExtender>
+            <asp:HiddenField ID="EditHiddenField" runat="server" />
+            <asp:HiddenField ID="PrimaryKeyHiddenField" runat="server" />
+            <asp:Panel ID="EditPanel" runat="server" CssClass="modalPanel" DefaultButton="UpdateCompButton" style="display:none;">
+                <div class="close">
+                    <asp:ImageButton ID="CloseEditImageButton" runat="server" ImageUrl="~/images/icons/close.png"
+                        CausesValidation="false" />
+                </div>
+                <div class="costup-container">
+                    <div class="costup-header">
+                        <h1>
+                            <asp:Label ID="CodeLabel" runat="server" Text="" /></h1>
+                        <br />
+                        <h5>
+                            <asp:Label ID="DescLabel" runat="server" Text="" /></h5>
+                    </div>
+                    <hr />
+                    <br />
+                    <div class="costup-row">
+                        <div class="costup-component-list">
+                            <!-------------------------------------------------------------------->
+                            <!---------------------COMPONENT GRIDVIEW ---------------------------->
+                            <!-------------------------------------------------------------------->
+                            <asp:GridView ID="ComponentGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="CCID"
+                                OnRowDataBound="ComponentGridView_RowDataBound" OnSelectedIndexChanged="ComponentGridView_SelectedIndexChanged"
+                                GridLines="None" CssClass="mGrid" RowStyle-CssClass="noSelect" SelectedRowStyle-CssClass="selected"
+                                DataSourceID="ComponentDataSource">
+                                <Columns>
+                                    <asp:TemplateField HeaderText="Qty" SortExpression="Quantity">
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("Quantity") %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Quantity") %>' Width="35px"></asp:TextBox>
+                                        </EditItemTemplate>
+                                        <HeaderStyle Width="45px" />
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Component" SortExpression="Comp_ID">
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label1" runat="server" Text='<%# Eval("Component.CompDesc") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Cost" SortExpression="Component">
+                                        <ItemTemplate>
+                                            <asp:Label ID="Label2" runat="server" CssClass="smaller-font" Text='<%# String.Format("{0:c}",Eval("Component.CompCost"))+ "/" + Eval("Component.UM.UMDesc") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Amount" ControlStyle-CssClass="highlight">
+                                        <ItemTemplate>
+                                            <b>
+                                                <asp:Label ID="AmountLabel" runat="server" Text='<%#String.Format("{0:c}", Eval("Quantity") * Eval("Component.CompCost") * Eval("Component.MarkUp")) %>' /></b>
+                                        </ItemTemplate>
+                                        <ControlStyle CssClass="highlight" />
+                                    </asp:TemplateField>
+                                    <asp:CommandField ShowSelectButton="true" ButtonType="Link" Visible="true" SelectText="Select"
+                                        HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden">
+                                        <HeaderStyle CssClass="hidden" />
+                                        <ItemStyle CssClass="hidden" />
+                                    </asp:CommandField>
+                                </Columns>
+                                <RowStyle CssClass="noSelect" />
+                                <SelectedRowStyle CssClass="selected" />
+                            </asp:GridView>
+                            <asp:LinqDataSource ID="ComponentDataSource" runat="server" ContextTypeName="QPriceDataClassesDataContext"
+                                EnableDelete="True" EnableInsert="True" EnableUpdate="True" EntityTypeName=""
+                                TableName="CostComponentKeys" Where="CostUp_ID == @CostUp_ID" OrderBy="Component.CompDesc">
+                                <WhereParameters>
+                                    <asp:ControlParameter ControlID="PrimaryKeyHiddenField" Name="CostUp_ID" PropertyName="Value"
+                                        Type="Int64" DefaultValue="-1" />
+                                </WhereParameters>
+                            </asp:LinqDataSource>
+                            <div class="align-right">
+                                <asp:ImageButton ID="DeleteCompLinkButton" runat="server" ImageUrl="~/images/icons/subtract.png"
+                                    ToolTip="Remove Component" CausesValidation="false" /></li>
+                            </div>
+                        </div>
+                        <div class="costup-math">
+                            <asp:Image ID="Image2" ImageUrl="~/images/headers/cost_break_down_bar.png" runat="server" />
+                            <table class="subTotalGrid">
+                                <tr>
+                                    <td class="align-right">
+                                        <h4>
+                                            Material Cost:</h4>
+                                    </td>
+                                    <td>
+                                        <h2>
+                                            <asp:Label ID="CostLabel" runat="server" Text="" /></h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="align-right">
+                                        <h4>
+                                            <asp:Label ID="OverHeadLabel" runat="server" Text="" /></h4>
+                                        <h4>
+                                            <asp:TextBox ID="OverheadTextBox" runat="server" Text="" Visible="false" Width="30px"
+                                                Height="12px" /></h4>
+                                        <asp:LinkButton ID="OverheadLinkButton" runat="server" Text="" CausesValidation="false" />:
+                                    </td>
+                                    <td>
+                                        <h2>
+                                            <asp:Label ID="OverHeadCostLabel" runat="server" Text="" /></h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="align-right">
+                                        <h4>
+                                            <asp:TextBox ID="LaborTextBox" runat="server" Text="" Visible="false" Width="35px"
+                                                Height="12px" /></h4>
+                                        <asp:LinkButton ID="LaborLinkButton" runat="server" Text="" CausesValidation="false" />
+                                        <h4>
+                                            <asp:Label ID="LaborLabel" runat="server" Text="" />
+                                            <br />
+                                            <asp:Label ID="LaborCostLabel" runat="server" Text="" /></h4>
+                                    </td>
+                                    <td>
+                                        <h2>
+                                            <asp:Label ID="PPHLabel" runat="server" Text="" /></h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="align-right">
+                                        <h4>
+                                            Base Mark-up:</h4>
+                                    </td>
+                                    <td>
+                                        <h2>
+                                            <asp:Label ID="MarkUpLabel" runat="server" Text="" /></h2>
+                                        <h4>
+                                            <asp:TextBox ID="MarkUpTextBox" runat="server" Text="" Visible="false" Width="35px"
+                                                Height="12px" /></h4>
+                                        <asp:LinkButton ID="MarkUpLinkButton" runat="server" Text="" CausesValidation="false" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="align-right">
+                                        <h1>
+                                            Total:</h1>
+                                    </td>
+                                    <td>
+                                        <h1>
+                                            <asp:Label ID="TotalCostLabel" runat="server" Text="" /></h1>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="costup-row">
+                        <div class="costup-add-component">
+                            <asp:Panel ID="AddCompPanelHeader" runat="server" CssClass="cpHeader">
+                                <asp:Image ID="Image1" runat="server" ImageUrl="~/images/headers/components_bar.png" />
+                                <br />
+                                <br />
+                            </asp:Panel>
+                            <asp:Panel ID="AddCompPanelBody" runat="server" CssClass="cpBody" DefaultButton="AddOK">
+                                <asp:DropDownList ID="CatagoryDropDownList" runat="server" AutoPostBack="True" DataSourceID="CatagoryDataSource"
+                                    DataTextField="CatagoryDesc" DataValueField="CatagoryID" Width="100%" />
+                                <asp:LinqDataSource ID="CatagoryDataSource" runat="server" ContextTypeName="QPriceDataClassesDataContext"
+                                    EntityTypeName="" OrderBy="CatagoryDesc" TableName="ComponentCatagories">
+                                </asp:LinqDataSource>
+                                <br />
+                                <br />
+                                <asp:DropDownList ID="ComponentDropDownList" runat="server" Width="100%" DataSourceID="SelectedComponentSqlDataSource"
+                                    DataTextField="Component" DataValueField="CompID" AutoPostBack="True" />
+                                <asp:SqlDataSource ID="SelectedComponentSqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:QPdatabaseConnectionString %>"
+                                    SelectCommand="SELECT '[' + CompNum + '] - ' + CompDesc AS Component, CompID FROM Component WHERE (Catagory_ID = @Catagory_ID)">
+                                    <SelectParameters>
+                                        <asp:ControlParameter ControlID="CatagoryDropDownList" Name="Catagory_ID" PropertyName="SelectedValue" />
+                                    </SelectParameters>
+                                </asp:SqlDataSource>
+                                <asp:TextBoxWatermarkExtender ID="QtyTextBoxWatermarkExtender" runat="server" TargetControlID="QtyTextBox"
+                                    WatermarkText="1" WatermarkCssClass="watermark" />
+                                <br />
+                                <br />
+                                <asp:TextBox ID="QtyTextBox" runat="server" Width="20px" />
+                                <h4>
+                                    <asp:Label ID="UMLabel" runat="server" Text=""></asp:Label></h4>
+                                <br />
+                                <br />
+                                <div class="align-right">
+                                    <asp:ImageButton ID="AddOK" runat="server" ToolTip="Add Component" ImageUrl="../images/icons/add.png"
+                                        CausesValidation="false" />
+                                </div>
+                            </asp:Panel>
+                            <br />
+                        </div>
+                        <div class="costup-edit">
+                            <asp:Panel ID="EditCostUpHeaderPanel" runat="server" CssClass="cpHeader">
+                                <asp:Image ID="Image3" ImageUrl="~/images/headers/edit_bar.png" runat="server" />
+                            </asp:Panel>
+                            <asp:Panel ID="EditCostUpPanel" runat="server" CssClass="cpBody" DefaultButton="CompDoneButton">
+                                <asp:Panel ID="EditCodePanel" runat="server">
+                                    Code:
+                                    <asp:TextBox ID="EditCodeTextBox" runat="server" />
+                                    <asp:RequiredFieldValidator ID="CodeRequiredFieldValidator" runat="server" CssClass="error-message"
+                                        ValidationGroup="ManageGroup" ControlToValidate="EditCodeTextBox">Code field is required</asp:RequiredFieldValidator>
+                                </asp:Panel>
+                                <table>
+                                    <asp:Panel ID="EditDescPanel" runat="server">
+                                        </tr>
+                                        <td>
+                                            <h4>
+                                                Description:</h4>
+                                            <br />
+                                            <asp:TextBox ID="EditDescTextBox" runat="server" Wrap="true" CssClass="txtbox" TextMode="MultiLine" />
+                                        </td>
+                                        </tr>
+                                    </asp:Panel>
+                                </table>
+                                <table>
+                                    <asp:Panel ID="EditSensorTypePanel" runat="server">
+                                        <tr>
+                                            <td valign="top">
+                                                <h4>
+                                                    Sensor Type:</h4>
+                                            </td>
+                                            <td>
+                                                <asp:DropDownList ID="EditSensorTypeDropDown" runat="server" DataSourceID="EditSensorTypeDataSource"
+                                                    DataTextField="TypeDesc" DataValueField="TypeID" />
+                                                <asp:LinqDataSource ID="EditSensorTypeDataSource" runat="server" ContextTypeName="QPriceDataClassesDataContext"
+                                                    EntityTypeName="" OrderBy="TypeID" TableName="SensorTypes" />
+                                            </td>
+                                        </tr>
+                                    </asp:Panel>
+                                    <asp:Panel ID="EditCIPPanel" runat="server">
+                                        <tr>
+                                            <td>
+                                                <h4>
+                                                    CIP Type:</h4>
+                                            </td>
+                                            <td>
+                                                <asp:DropDownList ID="EditCIPTypeDropDown" runat="server" DataSourceID="EditCIPDataSource"
+                                                    DataTextField="CIPDesc" DataValueField="CIPID" CausesValidation="false" />
+                                                <asp:SqlDataSource ID="EditCIPDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:QPdatabaseConnectionString %>"
+                                                    SelectCommand="SELECT * FROM [CIPCatagory]"></asp:SqlDataSource>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h4>
+                                                    CIP Cap Type:</h4>
+                                            </td>
+                                            <td>
+                                                <asp:DropDownList ID="EditCIPCapDropDown" runat="server" CausesValidation="false">
+                                                    <asp:ListItem Value="A1">A1 - 3/4" 16 AMP Clamp Cap</asp:ListItem>
+                                                    <asp:ListItem Value="A2">A2 - 1-1/2" 16 AMP Clamp Cap</asp:ListItem>
+                                                    <asp:ListItem Value="A3">A3 - 2" 16 AMP Clamp Cap</asp:ListItem>
+                                                    <asp:ListItem Value="A4">A4 - 2-1/2" 16 AMP Clamp Cap</asp:ListItem>
+                                                    <asp:ListItem Value="A5">A5 - 3" 16 AMP Clamp Cap</asp:ListItem>
+                                                    <asp:ListItem Value="A6">A6 - 4" 16 AMP Clamp Cap</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </td>
+                                        </tr>
+                                    </asp:Panel>
+                                    <asp:Panel ID="EditIPPanel" runat="server">
+                                        <tr>
+                                            <td>
+                                                <h4>
+                                                    Insertion Probe:</h4>
+                                            </td>
+                                            <td>
+                                                <asp:DropDownList ID="EditIPCatDropDown" runat="server" DataSourceID="IPCatagoryDataSource"
+                                                    DataTextField="IPDesc" DataValueField="IPID" CausesValidation="false" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h4>
+                                                    Insertion Probe Type:</h4>
+                                            </td>
+                                            <td>
+                                                <asp:DropDownList ID="EditIPTypeDropDown" runat="server" DataSourceID="IPTypeDataSource"
+                                                    DataTextField="IPTypeDesc" DataValueField="IPTypeID" CausesValidation="false" />
+                                            </td>
+                                        </tr>
+                                    </asp:Panel>
+                                    <asp:Panel ID="EditSheathTermPanel" runat="server">
+                                        <tr>
+                                            <td valign="top">
+                                                <h4>
+                                                    Sheath Termination:</h4>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="EditSheathTermTextBox" runat="server" />
+                                                <br />
+                                                <asp:CustomValidator ID="EditSheathTermValidator" runat="server" ControlToValidate="EditSheathTermTextBox"
+                                                    OnServerValidate="SheathCustomValidator_ServerValidate" Display="Dynamic" CssClass="error-message"
+                                                    ValidationGroup="ManageGroup"> Must be only one character long.<br /> (i.e. "B" = Tube & Wire)</asp:CustomValidator>
+                                                <asp:RequiredFieldValidator ID="EditSheathTermRequiredFieldValidator" runat="server"
+                                                    ControlToValidate="EditSheathTermTextBox" Display="Dynamic" CssClass="error-message"
+                                                    ToolTip="Termination code is required" ValidationGroup="ManageGroup"> required</asp:RequiredFieldValidator>
+                                            </td>
+                                        </tr>
+                                    </asp:Panel>
+                                    <asp:Panel ID="EditTWAssemblyPanel" runat="server">
+                                        <tr>
+                                            <td>
+                                                <h4>
+                                                    Configuration:</h4>
+                                            </td>
+                                            <td>
+                                                <asp:DropDownList ID="EditTWConfigDropDown" runat="server" DataSourceID="TWConfigDataSource"
+                                                    DataTextField="TWConfigDesc" DataValueField="TWConfigID" CausesValidation="false" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h4>
+                                                    Extension Length:</h4>
+                                            </td>
+                                            <td>
+                                                <asp:DropDownList ID="EditTWExtLengthDropDown" runat="server" CausesValidation="false"
+                                                    DataSourceID="TWExtLengthDataSource" DataTextField="TWExtLengthDesc" DataValueField="TWExtLengthID" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h4>
+                                                    Extension Material:</h4>
+                                            </td>
+                                            <td>
+                                                <asp:DropDownList ID="EditTWExtMaterialDropDown" runat="server" DataSourceID="TWMatDataSource"
+                                                    DataTextField="MaterialDesc" DataValueField="MaterialID" CausesValidation="false" />
+                                            </td>
+                                        </tr>
+                                    </asp:Panel>
+                                    <asp:Panel ID="EditLWTermPanel" runat="server">
+                                        <tr>
+                                            <td valign="top">
+                                                <h4>
+                                                    Leadwire Termination:</h4>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="EditLWTermTextBox" runat="server" />
+                                                <br />
+                                                <asp:CustomValidator ID="EditLWTermValidator" runat="server" ControlToValidate="EditLWTermTextBox"
+                                                    OnServerValidate="LeadwireTermCustomValidator_ServerValidate" Display="Dynamic"
+                                                    CssClass="error-message" ValidationGroup="ManageGroup"> Must be only one character long <br /> (i.e. "B" = 2-1/2" split leads)</asp:CustomValidator>
+                                                <asp:RequiredFieldValidator ID="EditLWRequiredFieldValidator" runat="server" ControlToValidate="EditLWTermTextBox"
+                                                    Display="Dynamic" CssClass="error-message" ToolTip="Termination code is required"
+                                                    ValidationGroup="ManageGroup"> required</asp:RequiredFieldValidator>
+                                            </td>
+                                        </tr>
+                                    </asp:Panel>
+                                    <asp:Panel ID="EditElementPanel" runat="server">
+                                        <tr>
+                                            <td valign="top">
+                                                <h4>
+                                                    Element:</h4>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="EditElementTextBox" runat="server" />
+                                                <br />
+                                                <asp:CustomValidator ID="EditElementValidator" runat="server" ControlToValidate="EditElementTextBox"
+                                                    OnServerValidate="ElementCustomValidator_ServerValidate" Display="Dynamic" CssClass="error-message"
+                                                    ValidationGroup="ManageGroup"> Must be two character long.<br /> (i.e. "AG"= 2-Wire, 100 Ohm Class A)</asp:CustomValidator>
+                                                <asp:RequiredFieldValidator ID="EditElementRequiredFieldValidator" runat="server"
+                                                    ControlToValidate="EditElementTextBox" Display="Dynamic" CssClass="error-message"
+                                                    ToolTip="Termination code is required" ValidationGroup="ManageGroup"> required</asp:RequiredFieldValidator>
+                                            </td>
+                                        </tr>
+                                    </asp:Panel>
+                                    <asp:Panel ID="EditWireCountPanel" runat="server">
+                                        <tr>
+                                            <td valign="top">
+                                                <h4>
+                                                    Wire Count:</h4>
+                                            </td>
+                                            <td>
+                                                <asp:DropDownList ID="EditWireCountDropDown" runat="server" DataSourceID="EditWireCountDataSource"
+                                                    DataTextField="WireDesc" DataValueField="WireCountID" />
+                                                <asp:LinqDataSource ID="EditWireCountDataSource" runat="server" ContextTypeName="QPriceDataClassesDataContext"
+                                                    EntityTypeName="" TableName="WireCounts" />
+                                            </td>
+                                        </tr>
+                                    </asp:Panel>
+                                    <asp:Panel ID="EditCalPanel" runat="server">
+                                        <tr>
+                                            <td valign="top">
+                                                <h4>
+                                                    Calibration:</h4>
+                                            </td>
+                                            <td>
+                                                <asp:DropDownList ID="EditCalDropDown" runat="server" DataSourceID="EditCalDataSource"
+                                                    DataTextField="CalDesc" DataValueField="CalID" />
+                                                <asp:LinqDataSource ID="EditCalDataSource" runat="server" ContextTypeName="QPriceDataClassesDataContext"
+                                                    EntityTypeName="" TableName="Calibrations" />
+                                            </td>
+                                        </tr>
+                                    </asp:Panel>
+                                    <asp:Panel ID="EditTempPanel" runat="server">
+                                        <tr>
+                                            <td valign="top">
+                                                <h4>
+                                                    Temperature:</h4>
+                                            </td>
+                                            <td>
+                                                <asp:DropDownList ID="EditTempDropDown" runat="server" DataSourceID="EditTempDataSource"
+                                                    DataTextField="TempDesc" DataValueField="TempID" AutoPostBack="true" />
+                                                <asp:LinqDataSource ID="EditTempDataSource" runat="server" ContextTypeName="QPriceDataClassesDataContext"
+                                                    EntityTypeName="" TableName="Temperatures" />
+                                            </td>
+                                        </tr>
+                                    </asp:Panel>
+                                    <asp:Panel ID="EditODPanel" runat="server">
+                                        <tr>
+                                            <td valign="top">
+                                                <h4>
+                                                    OD:</h4>
+                                            </td>
+                                            <td>
+                                                <asp:DropDownList ID="EditODDropDown" runat="server" DataSourceID="EditODDataSource"
+                                                    DataTextField="ODDecimal" DataValueField="ODID" />
+                                                <asp:LinqDataSource ID="EditODDataSource" runat="server" ContextTypeName="QPriceDataClassesDataContext"
+                                                    OrderBy="ODDecimal" TableName="ODs" />
+                                            </td>
+                                        </tr>
+                                    </asp:Panel>
+                                </table>
+                                <br />
+                                <div class="align-right">
+                                    <asp:ImageButton ID="RevertLinkButton" runat="server" ImageUrl="~/images/icons/undo.png"
+                                        CausesValidation="false" ToolTip="Revert" /></div>
+                            </asp:Panel>
+                        </div>
+                    </div>
+                    <div class="costup-row">
+                        <div class="costup-footer">
+                            <ul>
+                                <li>
+                                    <asp:LinkButton ID="DeleteCostUpLinkButton" runat="server" Text="Delete" CausesValidation="false" />
+                                </li>
+                                <li>
+                                    <asp:LinkButton ID="DuplicateLinkButton" runat="server" Text="Duplicate" CausesValidation="false" />
+                                </li>
+                                <li>
+                                    <asp:Button ID="CompDoneButton" runat="server" CausesValidation="true" ValidationGroup="ManageGroup"
+                                        Text="Done" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </asp:Panel>
+            <asp:Button ID="UpdateCompButton" runat="server" Text="Button" CssClass="hidden"
+                CausesValidation="false" />
+            <!------------------------------------------------------------------------------------------------------------->
+            <!-----------------------------------------ADD COST UP PANEL -------------------------------------------------->
+            <!------------------------------------------------------------------------------------------------------------->
+            <asp:ModalPopupExtender ID="AddModalPopup" runat="server" BackgroundCssClass="modalBackground"
+                DropShadow="true" OkControlID="" PopupControlID="AddPanel" TargetControlID="AddHiddenField">
+            </asp:ModalPopupExtender>
+            <asp:HiddenField ID="AddHiddenField" runat="server" />
+            <asp:Panel ID="AddPanel" runat="server" DefaultButton="AddProductButton" CssClass="modalPanel"
+                Style="display: none;">
+                <div class="close">
+                    <asp:ImageButton ID="CloseAddImageButton" runat="server" ImageUrl="~/images/close2.gif"
+                        CausesValidation="false" />
+                </div>
+                <h1>
+                    Add
+                    <asp:Label ID="CostTypeLabel" runat="server" Text="" />
+                    Cost Up</h1>
+                <br />
+                <table class="pad-table">
+                    <asp:Panel ID="CatagoryPanel" runat="server">
+                        <tr>
+                            <td>
+                                Catagory:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="TypeDropDown" runat="server" DataSourceID="SensorDataSource"
+                                    DataTextField="TypeDesc" DataValueField="TypeID" Width="125px" AutoPostBack="true"
+                                    CausesValidation="false" />
+                                <asp:SqlDataSource ID="SensorDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:QPdatabaseConnectionString %>"
+                                    SelectCommand="SELECT * FROM [SensorType]"></asp:SqlDataSource>
+                            </td>
+                        </tr>
+                    </asp:Panel>
+                    <asp:Panel ID="CIPPanel" runat="server">
+                        <tr>
+                            <td>
+                                CIP Type:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="CIPDropDown" runat="server" DataSourceID="CIPDataSource" DataTextField="CIPDesc"
+                                    DataValueField="CIPID" Width="200px" CausesValidation="false" />
+                                <asp:SqlDataSource ID="CIPDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:QPdatabaseConnectionString %>"
+                                    SelectCommand="SELECT * FROM [CIPCatagory]"></asp:SqlDataSource>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                CIP Cap Type:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="CIPCapDropDown" runat="server" Width="200px" CausesValidation="false">
+                                    <asp:ListItem Value="A1">A1 - 1" 16 AMP Clamp Cap</asp:ListItem>
+                                    <asp:ListItem Value="A2">A2 - 1-1/2" 16 AMP Clamp Cap</asp:ListItem>
+                                    <asp:ListItem Value="A3">A3 - 2" 16 AMP Clamp Cap</asp:ListItem>
+                                    <asp:ListItem Value="A4">A4 - 2-1/2" 16 AMP Clamp Cap</asp:ListItem>
+                                    <asp:ListItem Value="A5">A5 - 3" 16 AMP Clamp Cap</asp:ListItem>
+                                    <asp:ListItem Value="A6">A6 - 4" 16 AMP Clamp Cap</asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                        </tr>
+                    </asp:Panel>
+                    <asp:Panel ID="IPPanel" runat="server">
+                        <tr>
+                            <td>
+                                Insertion Probe:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="IPCatDropDown" runat="server" DataSourceID="IPCatagoryDataSource"
+                                    DataTextField="IPDesc" DataValueField="IPID" Width="200px" CausesValidation="false" />
+                                <asp:SqlDataSource ID="IPCatagoryDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:QPdatabaseConnectionString %>"
+                                    SelectCommand="SELECT * FROM [IPCatagory]"></asp:SqlDataSource>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Insertion Probe Type:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="IPTypeDropDown" runat="server" DataSourceID="IPTypeDataSource"
+                                    DataTextField="IPTypeDesc" DataValueField="IPTypeID" Width="200px" CausesValidation="false" />
+                                <asp:SqlDataSource ID="IPTypeDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:QPdatabaseConnectionString %>"
+                                    SelectCommand="SELECT * FROM [IPType]"></asp:SqlDataSource>
+                            </td>
+                        </tr>
+                    </asp:Panel>
+                    <asp:Panel ID="TWAssemblyPanel" runat="server">
+                        <tr>
+                            <td>
+                                Configuration:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="TWConfigDropDown" runat="server" Width="200px" DataSourceID="TWConfigDataSource"
+                                    DataTextField="TWConfigDesc" DataValueField="TWConfigID" CausesValidation="false" />
+                                <asp:SqlDataSource ID="TWConfigDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:QPdatabaseConnectionString %>"
+                                    SelectCommand="SELECT * FROM [TWConfiguration]"></asp:SqlDataSource>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Extension Length:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="TWExtLenghtDropDown" runat="server" Width="200px" CausesValidation="false"
+                                    DataSourceID="TWExtLengthDataSource" DataTextField="TWExtLengthDesc" DataValueField="TWExtLengthID" />
+                                <asp:SqlDataSource ID="TWExtLengthDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:QPdatabaseConnectionString %>"
+                                    SelectCommand="SELECT * FROM [TWExtLength]"></asp:SqlDataSource>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Extension Material:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="TWMaterialDropDown" runat="server" Width="200px" DataSourceID="TWMatDataSource"
+                                    DataTextField="MaterialDesc" DataValueField="MaterialID" CausesValidation="false" />
+                                <asp:SqlDataSource ID="TWMatDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:QPdatabaseConnectionString %>"
+                                    SelectCommand="SELECT * FROM [Material]"></asp:SqlDataSource>
+                            </td>
+                        </tr>
+                    </asp:Panel>
+                    <asp:Panel ID="DescPanel" runat="server">
+                        <tr>
+                            <td valign="top">
+                                Description:
+                                <br />
+                                <asp:RequiredFieldValidator ID="DescRequiredFieldValidator" runat="server" ControlToValidate="DescTextBox"
+                                    CssClass="error-message" ToolTip="Description is required" Display="Dynamic" ValidationGroup="AddValidCost"> required </asp:RequiredFieldValidator>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="DescTextBox" runat="server" Width="300px" Height="50px" Wrap="true"
+                                    TextMode="MultiLine" CssClass="txtbox"></asp:TextBox>
+                            </td>
+                        </tr>
+                    </asp:Panel>
+                    <asp:Panel ID="SheathTermPanel" runat="server">
+                        <tr>
+                            <td>
+                                Sheath Termination:
+                            </td>
+                            <td>
+                                <div class="inlineList">
+                                    <ul>
+                                        <li>
+                                            <asp:TextBox ID="SheathTermTextBox" runat="server" Width="120px" /></li>
+                                        <li>
+                                            <asp:CustomValidator ID="SheathCustomValidator" runat="server" ControlToValidate="SheathTermTextBox"
+                                                OnServerValidate="SheathCustomValidator_ServerValidate" Display="Dynamic" CssClass="error-message"
+                                                ValidationGroup="AddValidCost"> Must be only one character long.<br /> (i.e. "B" = Tube & Wire)</asp:CustomValidator>
+                                            <asp:RequiredFieldValidator ID="SheathRequiredFieldValidator" runat="server" ControlToValidate="SheathTermTextBox"
+                                                Display="Dynamic" CssClass="error-message" ToolTip="Termination code is required"
+                                                ValidationGroup="AddValidCost"> required</asp:RequiredFieldValidator>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </asp:Panel>
+                    <asp:Panel ID="LeadwireTermPanel" runat="server">
+                        <tr>
+                            <td>
+                                Leadwire Termination:
+                            </td>
+                            <td>
+                                <div class="inlineList">
+                                    <ul>
+                                        <li>
+                                            <asp:TextBox ID="LeadwireTermTextBox" runat="server" Width="120px" /></li>
+                                        <li>
+                                            <asp:CustomValidator ID="LeadwireTermCustomValidator" runat="server" ControlToValidate="LeadwireTermTextBox"
+                                                OnServerValidate="LeadwireTermCustomValidator_ServerValidate" Display="Dynamic"
+                                                CssClass="error-message" ValidationGroup="AddValidCost">Must be only one character long <br /> (i.e. "B" 2-1/2" split leads)</asp:CustomValidator>
+                                            <asp:RequiredFieldValidator ID="LeadwireTermRequiredFieldValidator" runat="server"
+                                                ControlToValidate="LeadwireTermTextBox" Display="Dynamic" CssClass="error-message"
+                                                ToolTip="Termination code is required" ValidationGroup="AddValidCost"> required</asp:RequiredFieldValidator>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </asp:Panel>
+                    <asp:Panel ID="ElementPanel" runat="server">
+                        <tr>
+                            <td>
+                                Element:
+                            </td>
+                            <td>
+                                <div class="inlineList">
+                                    <ul>
+                                        <li>
+                                            <asp:TextBox ID="ElementTextBox" runat="server" Width="120" />
+                                        </li>
+                                        <li>
+                                            <asp:RequiredFieldValidator ID="ElementRequiredFieldValidator" runat="server" ControlToValidate="ElementTextBox"
+                                                Display="Dynamic" CssClass="error-message" ToolTip="Element is required when creating base product of type 'RTD'"> required</asp:RequiredFieldValidator>
+                                            <asp:CustomValidator ID="ElementCustomValidator" runat="server" ControlToValidate="ElementTextBox"
+                                                OnServerValidate="ElementCustomValidator_ServerValidate" Display="Dynamic" CssClass="error-message"
+                                                ValidationGroup="AddValidCost"></asp:CustomValidator>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </asp:Panel>
+                    <asp:Panel ID="WireCountPanel" runat="server">
+                        <tr>
+                            <td>
+                                Wire Count:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="WireCountDropDown" runat="server" DataSourceID="WireCountDataSource"
+                                    DataTextField="WireDesc" DataValueField="WireCountID" Width="125px" />
+                                <asp:LinqDataSource ID="WireCountDataSource" runat="server" ContextTypeName="QPriceDataClassesDataContext"
+                                    EntityTypeName="" TableName="WireCounts">
+                                </asp:LinqDataSource>
+                            </td>
+                        </tr>
+                    </asp:Panel>
+                    <asp:Panel ID="CalibrationPanel" runat="server">
+                        <tr>
+                            <td>
+                                Calibration:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="CalibrationDropDown" runat="server" DataSourceID="CalDataSource"
+                                    DataTextField="CalDesc" DataValueField="CalID" Width="125px" />
+                                <asp:LinqDataSource ID="CalDataSource" runat="server" ContextTypeName="QPriceDataClassesDataContext"
+                                    EntityTypeName="" TableName="Calibrations">
+                                </asp:LinqDataSource>
+                            </td>
+                        </tr>
+                    </asp:Panel>
+                    <asp:Panel ID="TempPanel" runat="server">
+                        <tr>
+                            <td>
+                                Temperature:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="TempDropDown" runat="server" DataSourceID="TempDataSource"
+                                    DataTextField="TempDesc" DataValueField="TempID" Width="125px" AutoPostBack="true" />
+                                <asp:LinqDataSource ID="TempDataSource" runat="server" ContextTypeName="QPriceDataClassesDataContext"
+                                    EntityTypeName="" TableName="Temperatures">
+                                </asp:LinqDataSource>
+                            </td>
+                        </tr>
+                    </asp:Panel>
+                    <asp:Panel ID="SheathODPanel" runat="server">
+                        <tr>
+                            <td>
+                                Sheath OD:
+                            </td>
+                            <td>
+                                <asp:DropDownList ID="ODDropDown" runat="server" DataSourceID="ODDataSource" DataTextField="ODDecimal"
+                                    DataValueField="ODID" Width="125px" />
+                                <asp:LinqDataSource ID="ODDataSource" runat="server" ContextTypeName="QPriceDataClassesDataContext"
+                                    OrderBy="ODDecimal" TableName="ODs">
+                                </asp:LinqDataSource>
+                            </td>
+                        </tr>
+                    </asp:Panel>
+                </table>
+                <ul>
+                    <li>
+                        <asp:ImageButton ID="AddProductButton" runat="server" ImageUrl="../images/icons/check.png"
+                            ValidationGroup="AddValidCost" /></li>
+                </ul>
+            </asp:Panel>
+            <!------------------------------------------------------------------------------------------------------------->
+            <!------------------------------------------ MESSAGE BOX PANEL ------------------------------------------------>
+            <!------------------------------------------------------------------------------------------------------------->
+            <asp:ModalPopupExtender ID="MessageModalPopupExtender" runat="server" BackgroundCssClass="modalBackground"
+                DropShadow="true" CancelControlID="CloseImageButton" PopupControlID="MessagePanel"
+                TargetControlID="MessageHiddenField" />
+            <asp:HiddenField ID="MessageHiddenField" runat="server" />
+            <asp:HiddenField ID="CodeHiddenField" runat="server" />
+            <asp:Panel ID="MessagePanel" runat="server" CssClass="message-box" Style="display: none;">
+                <div class="close">
+                    <asp:ImageButton ID="CloseImageButton" runat="server" ImageUrl="~/images/close2.gif"
+                        CausesValidation="false" />
+                </div>
+                <table>
+                    <tr>
+                        <td>
+                            <div class="messageImage">
+                                <asp:Image ID="MessageImage" runat="server" /></div>
+                        </td>
+                        <td>
+                            <h4>
+                                <asp:Label ID="MessageLabel" runat="server" Text="Label" /></h4>
+                        </td>
+                    </tr>
+                </table>
+                <center>
+                    <asp:Button ID="CompExistYesButton" runat="server" Text="Yes" CssClass="button" CausesValidation="false" />
+                    <asp:Button ID="CompExistNoButton" runat="server" Text="No" CssClass="button" CausesValidation="false" />
+                    <asp:Button ID="MessageOKButton" runat="server" Text="OK" CssClass="button" CausesValidation="false" />
+                    <asp:Button ID="DeleteBaseYesButton" runat="server" Text="Yes" CssClass="button"
+                        CausesValidation="false" />
+                    <asp:Button ID="DeleteBaseNoButton" runat="server" Text="No" CssClass="button" CausesValidation="false" />
+                    <asp:Button ID="DeleteCompYesButton" runat="server" Text="Yes" CssClass="button"
+                        CausesValidation="false" />
+                    <asp:Button ID="DeleteCompNoButton" runat="server" Text="No" CssClass="button" CausesValidation="false" />
+                </center>
+            </asp:Panel>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+</asp:Content>

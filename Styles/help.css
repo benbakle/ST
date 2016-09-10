@@ -1,0 +1,25 @@
+﻿.help{
+    line-height:25px;
+}
+.help img{
+    width:90%;
+    border:1px solid #ccc;
+}
+.help .column-container{
+    border-bottom:1px solid #eee;
+}
+.help .column-container .column{
+    width:50%;
+    padding:20px;
+}
+.help b{
+    font-size:.9em;
+}
+.help h5{
+    font-size:1.2em;
+}
+.help img#welcome{
+    display:block;
+    margin:0 auto;
+    width:unset;
+}

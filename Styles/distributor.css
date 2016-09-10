@@ -1,0 +1,89 @@
+﻿/*************************
+**** DISTRIBUTOR MAP *****
+**************************/
+
+.distributor-container {
+    position: relative;
+    box-sizing:border-box;
+    width: 100%;
+}
+
+.dist-map {
+    position: relative;
+    box-sizing:border-box;
+    float: left;
+    width: 455px;
+    padding-left:20px;
+}
+
+.dist-info {
+    position: relative;
+    box-sizing:border-box;
+    float: left;
+    width:425px;
+    min-height: 312px;
+    padding-right: 20px;
+    border-right: 1px solid #dedede;
+}
+    .dist-info h4 {
+        font-weight: bold;
+    }
+
+    .dist-info h5 {
+        font-size: 1em;
+        font-weight:bold;
+    }
+
+    .dist-info .contacts {
+        position: relative;
+        width: 100%;
+    }
+
+    .dist-info .primary-contact, .dist-info .secondary-contact {
+        position: relative;
+        float: left;
+        width: 100%;
+    }
+    .dist-info .contacts a {
+        display:inline-block;
+    }
+
+@media only screen and (max-device-width: 600px) {
+
+    .distributor-container select{
+        padding:20px;
+        width:100%;
+
+    }
+    .dist-map{
+        display:none;
+    }
+    .dist-info{
+        font-size:2.3em;
+        width:100%;
+        border:unset;
+
+    }
+    .dist-info hr{
+        height:3px;
+    }
+    .dist-info .dist-become{
+        font-size:.68em;
+    }
+    .dist-info .contacts, .dist-info .primary-contact{
+        width:100%;
+        padding:25px 0;
+    }
+    .dist-info a {
+        display:inline;
+        font-size: 1.5em;
+    }
+    .dist-info .dist-select span{
+        display:none;
+    }
+    .dist-info .dist-select:after{
+        content:"Please select your state from the dropdown."
+    }
+}
+
+

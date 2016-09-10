@@ -1,0 +1,61 @@
+﻿/******************************
+**** RESOURCE PAGE LAYOUT *****
+*******************************/
+.resource-page {
+    font: normal 12px "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    width: 100%;
+}
+
+    .resource-page h5 {
+        font-size: 1.2em;
+    }
+
+    .resource-page .column-container {
+        border-bottom: 2px solid #eee;
+        line-height: 20px;
+    }
+
+        .resource-page .column-container .column {
+            padding: 20px;
+            width: 50%;
+        }
+
+        .resource-page .column-container .graphic.column {
+            text-align: center;
+        }
+
+        .resource-page .column-container .text.column {
+            width: 50%;
+        }
+
+            .resource-page .column-container .text.column a {
+                font-weight: bold;
+            }
+
+        .resource-page .column-container .graphic.column img, .resource-page .column-container .graphic.column input {
+            height: 300px;
+        }
+
+    .resource-page .list.column-container {
+        border: 0;
+    }
+
+        .resource-page .list.column-container p {
+            padding: 8px 0;
+        }
+@media only screen and (max-device-width: 600px) {
+
+    .resource-page .column-container .graphic.column{
+        display:none;
+    }
+
+    .resource-page .column-container .text.column{
+        width:100%;
+        margin:50px 0;
+        line-height:50px
+    }
+
+    .resource-page{
+        font-size:1.2em;
+    }
+}

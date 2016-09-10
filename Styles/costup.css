@@ -1,0 +1,263 @@
+﻿
+.costup-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+    .costup-container .costup-header {
+        clear: both;
+        width: 100%;
+        display: inline-block;
+    }
+
+        .costup-container .costup-header h2 {
+            font-size: 1.4em;
+        }
+
+    .costup-container .column-container {
+    }
+
+        .costup-container .column-container .column {
+            width: 50%;
+            padding: 10px 25px;
+        }
+
+        /*--------------------*/
+        /*CALCULATE CONTAINTER*/
+        /*--------------------*/
+
+        .costup-container .column-container #costupCalculate .column-container {
+            border: 0;
+        }
+         .costup-container .column-container #costupCalculate .column-container .column {
+             height:50px;
+             padding:15px 10px;
+         }
+            .costup-container .column-container #costupCalculate .column-container .column:first-child {
+                width:55%;
+            }
+            .costup-container .column-container #costupCalculate .column-container .column:last-child {
+                width:45%;
+            }
+        .costup-container .column-container #costupCalculate a {
+            font-size: 1.25em;
+            font-weight: 700;
+        }
+        .costup-container .column-container #costupCalculate .textbox{
+            width:45px;
+            margin:0;
+        }
+        .costup-container .column-container #costupCalculate .column-container {
+            border-top: 1px dashed #ccc;
+        }
+
+        .costup-container .column-container #costupCalculate #costupTotal {
+            border-top: 1px solid #ccc;
+        }
+
+            .costup-container .column-container #costupCalculate #costupTotal .column:first-child {
+                text-align: right;
+            }
+
+
+
+        /*----------------------*/
+        /*BASE DESIGN CONTAINTER*/
+        /*----------------------*/
+
+        .costup-container .column-container #baseDesign {
+            border-left: 1px solid #ccc;
+        }
+
+            .costup-container .column-container #baseDesign .column-container {
+                width: 100%;
+                border: none;
+            }
+
+            .costup-container .column-container #baseDesign .textbox#MainContent_EditDescTextBox {
+                height: 100px;
+                width: 95%;
+                box-sizing: border-box;
+                padding: 7px;
+                margin-bottom: 25px;
+            }
+
+            .costup-container .column-container #baseDesign .column-container .column {
+                padding: 5px 0;
+            }
+
+                .costup-container .column-container #baseDesign .column-container .column .textbox,
+                .costup-container .column-container #baseDesign .column-container .column select {
+                    box-sizing: border-box;
+                    padding: 0 7px;
+                    width: 90%;
+                }
+
+    /*---------------------*/
+    /*COMPONENTS CONTAINTER*/
+    /*---------------------*/
+
+    .costup-container .costup-components {
+        margin: 25px 0;
+        width: 100%;
+    }
+
+        .costup-container .costup-components .costup-grid-footer {
+            width: 90%;
+            box-sizing: border-box;
+            margin: 0 auto;
+            border-top: 1px solid #ccc;
+            padding: 20px 20px 20px 0;
+        }
+
+            .costup-container .costup-components .costup-grid-footer #materialTotal {
+                float: right;
+                color: #333;
+                font-size: 1.5em;
+                font-weight: 700;
+            }
+
+            .costup-container .costup-components .costup-grid-footer .button {
+                margin-left: 10px;
+            }
+            .costup-container .costup-components .costup-grid-footer a{
+                display:inline-block;
+                margin:0 15px;
+                font-weight:700;
+                font-size:1.2em;
+            }
+
+        .costup-container .costup-components .message-box, .costup-container .costup-components .error-box {
+            margin: 0 auto;
+            width: 85%;
+        }
+        /*---------------*/
+        /*COSTUP GRIDVIEW*/
+        /*---------------*/
+        .costup-container .costup-components table.costup-grid {
+            margin: 0 auto;
+            width: 90%;
+            font-size: 1.2em;
+        }
+
+            .costup-container .costup-components table.costup-grid h4 {
+                font-size: 1em;
+            }
+
+            .costup-container .costup-components table.costup-grid tr td {
+                border-top: 1px dashed #ccc;
+                height: 50px;
+            }
+
+                .costup-container .costup-components table.costup-grid tr td:first-child {
+                    color: #008080;
+                    text-align: left;
+                    padding-left: 5px;
+                    width: 10%;
+                }
+
+                .costup-container .costup-components table.costup-grid tr td:nth-child(2) {
+                    text-align: left;
+                    width: 70%;
+                }
+
+                .costup-container .costup-components table.costup-grid tr td:nth-child(3) {
+                    text-align: center;
+                    font-size: .7em;
+                    width: 10%;
+                }
+
+                .costup-container .costup-components table.costup-grid tr td:nth-child(4) {
+                    text-align: center;
+                    width: 10%;
+                }
+
+                .costup-container .costup-components table.costup-grid tr td .textbox {
+                    box-sizing: border-box;
+                    padding: 2px;
+                    margin: 0;
+                    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+                    font-size: 1.0em;
+                    width: 60%;
+                }
+
+            .costup-container .costup-components table.costup-grid .noSelect:hover,
+            .costup-container .costup-components table.costup-grid .noSelect:hover td {
+                background: linear-gradient(#fff,#eee);
+                color: #010101;
+                cursor: pointer;
+            }
+
+            .costup-container .costup-components table.costup-grid th {
+                visibility: hidden;
+            }
+
+            .costup-container .costup-components table.costup-grid .selected,
+            .costup-container .costup-components table.costup-grid .selected:hover,
+            .costup-container .costup-components table.costup-grid .selected:hover td {
+                background: linear-gradient(#eee,#ddd);
+            }
+
+            .costup-container .costup-components table.costup-grid .costup-comp-num, .costup-container .costup-components table.costup-grid .costup-comp-desc{
+                display:inline;
+            }
+
+    /*-------------------------*/
+    /*ADD COMPONENTS CONTAINTER*/
+    /*-------------------------*/
+
+    .costup-container .costup-add-components{
+        width: 750px;
+        overflow:auto;
+        background: linear-gradient(#fff,#eee);
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        font-size: 1em;
+        box-shadow: 0 0 90px 5px #000;
+    }
+
+    .costup-container .costup-add-components .costup-add-catagory {
+        border-top: 1px solid #eee;
+        width: 90%;
+        margin: 0 auto;
+        padding-top: 25px;
+    }
+
+    .costup-container .costup-add-components .costup-add-list {
+        width: 90%;
+        margin: 25px auto;
+    }
+
+        .costup-container .costup-add-components .costup-add-list select {
+            width: 100%;
+            height:300px;
+            padding: 5px;
+        }
+
+       .costup-container .costup-add-components .error-box{
+           margin:0 auto;
+           width:75%;
+       }   
+    .costup-container .costup-add-components .costup-add-footer {
+        margin: 25px auto;
+        width: 90%;
+    }
+
+        .costup-container .costup-add-components .costup-add-footer .textbox,
+        .costup-container .costup-add-components .costup-add-footer .watermark {
+            width: 5%;
+            text-align: center;
+            margin-right: 10px;
+        }
+
+    .costup-container .costup-footer {
+        width: 90%;
+        margin: 25px auto 0 auto;
+        text-align: right;
+    }
+
+        .costup-container .costup-footer a {
+            display: inline-block;
+            margin: 0 5px;
+        }

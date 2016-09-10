@@ -1,0 +1,348 @@
+* {
+    margin: 0;
+}
+
+/*********************
+**** TAG STYLES ******
+*********************/
+body {
+    text-align: center;
+    font: normal .75em "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    color: #333;
+    background-color: #494949;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+h1 {
+    display: inline;
+    font-weight: normal;
+    font-size: 2em;
+    color: #008080;
+}
+
+h2 {
+    display: inline;
+    font-weight: normal;
+    font-size:1.75em;
+    color: #333;
+}
+
+h3 {
+    display: inline;
+    font-weight: normal;
+    font-size:1.5em;
+    color: #ccc;
+}
+
+h4 {
+    display: inline;
+    font-weight: bold;
+    font-size:1.25em;
+    color: #555;
+}
+
+h5, a {
+    display: inline;
+    font-size: 1em;
+    font-weight: normal;
+    color: #008080;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    a.small-link {
+        font-size: 10px;
+        color: #333;
+        font-style: italic;
+    }
+
+
+    a.button {
+        display:inline-block;
+        background:linear-gradient(#339999,#006666);
+        border: 1px solid #006666;
+        font-size:1.2em;
+        padding: 5px 15px;
+        border-radius: 2px;
+        color: #efefef;
+        cursor: pointer;
+    }
+
+    a.big-button {
+        display:inline-block;
+        background: linear-gradient(#339999,#006666);
+        border: 1px solid #006666;
+        font: normal 2em "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+        padding: 9px 50px;
+        border-radius: 5px;
+        color: #efefef;
+        
+    }
+
+        a.button:hover, a.big-button:hover {
+            border: 1px solid #339999;
+            text-decoration: none;
+        }
+        a.button:active, a.big-button:active{
+            background: linear-gradient(#006666,#339999);
+            text-decoration: none;
+        }
+
+hr {
+    height: 1px;
+    border: none;
+    margin: 0;
+    background-color: #333;
+    background-image: linear-gradient(to right, #eee, #99cccc, #eee);
+}
+
+img {
+    border: none;
+}
+
+input, textarea, select {
+    font: normal 1.5em "Calibri", Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    color: #555;
+    box-sizing:border-box;
+}
+
+
+.watermark {
+    color: #aaa;
+}
+
+/*********************
+****** CLASSES *******
+*********************/
+
+.column-container {
+    position: relative;
+    box-sizing:border-box;
+    overflow:auto;
+    clear:both;
+    width: 100%;
+   
+}
+.column{
+    position:relative;
+    float: left;
+    box-sizing:border-box;
+    height:auto;
+
+}
+
+.indent {
+    padding-left: 10px;
+}
+
+.hidden {
+    display: none;
+    overflow: hidden;
+}
+
+.align-right {
+    position: relative;
+    text-align: right;
+}
+
+.clear {
+    clear: both;
+    display: block;
+    visibility: hidden;
+}
+
+.inactive, .aspNetDisabled label {
+    opacity: .3;
+    filter: alph(opacity=30);
+    cursor: text;
+}
+
+
+/*********************
+******* LISTS ********
+*********************/
+.inline-list ul, ul.inline-list {
+    list-style: none;
+    padding: 0;
+}
+
+    .inline-list ul li, ul.inline-list li {
+        display: inline;
+        margin: 0 3px;
+    }
+
+.radio-list tr td {
+    padding-left: 20px;
+}
+
+.inline-radiobuttonlist tr td {
+    position: relative;
+    float: left;
+    font-size: .8em;
+}
+
+/*********************
+******* TABLES *******
+*********************/
+
+.table-pad tr td {
+    padding-right: 30px;
+    padding-bottom: 5px;
+}
+
+/*********************
+**** MESSAGE BOX *****
+*********************/
+
+.message-box .button, error-box .button {
+    font-size:.9em;
+}
+
+.message-box, .error-box {
+    background-color: #e5f2f2;
+    border: 1px solid #0E4141;
+    padding: 25px 20px;
+    margin: 0 0px 10px 0px;
+    font: bold 1em Verdana, Geneva, sans-serif;
+}
+
+.message-box {
+    color: #555;
+}
+
+    .message-box .messageImage img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .message-box table {
+        margin: 3px;
+        width: 290px;
+    }
+
+    .message-box td {
+        vertical-align: top;
+        padding-right: 10px;
+        font: normal .8em "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    }
+
+
+/*********************
+****** ERRORS ********
+*********************/
+.error-box {
+    background-color: #ff7f7f;
+    border: 1px solid #DD3C10;
+    color: #660000;
+}
+
+    .error-box ul li {
+        list-style: none;
+    }
+
+    .error-box ul {
+        padding: 0;
+    }
+
+.error-message {
+    color:#660000;
+}
+span.error-message{
+    display:inline-block;
+    margin:0;
+    padding:0;
+    font-size:1.5em;
+}
+
+.error-box h5, .error-box a {
+    font-size: 10px;
+}
+
+/*********************
+******* MODEL ********
+*********************/
+.modalBackground {
+    background-color: #333;
+    filter: alpha(opacity=40);
+    opacity: 0.4;
+    z-index: 50;
+}
+
+.modalPanel {
+    background-color: #fff;
+    border: 1px solid #444;
+    padding: 30px;
+    width: auto;
+    z-index: 100;
+    border: 1px solid #888;
+    border-radius: 4px;
+    box-shadow: 0 0 90px 5px #333;
+}
+.close input {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 10;
+    min-height: 10px;
+}
+
+
+/*************************
+**** UPDATE PROGRESS *****
+**************************/
+
+.update_progress_background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: #333;
+    opacity: .4;
+}
+
+.update_progress_container {
+    position: fixed;
+    z-index: 1001;
+    width: 400px;
+    height: 125px;
+    top: 40%;
+    left: 50%;
+    margin-left: -200px;
+    margin-top: -63px;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    font: bold 1.5em verdana;
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #888;
+    box-shadow: 0 0 90px 5px #000;
+}
+
+    .update_progress_container img {
+        vertical-align: middle;
+        padding: 20px;
+    }
+
+@media only screen and (max-device-width: 600px) {
+    body {
+        width: 100%;
+        font-size: 100%;
+    }
+
+    .update_progress_container {
+        display: none;
+    }
+}

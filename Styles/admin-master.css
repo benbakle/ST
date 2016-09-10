@@ -1,0 +1,370 @@
+﻿
+/*********************
+***** NAV STRIP ******
+*********************/
+.admin-header-container {
+    position: absolute;
+    text-align: center;
+    top: 105px;
+    width: 100%;
+}
+
+.admin-header-container .header-tab{
+    position:relative;
+    margin:0 auto;
+    z-index:10;
+    padding:0;
+    width:100px;
+    height:15px;
+    background-color:#333;
+    line-height:2px;
+    border:1px solid #222;
+    border-radius:0px 0px 5px 5px;
+    color:#111;
+    cursor:pointer;
+    margin-top:-1px;
+}
+    .admin-header-container a {
+    }
+
+
+#Admin_UpdatePanel .button {
+    border-radius: 1px;
+    background: linear-gradient(#555,#333);
+    border: 1px solid #ccc;
+    color: #ccc;
+}
+
+    #Admin_UpdatePanel .button:hover {
+        opacity: .9;
+        color: #fff;
+    }
+
+
+
+.menu {
+    position: relative;
+    display:block;
+    margin: 0 auto;
+    width: 675px;
+    box-sizing: border-box;
+    padding: 10px 40px;
+    font-size: .9em;
+    background: linear-gradient(#444,#333);
+    border:1px solid #222;
+    border-top:none;
+    border-radius:0px 0px 5px 5px;
+    z-index:-10;
+}
+
+    .menu ul {
+        position: relative;
+        list-style: none;
+        display: inline-table;
+        padding: 0px;
+        margin: 0px;
+    }
+
+        .menu ul li {
+            float: left;
+            padding: 0 20px;
+        }
+
+        .menu ul:after {
+            clear: both;
+            display: block;
+        }
+
+        .menu ul ul {
+            display: none;
+            position: absolute;
+            padding: 0;
+            margin: 0;
+            width: 200px;
+        }
+
+            .menu ul ul li {
+                position: relative;
+                float: none;
+                border: 1px solid #666;
+                padding: 10px 20px;
+                left: -20px;
+                background-color: #333;
+                text-align: left;
+            }
+
+.subitems a li {
+    color: #eee;
+    font-size: .8em;
+}
+
+.menu ul ul li:hover {
+    background: linear-gradient(#555,#222);
+    color: #ccc;
+}
+
+.menu ul li:hover > ul {
+    display: block;
+}
+
+.menu ul li a {
+    display: block;
+    color: #DDD;
+    font-size: 1.3em;
+    text-decoration: none;
+}
+
+/*********************
+***** USER MENU ******
+*********************/
+.admin-header-container .login-welcome {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.login-menu {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    z-index: 100;
+    font-size: 1.1em;
+    padding: 15px;
+    box-sizing: border-box;
+    text-align: left;
+}
+.login-menu ul li a#Welcome{
+    display:inline-block;
+    padding:5px 0;
+}
+    .login-menu ul {
+        position: relative;
+        list-style: none;
+        display: inline-table;
+        padding: 0px;
+        margin: 0px;
+    }
+
+        .login-menu ul li {
+            float: left;
+            padding: 0 10px;
+        }
+
+        .login-menu ul:after {
+            clear: both;
+            display: block;
+        }
+
+        .login-menu ul ul {
+            display: none;
+            position: absolute;
+            padding: 0;
+            margin: 0;
+            width: 200px;
+        }
+
+            .login-menu ul ul li {
+                position: relative;
+                float: none;
+                padding: 10px 25px;
+                left: -25px;
+                background-color: #333;
+                border: 1px solid #222;
+                color:#bbb;
+                margin-right:-1px;
+                margin-bottom:-1px;
+            }
+
+                .login-menu ul ul li:hover, .login-menu ul ul li:hover a {
+                    background: linear-gradient(#555,#222);
+                    color: #ccc;
+                }
+
+        .login-menu ul li:hover > ul {
+            display: block;
+        }
+
+        .login-menu ul li a {
+            display: block;
+            color: #333;
+            text-align: left;
+            text-decoration: none;
+        }
+
+.manage-pages-links table tr td {
+    padding: 5px 10px;
+}
+
+.manage-pages-links a {
+    font-weight: normal;
+}
+
+.manage-pages-links {
+    position: relative;
+    width: 300px;
+    float: left;
+}
+
+.manage-pages-edit {
+    position: relative;
+    width: 530px;
+    float: left;
+    border-left: 1px solid #dfdfdf;
+    padding-left: 19px;
+    line-height: 25px;
+}
+
+    .manage-pages-edit table {
+        border-bottom: 1px solid #dfdfdf;
+    }
+
+        .manage-pages-edit table tr td {
+            padding-bottom: 20px;
+            vertical-align: top;
+        }
+
+        .manage-pages-edit table tr td {
+            width: 100px;
+        }
+
+    .manage-pages-edit textarea, .manage-pages-edit input {
+        width: 400px;
+    }
+
+    .manage-pages-edit textarea {
+        height: 500px;
+        width: 100%;
+        overflow: auto;
+        font-family: Courier New, Courier, monospace;
+        font-size: 1em;
+    }
+
+    .manage-pages-edit select {
+        width: 150px;
+    }
+
+
+/*******************
+Base Gridview Style
+*******************/
+.base-grid {
+    width: 100%;
+    background-color: #fff;
+    margin: 5px 0 10px 0;
+    border: solid 1px #525252;
+    border-collapse: collapse;
+}
+
+    .base-grid td {
+        height: 30px;
+        padding: 5px 10px;
+        border: solid 1px #c1c1c1;
+        vertical-align: middle;
+        color: #717171;
+        font-size: 1.1em;
+        border-top: 1px dashed #ccc;
+        border-bottom: 1px dashed #ccc;
+    }
+
+        .base-grid td:first-child {
+            font-weight: 700;
+        }
+
+    .base-grid th {
+        padding: 4px 10px;
+        color: #fff;
+        height: 20px;
+        background: linear-gradient(#666,#222);
+        border-left: solid 1px #525252;
+        font-size: 1em;
+    }
+
+    .base-grid .alt {
+        background: #fcfcfc url('../images/gridview/grd_alt.png') repeat-x top;
+    }
+
+    .base-grid .pgr {
+        background: linear-gradient(#666,#222);
+    }
+
+        .base-grid .pgr table {
+            margin: 5px 0;
+        }
+
+        .base-grid .pgr td {
+            border-width: 0;
+            padding: 0 6px;
+            border-left: solid 1px #666;
+            font-weight: bold;
+            color: #fff;
+            height: 20px;
+        }
+
+        .base-grid .pgr a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+            .base-grid .pgr a:hover {
+                color: #000;
+                text-decoration: none;
+            }
+
+    .base-grid .selected {
+        background-color: #EFEFEF;
+    }
+
+        .base-grid .noSelect:hover, .base-grid .noSelect:hover td, .base-grid .selected:hover, .base-grid .selected:hover td {
+            background-color: #dedede;
+            color: #010101;
+            cursor: pointer;
+        }
+
+        #MainContent_EditUserPanel .base-grid td select, #MainContent_EditUserPanel .base-grid td input{
+            font-size:1.2em;
+            width:100%;
+        }
+        #MainContent_EditUserPanel .base-grid td:nth-child(2),#MainContent_EditUserPanel .base-grid td:nth-child(3){
+            width:125px;
+        }
+        #MainContent_EditUserPanel .base-grid .pgr td{
+            width:unset;
+        }
+        #MainContent_Distributor_UpdatePanel .base-grid td:first-child{
+            width:200px;
+
+        }
+        #MainContent_Distributor_UpdatePanel .base-grid .pgr td{
+            width:unset;
+        }
+.resale .base-grid .noSelect:hover, .resale .base-grid .noSelect:hover td, .resale .base-grid .selected:hover, .resale .base-grid .selected:hover td {
+    cursor: text;
+}
+
+.base-grid input {
+    margin: 0;
+}
+
+.entry.column-container {
+    width:100%;
+}
+.entry.column-container .column{
+    width:50%;
+    padding:10px;
+}
+.entry.column-container .column input, .entry.column-container .column select{
+    width:90%;
+    padding:2px 5px;
+}
+
+
+
+@media only screen and (max-device-width: 600px) {
+    .admin-header-container{
+        display:none;
+
+    }
+
+
+}

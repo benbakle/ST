@@ -1,0 +1,25 @@
+﻿
+/**********
+ADMIN HOME 
+***********/
+
+.admin-home h4 a {
+    font-size: 1.2em;
+}
+
+.admin-home p{
+    font-size:1em;
+    line-height:20px;
+}
+.admin-home-left {
+    width: 395px;
+    padding: 0 24px;
+    float: left;
+    border-right: 1px solid #dedede;
+}
+
+.admin-home-right {
+    width: 395px;
+    padding: 0 25px;
+    float: left;
+}

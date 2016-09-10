@@ -1,0 +1,170 @@
+
+/*--------------------
+SCROLLABLE
+--------------------*/
+
+.scroll-container {
+    margin: 0 auto;
+    text-align: center;
+    width: 970px;
+    height: 500px;
+    box-sizing: border-box;
+}
+
+.scrollable {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    float: left;
+    width: 960px;
+    height: 500px;
+}
+
+    .scrollable .items {
+        width: 20000em;
+        position: absolute;
+    }
+
+.scroll-container .items div {
+    float: left;
+}
+
+.scroll-container .item-container {
+    width: 100%;
+    height: 437px;
+}
+
+.scroll-container .items a:hover {
+    cursor: default;
+}
+
+.scroll-container .item-container-title {
+    background: url('../images/scrollable/desc_background.png') no-repeat;
+    position: relative;
+    width: 424px;
+    height: 437px;
+    box-sizing: border-box;
+    padding: 0px 0px;
+}
+
+    .scroll-container .item-container-title img {
+        position: relative;
+        top: 157px;
+        left: -15px;
+    }
+
+.scroll-container .item-container-img {
+    position: relative;
+    right: 0px;
+    height: 437px;
+    width: 536px;
+}
+
+    .scroll-container .item-container-img img {
+        float: right;
+    }
+
+/*--------------------
+SCROLLABLE ARROW
+--------------------*/
+
+a.disabled {
+    visibility: hidden !important;
+}
+
+a.browse {
+    display: block;
+    background: url('../images/scrollable/vector_arrow.png') no-repeat;
+    width: 31px;
+    height: 50px;
+    cursor: pointer;
+}
+
+a.left {
+    margin-left: 0px;
+    position: relative;
+    left: 30px;
+    top: 193px;
+    z-index: 1;
+    opacity: 0.0;
+    filter: alpha(opacity = 0);
+    float: left;
+}
+
+a.right {
+    position: relative;
+    right: 30px;
+    top: 193px;
+    z-index: 1;
+    opacity: 0.0;
+    filter: alpha(opacity = 0);
+    float: right;
+    background-position-x: -31px;
+}
+
+/*--------------------
+SCROLLABLE NAVIGATION
+--------------------*/
+.navi {
+    position: relative;
+    margin: 0px auto;
+    width: 950px;
+    height: 25px;
+    top: -40px;
+    z-index: 2;
+}
+
+a.navbtn {
+    background: url('../images/scrollable/navbutton.png') no-repeat;
+    display: block;
+    float: left;
+    text-align: right;
+    width: 15px;
+    height: 18px;
+    margin: 0px 5px;
+}
+
+a.active {
+    cursor: default;
+    opacity: .2;
+    filter: alpha(opacity=20);
+}
+
+a.navbtn:hover {
+    opacity: .7;
+    filter: alpha(opacity=70);
+}
+
+a.active:hover {
+    opacity: .2;
+    filter: alpha(opacity=20);
+}
+
+@media only screen and (max-device-width: 600px) {
+
+    div.scrollable, div.scroll-container {
+        margin: 0;
+        width: 100%;
+        height: 437px;
+    }
+
+    a.prev, a.browse, a.right, a.next, a.left {
+        display: none;
+    }
+
+    .scroll-container .item-container-title {
+        margin: 0;
+    }
+
+    .scroll-container .item-container {
+        margin: 0;
+        width: 100%;
+        height: auto;
+    }
+
+    .scroll-container .item-container-img {
+        margin: 0;
+        width: 556px;
+        background-color: #fff;
+    }
+}

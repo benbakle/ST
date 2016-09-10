@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode url="default.aspx" title="Home"  description="SensorTec, Inc. Inovated Sensors">
+      <siteMapNode url="PS.aspx?type=1" title="Products"  description="">
+        <siteMapNode url="Topic.aspx?ID=1" title="Standard RTD's"/>
+        <siteMapNode url="Topic.aspx?ID=2" title="Mineral Insulated Thermocouples (MgO)" />
+        <siteMapNode url="Topic.aspx?ID=3" title="Plastics/Packaging Industry T/C's and RTD's" />
+        <siteMapNode url="Topic.aspx?ID=4" title="Industrial Thermocouples" />
+        <siteMapNode url="Topic.aspx?ID=5" title="Thermowell Assemblies and Thermowells" />
+        <siteMapNode url="Topic.aspx?ID=6" title="Food, Dairy and Pharmaceutical Probes" />
+        <siteMapNode url="Topic.aspx?ID=7" title="Temperature Transmitters and Instruments" />
+        <siteMapNode url="Topic.aspx?ID=8" title="Wire and Accessories" />
+      </siteMapNode>
+
+      <siteMapNode url="PS.aspx?type=2" title="Services"  description="">
+        <siteMapNode url="Topic.aspx?ID=13" title="Custom Manufacturing" />
+        <siteMapNode url="Topic.aspx?ID=14" title="Delivery Options" />
+        <siteMapNode url="Topic.aspx?ID=15" title="Calibrations" />
+        <siteMapNode url="Topic.aspx?ID=16" title="Certificates" />
+        <siteMapNode url="Topic.aspx?ID=17" title="General Terms / Information" />
+      </siteMapNode>
+ 
+    </siteMapNode>
+</siteMap>

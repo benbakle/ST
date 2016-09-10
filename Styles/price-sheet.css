@@ -1,0 +1,141 @@
+﻿/************************
+Resale (PriceSheet) Style
+*************************/
+.resale {
+    position: relative;
+    display: inline-block;
+    width: 778px;
+}
+
+.resale-contents {
+    position: relative;
+    width: 175px;
+    float: left;
+}
+
+.resale-gridview {
+    position: relative;
+    width: 580px;
+    float: left;
+    margin-left: 20px;
+    top: -5px;
+}
+
+.resale-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .resale-menu ul a {
+        text-decoration: none;
+        font-weight: normal;
+    }
+
+.resale-menu a li {
+    color: #222;
+    padding: 10px;
+    text-align: center;
+}
+
+.resale-menu ul li:hover {
+    color: #007e7f;
+    opacity: .7;
+}
+
+.resale-menu ul li {
+    position: relative;
+    float: none;
+    border: 1px solid #ddd;
+    padding: 10px 5px;
+    background-color: #f1f8f8; /*#0e4141;*/
+    font-size: 12px;
+}
+
+/*********************
+Resale Gridview Style
+*********************/
+.resale-grid
+{
+    width: 100%;
+    background-color: #fff;
+    margin: 5px 0 10px 0;
+    border-collapse: collapse;
+    border:1px solid #ddd;
+    display:inline-table;
+}
+
+.resale-grid th
+{
+    font:bold 11px "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    color:#333;/* #fff;*/
+    padding:5px 0px 5px 2px;
+    background:#f1f8f8/* #424242 url('../images/gridview/grd_head.png') repeat-x top*/;
+    border-left: solid 1px #efefef;
+    border-top:solid 1px #ddd;
+}
+
+.resale-grid tr td
+{
+    font:normal 11px "Century Gothic", CenturyGothic, AppleGothic, sans-serif; 
+    border:1px solid #dedede;
+    color:#666;
+    padding:5px 10px;
+}
+
+.resale-grid .noSelect:hover,  .resale-grid .noSelect:hover td, .resale-grid .alt:hover td
+{
+    background-color:#ffffb5;
+    color:#000;
+    cursor: text;
+}
+
+.resale-grid .alt
+{
+    background:#f7fbfb;
+    border-top:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+}
+
+.resale-grid .pgr
+{
+    background:#f1f8f8;
+}
+.resale-grid .pgr table
+{
+    margin: 5px 0;
+}
+.resale-grid .pgr td
+{
+    border-width: 0;
+    padding: 0 6px;
+    border-left: solid 1px #dedede;
+    font-weight: bold;
+    color: #007e7f;
+    line-height: 10px;
+}
+.resale-grid .pgr tr td
+{
+    width:0px;
+}
+.resale-grid .pgr a
+{
+    color: #666;
+    text-decoration: none;
+    font-size:12px;
+}
+.resale-grid .pgr a:hover
+{
+    color: #000;
+    text-decoration: none;
+}
+.price-grid{
+    width: 100%;
+      text-align:center;
+}
+
+.price-grid tr:first-child td{
+    font:normal 12px Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    color:#222;
+
+}

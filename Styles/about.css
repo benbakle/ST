@@ -1,0 +1,27 @@
+﻿.history-container{
+    position:relative;
+    background-image:url("../images/building.png");
+    background-repeat:no-repeat;
+    background-position:top center;
+    height:209px;
+    width:850px;
+}
+.history{
+    position:relative;
+    padding:40px 30px;
+    font-size:15px;
+    line-height:20px;
+    color:#222;
+}
+.about-desc{
+    position:relative;
+    float:left;
+    width:252px;
+    height:524px;
+    padding:20px;
+}
+
+.about-desc h1{
+    color:#008080;
+    font-weight:bold;
+}

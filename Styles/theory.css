@@ -1,0 +1,28 @@
+﻿/****************************
+**** THEORY PAGE LAYOUT *****
+*****************************/
+.theory {
+    padding: 0px 50px;
+    font-size: 14px;
+}
+
+    .theory h4 {
+        color: #0e4141;
+    }
+
+    .theory p {
+        padding: 5px 20px;
+    }
+
+        .theory p.indent {
+            padding: 5px 40px;
+        }
+
+    .theory h5 {
+        padding: 0px 20px;
+        text-decoration: underline;
+    }
+
+    .theory img {
+        border: 1px solid #dedede;
+    }

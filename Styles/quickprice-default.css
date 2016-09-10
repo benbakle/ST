@@ -1,0 +1,49 @@
+﻿
+
+.qp-introduction .column-container {
+    border-bottom: 1px solid #eee;
+    line-height: 25px;
+}
+
+    .qp-introduction .column-container .column {
+        padding: 25px 5px;
+        height: auto;
+    }
+    .qp-introduction .column-container .big-button{
+        position:absolute;
+        bottom:20px;
+        right:20px;
+
+    }
+
+    .qp-introduction .column-container .text.column {
+        width: 45%;
+    }
+
+    .qp-introduction .column-container .graphic.column {
+        width: 55%;
+        text-align: center;
+    }
+
+        .qp-introduction .column-container .graphic.column img {
+            width: 90%;
+        }
+       
+
+.qp-introduction .steps.column-container {
+    border: 0;
+    line-height: 20px;
+}
+
+    .qp-introduction .steps.column-container .column:first-child {
+        width: 20%;
+    }
+
+    .qp-introduction .steps.column-container .column:last-child {
+        width: 80%;
+    }
+
+    .qp-introduction .steps.column-container .column {
+        width: auto;
+        padding: 5px 10px;
+    }

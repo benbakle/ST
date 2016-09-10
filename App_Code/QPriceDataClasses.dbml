@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="qpdatabase" Class="QPriceDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=209.17.116.4;Initial Catalog=qpdatabase;User ID=sensortec" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QPdatabaseConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Temperature" Member="Temperatures">
+    <Type Name="Temperature">
+      <Column Name="TempID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TempDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TempCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Temperature_CostUp" Member="CostUps" ThisKey="TempID" OtherKey="Temp_ID" Type="CostUp" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UM" Member="UMs">
+    <Type Name="UM">
+      <Column Name="UMID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UMDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="UM_Component" Member="Components" ThisKey="UMID" OtherKey="UM_ID" Type="Component" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ComponentCatagory" Member="ComponentCatagories">
+    <Type Name="ComponentCatagory">
+      <Column Name="CatagoryID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CatagoryDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CatagoryInvCode" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="ComponentCatagory_Component" Member="Components" ThisKey="CatagoryID" OtherKey="Catagory_ID" Type="Component" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Calibration" Member="Calibrations">
+    <Type Name="Calibration">
+      <Column Name="CalID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CalCode" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="CalDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Calibration_Component" Member="Components" ThisKey="CalID" OtherKey="Cal_ID" Type="Component" />
+      <Association Name="Calibration_CostUp" Member="CostUps" ThisKey="CalID" OtherKey="Cal_ID" Type="CostUp" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Discount" Member="Discounts">
+    <Type Name="Discount">
+      <Column Name="DiscountID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DisountCode" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="DiscountDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Discount_Company" Member="Companies" ThisKey="DiscountID" OtherKey="Discount_ID" Type="Company" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserRole" Member="UserRoles">
+    <Type Name="UserRole">
+      <Column Name="RoleID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RoleDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="UserRole_Customer" Member="Customers" ThisKey="RoleID" OtherKey="Role_ID" Type="Customer" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Constant" Member="Constants">
+    <Type Name="Constant">
+      <Column Name="ConstantID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ConstantDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ConstantValue" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SingleDual" Member="SingleDuals">
+    <Type Name="SingleDual">
+      <Column Name="SingleDualID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SingleDualCode" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="SingleDualDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="SingleDual_Component" Member="Components" ThisKey="SingleDualID" OtherKey="SingleDual_ID" Type="Component" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NPT" Member="NPTs">
+    <Type Name="NPT">
+      <Column Name="NPTID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NPTCode" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="NPTDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="NPT_Component" Member="Components" ThisKey="NPTID" OtherKey="NPT_ID" Type="Component" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OD" Member="ODs">
+    <Type Name="OD">
+      <Column Name="ODID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ODCode" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ODDecimal" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Association Name="OD_Component" Member="Components" ThisKey="ODID" OtherKey="OD_ID" Type="Component" />
+      <Association Name="OD_CostUp" Member="CostUps" ThisKey="ODID" OtherKey="OD_ID" Type="CostUp" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Component" Member="Components">
+    <Type Name="Component">
+      <Column Name="CompID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CompCode" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="CompNum" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CompDesc" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CompCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="UM_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Catagory_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Cal_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="WireCount_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SingleDual_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="NPT_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="OD_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Material_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Markup" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="MIType_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Standard" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Resale" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LaborCost" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Association Name="Component_CostComponentKey" Member="CostComponentKeys" ThisKey="CompID" OtherKey="Comp_ID" Type="CostComponentKey" />
+      <Association Name="UM_Component" Member="UM" ThisKey="UM_ID" OtherKey="UMID" Type="UM" IsForeignKey="true" />
+      <Association Name="OD_Component" Member="OD" ThisKey="OD_ID" OtherKey="ODID" Type="OD" IsForeignKey="true" />
+      <Association Name="ComponentCatagory_Component" Member="ComponentCatagory" ThisKey="Catagory_ID" OtherKey="CatagoryID" Type="ComponentCatagory" IsForeignKey="true" />
+      <Association Name="SingleDual_Component" Member="SingleDual" ThisKey="SingleDual_ID" OtherKey="SingleDualID" Type="SingleDual" IsForeignKey="true" />
+      <Association Name="NPT_Component" Member="NPT" ThisKey="NPT_ID" OtherKey="NPTID" Type="NPT" IsForeignKey="true" />
+      <Association Name="Calibration_Component" Member="Calibration" ThisKey="Cal_ID" OtherKey="CalID" Type="Calibration" IsForeignKey="true" />
+      <Association Name="WireCount_Component" Member="WireCount" ThisKey="WireCount_ID" OtherKey="WireCountID" Type="WireCount" IsForeignKey="true" />
+      <Association Name="Material_Component" Member="Material" ThisKey="Material_ID" OtherKey="MaterialID" Type="Material" IsForeignKey="true" />
+      <Association Name="MIType_Component" Member="MIType" ThisKey="MIType_ID" OtherKey="MITypeID" Type="MIType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SensorType" Member="SensorTypes">
+    <Type Name="SensorType">
+      <Column Name="TypeID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TypeCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TypeDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Labor" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="SensorType_CostUp" Member="CostUps" ThisKey="TypeID" OtherKey="SensorType_ID" Type="CostUp" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CostComponentKey" Member="CostComponentKeys">
+    <Type Name="CostComponentKey">
+      <Column Name="CCID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CostUp_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Comp_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Association Name="Component_CostComponentKey" Member="Component" ThisKey="Comp_ID" OtherKey="CompID" Type="Component" IsForeignKey="true" />
+      <Association Name="CostUp_CostComponentKey" Member="CostUp" ThisKey="CostUp_ID" OtherKey="CostUpID" Type="CostUp" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CostType" Member="CostTypes">
+    <Type Name="CostType">
+      <Column Name="CostTypeID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CostTypeDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="CostType_CostUp" Member="CostUps" ThisKey="CostTypeID" OtherKey="CostType_ID" Type="CostUp" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WireCount" Member="WireCounts">
+    <Type Name="WireCount">
+      <Column Name="WireCountID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="WireDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="WireCount" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="WireCount_Component" Member="Components" ThisKey="WireCountID" OtherKey="WireCount_ID" Type="Component" />
+      <Association Name="WireCount_CostUp" Member="CostUps" ThisKey="WireCountID" OtherKey="WireCount_ID" Type="CostUp" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Material" Member="Materials">
+    <Type Name="Material">
+      <Column Name="MaterialID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MaterialDesc" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MaterialCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Material_Component" Member="Components" ThisKey="MaterialID" OtherKey="Material_ID" Type="Component" />
+      <Association Name="Material_CostUp" Member="CostUps" ThisKey="MaterialID" OtherKey="TWExtMat_ID" Type="CostUp" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MIType" Member="MITypes">
+    <Type Name="MIType">
+      <Column Name="MITypeID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MITypeCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MITypeDesc" Storage="_MyTypeDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="MIType_Component" Member="Components" ThisKey="MITypeID" OtherKey="MIType_ID" Type="Component" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CIPCatagory" Member="CIPCatagories">
+    <Type Name="CIPCatagory">
+      <Column Name="CIPID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CIPCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CIPDesc" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="CIPCatagory_CostUp" Member="CostUps" ThisKey="CIPID" OtherKey="CIP_ID" Type="CostUp" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPCatagory" Member="IPCatagories">
+    <Type Name="IPCatagory">
+      <Column Name="IPID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IPCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IPDesc" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="IPCatagory_CostUp" Member="CostUps" ThisKey="IPID" OtherKey="IP_ID" Type="CostUp" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPType" Member="IPTypes">
+    <Type Name="IPType">
+      <Column Name="IPTypeID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IPTypeCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IPTypeDesc" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="IPType_CostUp" Member="CostUps" ThisKey="IPTypeID" OtherKey="IPType_ID" Type="CostUp" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TWConfiguration" Member="TWConfigurations">
+    <Type Name="TWConfiguration">
+      <Column Name="TWConfigID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TWConfigDesc" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TWConfigCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="TWConfiguration_CostUp" Member="CostUps" ThisKey="TWConfigID" OtherKey="TWConfig_ID" Type="CostUp" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TWExtLength" Member="TWExtLengths">
+    <Type Name="TWExtLength">
+      <Column Name="TWExtLengthID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TWExtLengthCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TWExtLengthDesc" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="TWExtLength_CostUp" Member="CostUps" ThisKey="TWExtLengthID" OtherKey="TWExtLength_ID" Type="CostUp" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Company" Member="Companies">
+    <Type Name="Company">
+      <Column Name="CompanyID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Discount_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="Company_Customer" Member="Customers" ThisKey="CompanyID" OtherKey="Company_ID" Type="Customer" />
+      <Association Name="Discount_Company" Member="Discount" ThisKey="Discount_ID" OtherKey="DiscountID" Type="Discount" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Customer" Member="Customers">
+    <Type Name="Customer">
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RegisteredID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CustEmail" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CustFirstName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CustLastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Company_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Role_ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Association Name="Company_Customer" Member="Company" ThisKey="Company_ID" OtherKey="CompanyID" Type="Company" IsForeignKey="true" />
+      <Association Name="UserRole_Customer" Member="UserRole" ThisKey="Role_ID" OtherKey="RoleID" Type="UserRole" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.QCOption" Member="QCOptions">
+    <Type Name="QCOption">
+      <Column Name="QCOptionID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="QCOptionCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="QCOptionDesc" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="QCOption_CostUp" Member="CostUps" ThisKey="QCOptionID" OtherKey="QCOption_ID" Type="CostUp" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CostUp" Member="CostUps">
+    <Type Name="CostUp">
+      <Column Name="CostUpID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SensorType_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CostType_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="WireCount_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Cal_ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="OD_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Temp_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CIP_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CIPCap" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IP_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="IPType_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TWConfig_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TWExtMat_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TWExtLength_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="QCOption_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SheathTermCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LeadwireTermCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ElementCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CostUpCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CostUpDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PPH" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="Markup" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="Overhead" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Extension_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="CostUp_CostComponentKey" Member="CostComponentKeys" ThisKey="CostUpID" OtherKey="CostUp_ID" Type="CostComponentKey" />
+      <Association Name="SensorType_CostUp" Member="SensorType" ThisKey="SensorType_ID" OtherKey="TypeID" Type="SensorType" IsForeignKey="true" />
+      <Association Name="CostType_CostUp" Member="CostType" ThisKey="CostType_ID" OtherKey="CostTypeID" Type="CostType" IsForeignKey="true" />
+      <Association Name="WireCount_CostUp" Member="WireCount" ThisKey="WireCount_ID" OtherKey="WireCountID" Type="WireCount" IsForeignKey="true" />
+      <Association Name="Calibration_CostUp" Member="Calibration" ThisKey="Cal_ID" OtherKey="CalID" Type="Calibration" IsForeignKey="true" />
+      <Association Name="OD_CostUp" Member="OD" ThisKey="OD_ID" OtherKey="ODID" Type="OD" IsForeignKey="true" />
+      <Association Name="Temperature_CostUp" Member="Temperature" ThisKey="Temp_ID" OtherKey="TempID" Type="Temperature" IsForeignKey="true" />
+      <Association Name="CIPCatagory_CostUp" Member="CIPCatagory" ThisKey="CIP_ID" OtherKey="CIPID" Type="CIPCatagory" IsForeignKey="true" />
+      <Association Name="IPCatagory_CostUp" Member="IPCatagory" ThisKey="IP_ID" OtherKey="IPID" Type="IPCatagory" IsForeignKey="true" />
+      <Association Name="IPType_CostUp" Member="IPType" ThisKey="IPType_ID" OtherKey="IPTypeID" Type="IPType" IsForeignKey="true" />
+      <Association Name="TWConfiguration_CostUp" Member="TWConfiguration" ThisKey="TWConfig_ID" OtherKey="TWConfigID" Type="TWConfiguration" IsForeignKey="true" />
+      <Association Name="Material_CostUp" Member="Material" ThisKey="TWExtMat_ID" OtherKey="MaterialID" Type="Material" IsForeignKey="true" />
+      <Association Name="TWExtLength_CostUp" Member="TWExtLength" ThisKey="TWExtLength_ID" OtherKey="TWExtLengthID" Type="TWExtLength" IsForeignKey="true" />
+      <Association Name="QCOption_CostUp" Member="QCOption" ThisKey="QCOption_ID" OtherKey="QCOptionID" Type="QCOption" IsForeignKey="true" />
+      <Association Name="ExtBaseCost_CostUp" Member="ExtBaseCost" ThisKey="Extension_ID" OtherKey="ExtBaseCostID" Type="ExtBaseCost" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ExtBaseCost" Member="ExtBaseCosts">
+    <Type Name="ExtBaseCost">
+      <Column Name="ExtBaseCostID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ExtBaseCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="ExtBaseCost_CostUp" Member="CostUps" ThisKey="ExtBaseCostID" OtherKey="Extension_ID" Type="CostUp" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DistStateKey" Member="DistStateKeys">
+    <Type Name="DistStateKey">
+      <Column Name="DistStateID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Distributor_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="State_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="State_DistStateKey" Member="State" ThisKey="State_ID" OtherKey="StateID" Type="State" IsForeignKey="true" />
+      <Association Name="Distributor_DistStateKey" Member="Distributor" ThisKey="Distributor_ID" OtherKey="DistributorID" Type="Distributor" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.State" Member="States">
+    <Type Name="State">
+      <Column Name="StateID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StateName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="StateAbbrev" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="State_DistStateKey" Member="DistStateKeys" ThisKey="StateID" OtherKey="State_ID" Type="DistStateKey" />
+      <Association Name="State_Distributor" Member="Distributors" ThisKey="StateID" OtherKey="State_ID" Type="Distributor" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PageType" Member="PageTypes">
+    <Type Name="PageType">
+      <Column Name="PageTypeID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PageTypeDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="PageType_Page" Member="Pages" ThisKey="PageTypeID" OtherKey="PageType_ID" Type="Page" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Page" Member="Pages">
+    <Type Name="Page">
+      <Column Name="PageID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PageHeader" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PageDesc" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PageImg" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PageURL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PageType_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PageOrderBy" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PageDisplayChar" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="PageType_Page" Member="PageType" ThisKey="PageType_ID" OtherKey="PageTypeID" Type="PageType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Distributor" Member="Distributors">
+    <Type Name="Distributor">
+      <Column Name="DistributorID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DistName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DistOrderBy" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="DistAddress" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DistAddress2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DistCity" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="State_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="DistZIP" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DistPhone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DistFax" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DistContact" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DistEmail" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DistContact2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DistPhone2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DistFax2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DistEmail2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Distributor_DistStateKey" Member="DistStateKeys" ThisKey="DistributorID" OtherKey="Distributor_ID" Type="DistStateKey" />
+      <Association Name="State_Distributor" Member="State" ThisKey="State_ID" OtherKey="StateID" Type="State" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SanitaryWellCost" Member="SanitaryWellCosts">
+    <Type Name="SanitaryWellCost">
+      <Column Name="SanitaryWellCostID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SanitaryWellCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

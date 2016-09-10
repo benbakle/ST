@@ -1,0 +1,76 @@
+﻿/*********************************
+**** PRODUCT/SERVICES LAYOUT *****
+**********************************/
+.product-layout {
+    position: relative;
+    height: auto;
+    padding: 25px 0 0 0;
+    box-sizing: border-box;
+}
+
+    .product-layout p {
+        line-height: 25px;
+    }
+
+    .product-layout:hover {
+        background-color: #f1f8f8;
+    }
+
+    .product-layout h1 {
+        display: block;
+        width: 100%;
+    }
+
+    .product-layout img {
+        position: relative;
+        float: left;
+        width: 250px;
+        padding:0 50px 50px 50px;
+        padding-bottom: 50px;
+    }
+
+    .product-layout .learn {
+        position: relative;
+        bottom: 0px;
+        width: 100%;
+        text-align: center;
+        margin: 25px 0;
+    }
+
+    .product-layout a {
+        position: relative;
+        background: linear-gradient(#fff, #eee);
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        border: 1px solid #ddd;
+        padding: 10px 0;
+        left: 0;
+        width: 100%;
+        font: normal 1.3em "calibri";
+        color: #777;
+    }
+
+        .product-layout a:hover {
+            background: linear-gradient(#fff,#f1f8f8 );
+            color: #333;
+        }
+
+@media only screen and (max-device-width: 600px) {
+    .product-layout {
+        border-bottom: 2px solid #ccc;
+        padding: 25px;
+    }
+
+    .product-layout p{
+        line-height:unset;
+    }
+
+        .product-layout .learn {
+            font-size: 2em;
+        }
+
+            .product-layout .learn a {
+                padding: 20px 0;
+            }
+}

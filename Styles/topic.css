@@ -1,0 +1,53 @@
+﻿/************************
+**** TOPIC LAYOUT *****
+*************************/
+
+.topic-view {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+}
+
+    .topic-view img {
+        position: relative;
+        float: left;
+        width: 350px;
+        margin: 0 50px 50px 0;
+    }
+
+    .topic-view .exp-item div:first-child {
+        width: 20%;
+    }
+    .topic-view .exp-item div:last-child{
+        width:80%;
+    }
+
+    .topic-view .topic-body {
+        position: relative;
+        float: left;
+        display: block;
+        width: 490px;
+        line-height:20px
+    }
+    .topic-view .message-box{
+        text-align:center;
+        font-size:1.5em;
+    }
+
+@media only screen and (max-device-width: 600px) {
+    .topic-view img {
+        width: 100%;
+        padding-bottom:50px;
+        border-bottom:1px solid #ccc;
+    }
+
+    .topic-view .topic-body {
+        line-height:unset;
+        width: 100%;
+    }
+
+
+    .topic-view .exp-item h5 {
+        font-size: 2em;
+    }
+}
