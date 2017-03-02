@@ -68,3 +68,29 @@ header .navbar-default .navbar-nav>li>a:hover
     color:#eee;
 }
 
+
+
+.navbar-nav>li>a {
+  display: inline-block;
+  padding: 25px;
+  position: relative;
+}
+.navbar-nav>li:after{
+  position: absolute;
+  content:"";
+  display: inline-block;
+  height: 4px;
+  width: 0;
+  background-color:#008080;
+  bottom:0px;
+  left:50%;
+  transition:.25s;
+}
+
+.navbar-nav>li:hover:after,
+.navbar-nav>li.active:after{
+  width: 100%;
+  left:0;
+
+}
+
