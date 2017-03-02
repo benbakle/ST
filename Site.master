@@ -118,7 +118,7 @@
 
                     </div>
 
-                    <div class="login-container secondary-background-color col-xs-12 col-md-5" id="login-container">
+                    <div class="login-container col-xs-12 col-md-5" id="login-container">
                         <asp:LoginView ID="QPLoginView" runat="server">
                             <AnonymousTemplate>
                                 <div class="login-header">
