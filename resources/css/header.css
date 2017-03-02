@@ -14,9 +14,10 @@ header .navbar-default
 {
     border-color: none;
 }
+
 header .navbar-default .container
 {
-    padding:0;
+    padding: 0;
 }
 
 header .navbar-brand
@@ -24,7 +25,7 @@ header .navbar-brand
     height: 40px;
     margin-top: 10px;
     padding: 0;
-    padding-left:15px;
+    padding-left: 15px;
 }
 
 header .navbar-brand img
@@ -57,14 +58,65 @@ header .navbar-default .navbar-nav
 
 
 header .navbar-default .navbar-nav > li > a,
-header .navbar-default .navbar-nav>li>a:focus, 
-header .navbar-default .navbar-nav>li>a:hover
+header .navbar-default .navbar-nav > li > a:focus,
+header .navbar-default .navbar-nav > li > a:hover
 {
     border-top: 1px solid #4D6964;
     padding: 25px;
     font-weight: 700;
     text-decoration: none;
     text-transform: uppercase;
-    color:#eee;
+    color: #eee;
 }
 
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px)
+{
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px)
+{
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px)
+{
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px)
+{
+    header .navbar-nav > li > a
+    {
+        display: inline-block;
+        padding: 25px;
+        position: relative;
+    }
+
+    header .navbar-nav > li:after
+    {
+        position: absolute;
+        content: "";
+        display: inline-block;
+        height: 4px;
+        width: 0;
+        background-color: #008080;
+        bottom: 0px;
+        left: 50%;
+        transition: .25s;
+    }
+
+    header .navbar-nav > li:hover:after,
+    header .navbar-nav > li.active:after
+    {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px)
+{
+}
