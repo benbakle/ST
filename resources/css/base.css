@@ -1,0 +1,270 @@
+﻿/*
+* #.# Base Styles
+*
+* @summary: Contains basic global styling for the site 
+* 
+* @resources: 
+*
+* @media-queries: NO
+*
+*/
+
+:root
+{
+    font-size: 16px;
+}
+
+body
+{
+    background-color:#fff;
+    color: #333;
+    font-family: "Century Gothic", sans-serif;
+    font-size:1rem;
+    font-weight: 300;
+    padding-top:70px;
+}
+
+h1, .h1
+{
+    font-size: 3.375rem;
+    font-weight: 400;
+}
+
+h2, .h2
+{
+    font-size: 2.3125rem;
+    font-weight: 700;
+}
+
+h3, .h3
+{
+    font-size: 1.8125rem;
+    font-weight: 700;
+}
+
+h4, .h4
+{
+    font-size: 1.1875rem;
+    font-weight: 700;
+}
+
+h5, .h5
+{
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+h6, .h6
+{
+}
+
+p, .p,
+article, .article
+{
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+a,
+a:link,
+a:active,
+a:focus
+{
+    color: #008080;
+    text-decoration: underline;
+}
+
+a:hover
+{
+    text-decoration: none;
+    color: #008080;
+}
+
+.primary-color
+{
+    color: #008080;
+}
+
+.primary-background-color
+{
+    background-color: #008080;
+}
+
+.primary-color-light
+{
+    color: #66B3B3;
+}
+
+.primary-background-color-light
+{
+    background-color: #66B3B3;
+}
+
+.primary-color-dark
+{
+    color: #002821;
+}
+
+.primary-background-color-dark
+{
+    background-color: #002821;
+}
+
+.secondary-color
+{
+    color: #494949;
+}
+
+.secondary-background-color
+{
+    background-color: #494949;
+}
+
+.secondary-color-dark
+{
+    color: #222;
+}
+
+.secondary-background-color-dark
+{
+    background-color: #222;
+}
+
+.accent-color
+{
+    color: #c8a347;
+}
+
+.accent-font
+{
+    font-style: italic;
+    font-weight: normal;
+}
+
+.btn-default,
+a.btn-default,
+.btn-accent,
+a.btn-accent
+{
+    border-radius: 2em;
+    border-width: 2px;
+    display: inline-block;
+    font-size: 1.125rem;
+    font-weight: 900;
+    margin: 10px 0;
+    max-width: 290px;
+    padding: 20px 0;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.btn-default,
+a.btn-default
+{
+    background-color: transparent;
+    border-color: #008080;
+}
+
+.btn-default.hover,
+a.btn-default.hover,
+.btn-default:hover,
+a.btn-default:hover
+{
+    background-color: #66B3B3;
+    border-color: #008080;
+    color: #fff;
+}
+
+.btn-default.focus,
+.btn-default:focus,
+.btn-default:focus:hover,
+.btn-default.focus.hover,
+.btn-default.focus:hover,
+.btn-default.active,
+.btn-default:active,
+.btn-default:active:hover,
+.btn-default.active.hover,
+.btn-default.active:hover,
+.btn-default.active.focus,
+.btn-default.active:focus,
+.btn-default:active:focus,
+.open > .dropdown-toggle.btn-default.focus,
+.open > .dropdown-toggle.btn-default:focus,
+.open > .dropdown-toggle.btn-default:hover
+{
+    background-color: #008080;
+    border-color: #008080;
+    color: #fff;
+}
+
+.btn-accent,
+a.btn-accent
+{
+    background-color: transparent;
+    border-color: #fff;
+    color: #fff;
+}
+
+.btn-accent.hover,
+a.btn-accent.hover,
+.btn-accent:hover,
+a.btn-accent:hover
+{
+    background-color: #258275;
+    border-color: #fff;
+    color: #fff;
+}
+
+.btn-accent.focus,
+.btn-accent:focus,
+.btn-accent:focus:hover,
+.btn-accent.focus.hover,
+.btn-accent.focus:hover,
+.btn-accent.active,
+.btn-accent:active,
+.btn-accent:active:hover,
+.btn-accent.active.hover,
+.btn-accent.active:hover,
+.btn-accent.active.focus,
+.btn-accent.active:focus,
+.btn-accent:active:focus,
+.open > .dropdown-toggle.btn-accent.focus,
+.open > .dropdown-toggle.btn-accent:focus,
+.open > .dropdown-toggle.btn-accent:hover
+{
+    background-color: #007564;
+    border-color: #fff;
+    color: #fff;
+}
+
+.btn-lg.btn-default,
+.btn-lg.btn-accent
+{
+    max-width: 290px;
+    padding: 20px 0;
+}
+
+.btn-md.btn-default,
+.btn-md.btn-accent
+{
+    font-size: .78rem;
+    max-width: 229px;
+    padding: 15px 0;
+}
+
+.btn-sm.btn-default,
+.btn-sm.btn-accent
+{
+    font-size: .78rem;
+    max-width: 177px;
+    padding: 10px 0;
+}
+
+.btn-xs.btn-default,
+.btn-xs.btn-accent
+{
+    font-size: .7rem;
+    max-width: 125px;
+    padding: 5px 0;
+}

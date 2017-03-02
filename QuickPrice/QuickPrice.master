@@ -8,19 +8,17 @@
     </asp:ContentPlaceHolder>
     <title>SensorTec, Inc | QuickPrice</title>
 
-    <link href="../Styles/st.css" rel="stylesheet" />
+ <%--   <link href="../Styles/st.css" rel="stylesheet" />
     <link href="../Styles/master.css" rel="stylesheet" />
     <link href="../Styles/admin-master.css" rel="stylesheet" />
     <link href="../Styles/qp-printable.css" rel="stylesheet" media="print" />
-    <link href="../Styles/quickprice.css" rel="stylesheet" />
+    <link href="../Styles/quickprice.css" rel="stylesheet" />--%>
     <link rel="SHORTCUT ICON" href="~/images/logos/favicon.ico" />
 
 
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
-        </asp:ToolkitScriptManager>
         <asp:UpdatePanel ID="Admin_UpdatePanel" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
                 <div class="top-stripe">

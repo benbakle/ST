@@ -1,0 +1,160 @@
+﻿
+/*STYLE GUIDE STYLES */
+
+.style-guide-wrapper
+{
+    max-width: 1200px;
+    margin: 100px auto;
+}
+
+.style-guide-wrapper > .container-fluid
+{
+    margin-top: 100px;
+}
+
+.style-guide-wrapper .property-display-wrapper
+{
+    min-height: 200px;
+}
+
+.style-guide-wrapper .tag-title
+{
+    font-weight: 700;
+}
+
+.style-guide-wrapper .tag-title small
+{
+    display: block;
+    color: #333;
+    font-weight: 700;
+    margin-top: 5px;
+    font-size: .9em;
+}
+
+.style-guide-wrapper .code
+{
+    color:#555;
+    font-family: Courier New, Courier, monospace;
+    font-size:12px;
+    font-weight: 700;
+    padding-left:15px;
+}
+.style-guide-wrapper .property-desc-table
+{
+    color: #999;
+    font-family: 'Courier New';
+}
+
+.style-guide-wrapper .property-desc-table td
+{
+    padding: 5px 15px 5px 0;
+    vertical-align: top;
+}
+
+.style-guide-wrapper .property-desc-table td span
+{
+    font-style: normal;
+    color: rgba(53, 117, 136,.9);
+}
+
+.style-guide-wrapper .font-display-wrapper
+{
+    position: relative;
+    border: 1px solid #ddd;
+    height: 275px;
+}
+
+.style-guide-wrapper .font-display,
+.style-guide-wrapper .font-desc
+{
+    display: inline-block;
+    top: 50%;
+    position: absolute;
+}
+
+.style-guide-wrapper .font-display
+{
+    font-size: 120px;
+    line-height: 122px;
+    left: 25%;
+    transform: translatey(-50%) translatex(-50%);
+}
+
+.style-guide-wrapper .font-desc
+{
+    position: absolute;
+    font-size: 34px;
+    line-height: 36px;
+    left: 45%;
+    transform: translatey(-50%);
+}
+
+.style-guide-wrapper .typography-display
+{
+    padding-top: 25px;
+}
+
+.style-guide-wrapper .color-block-wrapper
+{
+    border: 1px solid #ddd;
+    float: left;
+    margin: 5px;
+    padding: 10px;
+}
+
+.style-guide-wrapper .color-block
+{
+    width: 185px;
+    height: 185px;
+}
+
+.style-guide-wrapper .color-block-wrapper.block-small
+{
+    margin: 1px;
+    padding: 3px;
+    position: relative;
+}
+
+.style-guide-wrapper .color-block-wrapper.block-small .color-block
+{
+    height: 75px;
+    width: 35px;
+}
+
+.style-guide-wrapper .color-block-wrapper .color-class
+{
+    position: absolute;
+    top: 85px;
+    text-align: center;
+    width: 100%;
+    color: #aaa;
+    font-style: italic;
+    text-shadow: 0 0 0 #333;
+}
+
+.style-guide-wrapper .color-shade-wrapper
+{
+    display: inline-block;
+    position: relative;
+    margin: 5px;
+}
+
+.style-guide-wrapper .btn-display-wrapper
+{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.style-guide-wrapper .btn-class-desc
+{
+    padding: 5px 0;
+    color: #777;
+    text-shadow: 0 0 0 #333;
+    font-size: 0.85em;
+}
+
+.style-guide-wrapper .btn-class-desc h4
+{
+    color: #222;
+    font-style: normal;
+}

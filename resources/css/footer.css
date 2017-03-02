@@ -1,0 +1,15 @@
+﻿footer{
+    color:#eee;
+}
+
+footer .phone,
+footer .link-list
+{
+    padding-top:15px;
+}
+
+footer .info-list li a
+{
+    display:block;
+    padding:10px 0;
+}

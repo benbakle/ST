@@ -1,0 +1,70 @@
+﻿/*
+* #.# Header
+*
+* @summary: Contains styling for the site header
+* 
+* @resources: 
+*
+* @media-queries: YES
+*
+*/
+
+
+header .navbar-default
+{
+    border-color: none;
+}
+header .navbar-default .container
+{
+    padding:0;
+}
+
+header .navbar-brand
+{
+    height: 40px;
+    margin-top: 10px;
+    padding: 0;
+    padding-left:15px;
+}
+
+header .navbar-brand img
+{
+    height: 100%;
+}
+
+header .navbar-default .navbar-toggle
+{
+    border: 0;
+}
+
+header .navbar-default .navbar-toggle:focus,
+header .navbar-default .navbar-toggle:hover
+{
+    background-color: transparent;
+    color: #eee;
+}
+
+header .navbar-default .navbar-collapse,
+header .navbar-default .navbar-form
+{
+    border: none;
+}
+
+header .navbar-default .navbar-nav
+{
+    margin: 0;
+}
+
+
+header .navbar-default .navbar-nav > li > a,
+header .navbar-default .navbar-nav>li>a:focus, 
+header .navbar-default .navbar-nav>li>a:hover
+{
+    border-top: 1px solid #4D6964;
+    padding: 25px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    color:#eee;
+}
+

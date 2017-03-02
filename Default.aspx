@@ -8,7 +8,7 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <!----- SCROLLABLE ----->
     <div class="scroll-container">
-        
+
         <div class="scrollable">
             <a class="prev browse left"></a>
             <div class="items">
@@ -20,7 +20,8 @@
                                     <img src="images/product/standard_rtd_title.png" alt="rtd" />
                                 </div>
                                 <div class="item-container-img">
-                                    <img src="images/product/rtd.png" alt="rtd" /></div>
+                                    <img src="images/product/rtd.png" alt="rtd" />
+                                </div>
                             </div>
                         </div>
                         <div class="paper-shadow">
@@ -32,10 +33,11 @@
                         <div class="paper">
                             <div class="item-container">
                                 <div class="item-container-title">
-                                    <img src="images/product/mgo_title.png" alt="mgo"/>
+                                    <img src="images/product/mgo_title.png" alt="mgo" />
                                 </div>
                                 <div class="item-container-img">
-                                    <img src="images/product/mgo.png" alt="mgo" /></div>
+                                    <img src="images/product/mgo.png" alt="mgo" />
+                                </div>
                             </div>
                         </div>
                         <div class="paper-shadow">
@@ -50,7 +52,8 @@
                                     <img src="images/product/plastics_title.png" alt="plastics" />
                                 </div>
                                 <div class="item-container-img">
-                                    <img src="images/product/plastics.png" alt="plastics"/></div>
+                                    <img src="images/product/plastics.png" alt="plastics" />
+                                </div>
                             </div>
                         </div>
                         <div class="paper-shadow">
@@ -62,10 +65,11 @@
                         <div class="paper">
                             <div class="item-container">
                                 <div class="item-container-title">
-                                    <img src="images/product/industrial_title.png" alt="industrial thermocouples"  />
+                                    <img src="images/product/industrial_title.png" alt="industrial thermocouples" />
                                 </div>
                                 <div class="item-container-img">
-                                    <img src="images/product/industrial.png" alt="industrial thermocouples"/></div>
+                                    <img src="images/product/industrial.png" alt="industrial thermocouples" />
+                                </div>
                             </div>
                         </div>
                         <div class="paper-shadow">
@@ -80,7 +84,8 @@
                                     <img src="images/product/thermowell_assemblies_title.png" alt="thermowell assemblies" />
                                 </div>
                                 <div class="item-container-img">
-                                    <img src="images/product/thermowell_assemblies.png" alt="thermowell assemblies"/></div>
+                                    <img src="images/product/thermowell_assemblies.png" alt="thermowell assemblies" />
+                                </div>
                             </div>
                         </div>
                         <div class="paper-shadow">
@@ -95,7 +100,8 @@
                                     <img src="images/product/food_dairy_title.png" alt="food and dairy" />
                                 </div>
                                 <div class="item-container-img">
-                                    <img src="images/product/food_dairy.png" alt="food and dairy"/></div>
+                                    <img src="images/product/food_dairy.png" alt="food and dairy" />
+                                </div>
                             </div>
                         </div>
                         <div class="paper-shadow">
@@ -107,10 +113,11 @@
                         <div class="paper">
                             <div class="item-container">
                                 <div class="item-container-title">
-                                    <img src="images/product/instruments_title.png" alt="instruments"/>
+                                    <img src="images/product/instruments_title.png" alt="instruments" />
                                 </div>
                                 <div class="item-container-img">
-                                    <img src="images/product/transmitters.png" alt="instruments"/></div>
+                                    <img src="images/product/transmitters.png" alt="instruments" />
+                                </div>
                             </div>
                         </div>
                         <div class="paper-shadow">
@@ -122,10 +129,11 @@
                         <div class="paper">
                             <div class="item-container">
                                 <div class="item-container-title">
-                                    <img src="images/product/accessories_title.png" alt="accessories"/>
+                                    <img src="images/product/accessories_title.png" alt="accessories" />
                                 </div>
                                 <div class="item-container-img">
-                                    <img src="images/product/wire_accessories.png" alt="accessories"/></div>
+                                    <img src="images/product/wire_accessories.png" alt="accessories" />
+                                </div>
                             </div>
                         </div>
                         <div class="paper-shadow">
@@ -133,9 +141,9 @@
                     </a>
                 </div>
             </div>
-               <a class="next browse right"></a>
+            <a class="next browse right"></a>
         </div>
-     
+
     </div>
     <div class="navi">
         <a href="0" class="navbtn active" title="Standard RTD's"></a>
