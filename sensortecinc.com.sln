@@ -1,27 +1,27 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "sensortecinc.com", ".", "{0A98D1C6-420D-495C-9C7C-7A0B48D07676}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ST", ".", "{0A98D1C6-420D-495C-9C7C-7A0B48D07676}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
 		Debug.AspNetCompiler.VirtualPath = "/sensortecinc.com"
-		Debug.AspNetCompiler.PhysicalPath = "..\sensortecinc.com\"
+		Debug.AspNetCompiler.PhysicalPath = "..\ST\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\sensortecinc.com\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/sensortecinc.com"
-		Release.AspNetCompiler.PhysicalPath = "..\sensortecinc.com\"
+		Release.AspNetCompiler.PhysicalPath = "..\ST\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\sensortecinc.com\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "57750"
-		SlnRelativePath = "..\sensortecinc.com\"
+		SlnRelativePath = "..\ST\"
 	EndProjectSection
 EndProject
 Global
@@ -34,5 +34,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2A266FD2-CE97-41D8-9799-79B24899F006}
 	EndGlobalSection
 EndGlobal
