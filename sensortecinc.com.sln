@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "sensortecinc.com", ".", "{0A98D1C6-420D-495C-9C7C-7A0B48D07676}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ST", ".", "{0A98D1C6-420D-495C-9C7C-7A0B48D07676}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
 		Debug.AspNetCompiler.VirtualPath = "/sensortecinc.com"
 		Debug.AspNetCompiler.PhysicalPath = "..\sensortecinc.com\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\sensortecinc.com\"
@@ -34,5 +34,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {964E174B-6286-4E68-8A33-20DE2732A508}
 	EndGlobalSection
 EndGlobal
